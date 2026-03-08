@@ -1,0 +1,14 @@
+# PocketBase local data (Don't sync actual DB/Users)
+pb_data/
+
+# PocketBase Executables (Mac/Windows/Linux versions)
+pocketbase
+pocketbase.exe
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Environment variables (Don't leak secrets!)
+.env
+.env.local
