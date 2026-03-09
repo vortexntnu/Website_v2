@@ -118,57 +118,53 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Partners / Sponsors Section */}
-      <section className="bg-[#0a0a0a] py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <h2 className="text-2xl font-semibold mb-8 text-center text-white">A word about / thanks to our partners / sponsors</h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
-            <div className="flex items-center justify-center h-24 w-full bg-white rounded p-4">
-              <span className="font-bold text-black text-center">WÜRTH ELEKTRONIK</span>
-            </div>
-            <div className="flex items-center justify-center h-24 w-full bg-[#c21c1c] rounded p-4">
-              <span className="font-bold text-white text-center text-2xl">K</span>
-            </div>
-            <div className="flex items-center justify-center h-24 w-full bg-white rounded p-4">
-              <span className="font-bold text-black text-center text-xl">KONGSBERG</span>
-            </div>
-            <div className="flex items-center justify-center h-24 w-full bg-white rounded p-4">
-              <span className="font-bold text-blue-600 text-center">WaterLinked</span>
-            </div>
-            <div className="flex items-center justify-center h-24 w-full bg-white rounded p-4">
-              <span className="font-bold text-black text-center">NTNU</span>
-            </div>
-            <div className="flex items-center justify-center h-24 w-full bg-[#1a1a1a] border border-gray-700 rounded p-4">
-              <span className="font-bold text-white text-center">Cyber</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Sponsors Section with Revolving Band */}
-      <section className="bg-[#0a0a0a] py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <h2 className="text-2xl font-semibold mb-8 text-center text-white">Our Sponsors</h2>
-          <div className="overflow-hidden relative">
-            <div className="flex animate-marquee whitespace-nowrap">
-              <div className="flex items-center justify-center h-24 w-48 bg-white rounded m-4">
-                <span className="font-bold text-black text-center">WÜRTH ELEKTRONIK</span>
+      <section className="bg-[#0a0a0a] py-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8 mb-8">
+          <h2 className="text-3xl font-semibold text-center text-white">Our Sponsors</h2>
+        </div>
+        <div className="relative overflow-hidden">
+          <div className="flex animate-marquee">
+            {/* First set of sponsors */}
+            <div className="flex flex-shrink-0">
+              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
+                <span className="font-bold text-black text-center text-xl">WÜRTH ELEKTRONIK</span>
               </div>
-              <div className="flex items-center justify-center h-24 w-48 bg-[#c21c1c] rounded m-4">
-                <span className="font-bold text-white text-center text-2xl">K</span>
+              <div className="flex items-center justify-center h-32 w-64 bg-[#c21c1c] rounded mx-4">
+                <span className="font-bold text-white text-center text-4xl">KONGSBERG</span>
               </div>
-              <div className="flex items-center justify-center h-24 w-48 bg-white rounded m-4">
-                <span className="font-bold text-black text-center text-xl">KONGSBERG</span>
+              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
+                <span className="font-bold text-blue-600 text-center text-2xl">WaterLinked</span>
               </div>
-              <div className="flex items-center justify-center h-24 w-48 bg-white rounded m-4">
-                <span className="font-bold text-blue-600 text-center">WaterLinked</span>
+              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
+                <span className="font-bold text-black text-center text-2xl">NTNU</span>
               </div>
-              <div className="flex items-center justify-center h-24 w-48 bg-white rounded m-4">
-                <span className="font-bold text-black text-center">NTNU</span>
+              <div className="flex items-center justify-center h-32 w-64 bg-[#2a2a2a] border-2 border-gray-600 rounded mx-4">
+                <span className="font-bold text-white text-center text-xl">StatoilASO</span>
               </div>
-              <div className="flex items-center justify-center h-24 w-48 bg-[#1a1a1a] border border-gray-700 rounded m-4">
-                <span className="font-bold text-white text-center">Cyber</span>
+              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
+                <span className="font-bold text-black text-center text-xl">Norconsult</span>
+              </div>
+            </div>
+            {/* Duplicate set for seamless loop */}
+            <div className="flex flex-shrink-0">
+              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
+                <span className="font-bold text-black text-center text-xl">WÜRTH ELEKTRONIK</span>
+              </div>
+              <div className="flex items-center justify-center h-32 w-64 bg-[#c21c1c] rounded mx-4">
+                <span className="font-bold text-white text-center text-4xl">KONGSBERG</span>
+              </div>
+              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
+                <span className="font-bold text-blue-600 text-center text-2xl">WaterLinked</span>
+              </div>
+              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
+                <span className="font-bold text-black text-center text-2xl">NTNU</span>
+              </div>
+              <div className="flex items-center justify-center h-32 w-64 bg-[#2a2a2a] border-2 border-gray-600 rounded mx-4">
+                <span className="font-bold text-white text-center text-xl">StatoilASO</span>
+              </div>
+              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
+                <span className="font-bold text-black text-center text-xl">Norconsult</span>
               </div>
             </div>
           </div>
@@ -194,59 +190,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-[#0a0a0a] border-t border-gray-800 py-12">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
-            
-            {/* Our Sponsors */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-white">Our Sponsors</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li>Kongsberg Discovery A&amp;...</li>
-                <li>NTNU – Institute for kybernatikk</li>
-                <li>WaterLinked</li>
-                <li>Würth Elektronik</li>
-              </ul>
-            </div>
-
-            {/* Social Media */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-white">Social Media</h3>
-              <div className="flex gap-4">
-                <a href="#" className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                  <span className="text-white text-sm">f</span>
-                </a>
-                <a href="#" className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                  <span className="text-white text-sm">in</span>
-                </a>
-                <a href="#" className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                  <span className="text-white text-sm">ig</span>
-                </a>
-                <a href="#" className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                  <span className="text-white text-sm">yt</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Contact Us */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-white">Contact Us</h3>
-              <p className="font-semibold text-white">VORTEX</p>
-              <p className="text-gray-400 text-sm">Org. nr: 914034434</p>
-              <p className="text-gray-400 text-sm mt-2">Email: contact@vortex.ntnu.no</p>
-            </div>
-
-          </div>
-
-          {/* Vortex Logo */}
-          <div className="text-center pt-8 border-t border-gray-800">
-            <div className="text-2xl font-bold text-[#9c3737] mb-2">VORTEX</div>
-            <p className="text-gray-500 text-sm">This is our territory</p>
-          </div>
-        </div>
-      </footer>
 
     </main>
   );
