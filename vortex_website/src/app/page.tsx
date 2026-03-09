@@ -8,10 +8,10 @@ export default function HomePage() {
       <section 
         className="relative h-[500px] flex items-center justify-start bg-cover bg-center"
         style={{
-          backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600')",
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600')",
         }}
       >
-        <div className="max-w-7xl mx-auto px-8 w-full">
+        <div className="max-w-8xl mx-auto px-8 w-full mt-80">
           <h1 className="text-5xl font-bold mb-4 text-white">Developing students on a deeper level.</h1>
           <p className="text-xl text-white">Your nautical journey starts here.</p>
         </div>
@@ -141,6 +141,35 @@ export default function HomePage() {
             </div>
             <div className="flex items-center justify-center h-24 w-full bg-[#1a1a1a] border border-gray-700 rounded p-4">
               <span className="font-bold text-white text-center">Cyber</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors Section with Revolving Band */}
+      <section className="bg-[#0a0a0a] py-16">
+        <div className="max-w-7xl mx-auto px-8">
+          <h2 className="text-2xl font-semibold mb-8 text-center text-white">Our Sponsors</h2>
+          <div className="overflow-hidden relative">
+            <div className="flex animate-marquee whitespace-nowrap">
+              <div className="flex items-center justify-center h-24 w-48 bg-white rounded m-4">
+                <span className="font-bold text-black text-center">WÜRTH ELEKTRONIK</span>
+              </div>
+              <div className="flex items-center justify-center h-24 w-48 bg-[#c21c1c] rounded m-4">
+                <span className="font-bold text-white text-center text-2xl">K</span>
+              </div>
+              <div className="flex items-center justify-center h-24 w-48 bg-white rounded m-4">
+                <span className="font-bold text-black text-center text-xl">KONGSBERG</span>
+              </div>
+              <div className="flex items-center justify-center h-24 w-48 bg-white rounded m-4">
+                <span className="font-bold text-blue-600 text-center">WaterLinked</span>
+              </div>
+              <div className="flex items-center justify-center h-24 w-48 bg-white rounded m-4">
+                <span className="font-bold text-black text-center">NTNU</span>
+              </div>
+              <div className="flex items-center justify-center h-24 w-48 bg-[#1a1a1a] border border-gray-700 rounded m-4">
+                <span className="font-bold text-white text-center">Cyber</span>
+              </div>
             </div>
           </div>
         </div>
