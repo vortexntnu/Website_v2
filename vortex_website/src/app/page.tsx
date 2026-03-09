@@ -1,196 +1,280 @@
-// app/page.tsx
+import Link from "next/link";
+import Image from "next/image";
+import HeroSection from "@/app/components/ui/HeroSection";
+import SponsorMarquee from "@/app/components/ui/SponsorMarquee";
+import VideoEmbed from "@/app/components/ui/VideoEmbed";
+import type { Sponsor } from "@/app/lib/types";
+
+/*
+ * Home page — the primary landing page for Vortex NTNU.
+ *
+ * Section layout:
+ *   1. HeroSection       — full-viewport hero with tagline + CTA
+ *   2. Quote             — inspirational organisational quote
+ *   3. Projects grid     — 4 flagship drones as clickable cards
+ *   4. Stats strip       — 4 key numbers at a glance
+ *   5. About cards       — "Welcome to Vortex" + team photo side-by-side
+ *   6. Strategy video    — embedded team overview video
+ *   7. Sponsor marquee   — infinite-scrolling sponsor banner
+ *   8. CTA banner        — final call to join or partner
+ *
+ * Design rationale:
+ * - The hero is full-viewport height (`screen`) so visitors immediately feel
+ *   immersed before any content competes for attention.
+ * - The quote section uses oversized decorative quotation marks (large, red,
+ *   low opacity) as a background element — a typographic technique that adds
+ *   visual weight without adding noise.
+ * - The stats strip breaks up content and gives visitors quick credibility
+ *   signals (member count, years, etc.) without requiring them to read paragraphs.
+ * - Project cards link directly to the Projects page with a hash anchor so
+ *   users jump straight to the drone they clicked.
+ */
+
+const sponsors: Sponsor[] = [
+  { name: "WÜRTH ELEKTRONIK" },
+  { name: "KONGSBERG" },
+  { name: "WaterLinked" },
+  { name: "NTNU" },
+  { name: "StatoilASO" },
+  { name: "Norconsult" },
+];
+
+const projects = [
+  {
+    id: "orca",
+    name: "ORCA",
+    year: "2024",
+    imageSrc: "https://picsum.photos/seed/orca2024/800/600",
+    description: "Our latest waterproof all-electric autonomous underwater vehicle.",
+  },
+  {
+    id: "freya",
+    name: "FREYA",
+    year: "2023",
+    imageSrc: "https://picsum.photos/seed/freya2023/800/600",
+    description: "First fully reformed drone with improved sensor suite.",
+  },
+  {
+    id: "beluga",
+    name: "BELUGA",
+    year: "2021",
+    imageSrc: "https://picsum.photos/seed/beluga2021/800/600",
+    description: "Introduced fully autonomous behaviour for competition tasks.",
+  },
+  {
+    id: "manta",
+    name: "MANTA",
+    year: "2018",
+    imageSrc: "https://picsum.photos/seed/manta2018/800/600",
+    description: "Converted from ROV to AUV — a pivotal turning point.",
+  },
+];
+
+const stats = [
+  { value: "100+", label: "Active Members" },
+  { value: "8", label: "Competitions" },
+  { value: "6", label: "Drones Built" },
+  { value: "2016", label: "Founded" },
+];
 
 export default function HomePage() {
   return (
-    <main className="bg-[#0a0a0a] text-white">
-      
-      {/* Hero Section */}
-      <section 
-        className="relative h-[500px] flex items-center justify-start bg-cover bg-center"
-        style={{
-          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600')",
-        }}
-      >
-        <div className="max-w-8xl mx-auto px-8 w-full mt-80">
-          <h1 className="text-5xl font-bold mb-4 text-white">Developing students on a deeper level.</h1>
-          <p className="text-xl text-white">Your nautical journey starts here.</p>
+    <>
+      {/* ── 1. Hero ── */}
+      <HeroSection
+        imageSrc="https://picsum.photos/seed/vortexhero/1920/1080"
+        heading="Developing Students on a Deeper Level"
+        subheading="Your nautical journey starts here. Join Norway's leading student robotics organisation at NTNU."
+        align="left"
+        height="screen"
+        overlay={0.6}
+        cta={{ label: "JOIN THE TEAM", href: "/join-us" }}
+      />
+
+      {/* ── 2. Quote ── */}
+      <section className="relative py-24 bg-[#0a0a0a] overflow-hidden">
+        {/* Decorative quotation mark — large, red, very transparent */}
+        <span
+          aria-hidden="true"
+          className="absolute -top-8 left-8 text-[180px] font-serif leading-none text-[#c21c1c] opacity-10 select-none pointer-events-none"
+        >
+          &ldquo;
+        </span>
+        <div className="relative max-w-4xl mx-auto px-8 text-center">
+          <blockquote className="text-2xl md:text-3xl font-light text-gray-200 leading-relaxed italic">
+            Many streams, one powerful current. Together we dive deeper, build
+            bolder, and surface stronger.
+          </blockquote>
+          <p className="mt-6 text-sm font-semibold text-[#c21c1c] uppercase tracking-widest">
+            — Vortex NTNU
+          </p>
         </div>
       </section>
 
-      {/* Quote Section */}
-      <section className="bg-[#1a1a1a] py-12">
+      {/* ── 3. Projects grid ── */}
+      <section className="py-16 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-8">
-          <p className="text-lg text-gray-300 italic">Inspiring quote; lorem ipsum dolor sit amet.</p>
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#c21c1c]">
+                Our Drones
+              </span>
+              <h2 className="mt-2 text-4xl font-bold text-white">Featured Projects</h2>
+            </div>
+            <Link
+              href="/projects"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-150"
+            >
+              View all →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {projects.map((p) => (
+              <Link
+                key={p.id}
+                href={`/projects#${p.id}`}
+                className="group relative aspect-[3/4] overflow-hidden rounded-lg block"
+              >
+                {/* Photo */}
+                <Image
+                  src={p.imageSrc}
+                  alt={p.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                {/* Year badge */}
+                <span className="absolute top-3 left-3 bg-[#c21c1c] text-white text-xs font-semibold px-2 py-0.5">
+                  {p.year}
+                </span>
+                {/* Name + description */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="text-white font-bold text-lg">{p.name}</h3>
+                  <p className="text-gray-300 text-xs leading-relaxed mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {p.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Projects Grid - 4 Cards */}
-      <section className="bg-[#262626] py-16">
+      {/* ── 4. Stats strip ── */}
+      <section className="py-12 bg-[#c21c1c]">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            
-            {/* Orca 2024 */}
-            <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
-              <div className="h-64 bg-[#0a3d4d] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop')"}}></div>
-              <div className="p-4">
-                <h3 className="text-white font-semibold">Orca 2024</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col gap-1">
+                <span className="text-4xl md:text-5xl font-bold text-white">{s.value}</span>
+                <span className="text-sm text-red-200 uppercase tracking-wide">{s.label}</span>
               </div>
-            </div>
-
-            {/* Freya 2023 */}
-            <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
-              <div className="h-64 bg-[#2d2d2d] p-4 flex flex-col justify-center">
-                <p className="text-sm text-gray-300 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p className="text-sm text-gray-300 mb-2">Lorem ipsum dolor sit amet Lorem ipsum</p>
-                <p className="text-sm text-gray-300">Lorem ipsum dolor sit</p>
-              </div>
-              <div className="p-4">
-                <h3 className="text-white font-semibold">Freya 2023</h3>
-              </div>
-            </div>
-
-            {/* Beluga 2021 */}
-            <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
-              <div className="h-64 bg-[#3d3d3d] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop')"}}></div>
-              <div className="p-4">
-                <h3 className="text-white font-semibold">Beluga 2021</h3>
-              </div>
-            </div>
-
-            {/* Manta 2018 */}
-            <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
-              <div className="h-64 bg-[#3d3d3d] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop')"}}></div>
-              <div className="p-4">
-                <h3 className="text-white font-semibold">Manta 2018</h3>
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Two Large Cards Section */}
-      <section className="bg-[#0a0a0a] py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            {/* Welcome to Vortex */}
-            <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
-              <div className="h-80 bg-[#0a3d4d] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop')"}}></div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-4 text-white">Welcome to Vortex</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
+      {/* ── 5. About cards ── */}
+      <section className="py-16 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Welcome card */}
+          <div className="relative overflow-hidden rounded-lg bg-[#1a1a1a] p-10 flex flex-col justify-between min-h-80">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#c21c1c]">
+                About Us
+              </span>
+              <h2 className="mt-3 text-3xl font-bold text-white">
+                Welcome to Vortex
+              </h2>
+              <p className="mt-4 text-gray-400 leading-relaxed">
+                Vortex NTNU is a student organisation at NTNU building autonomous
+                underwater vehicles. We give students real engineering experience
+                competing at international competitions like RoboSub.
+              </p>
             </div>
-
-            {/* Team Photo */}
-            <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
-              <div className="h-80 bg-[#2d2d2d] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop')"}}></div>
-              <div className="p-6">
-                <p className="text-gray-300 text-sm">
-                  Our dedicated team working together to push the boundaries of underwater robotics.
-                </p>
-              </div>
-            </div>
-
+            <Link
+              href="/about"
+              className="mt-8 inline-block text-sm font-semibold text-white border-b-2 border-[#c21c1c] pb-0.5 w-fit hover:text-[#c21c1c] transition-colors duration-150"
+            >
+              Learn more →
+            </Link>
           </div>
-        </div>
-      </section>
 
-      {/* Strategy Video Section */}
-      <section className="bg-[#0a0a0a] py-16">
-        <div className="max-w-4xl mx-auto px-8">
-          <div className="aspect-video bg-black rounded-lg overflow-hidden">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Vortex NTNU RoboSub Strategy Video 2022"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            ></iframe>
-          </div>
-          <p className="text-center mt-4 text-gray-400">Vortex NTNU RoboSub Strategy Video 2022</p>
-        </div>
-      </section>
-
-      {/* Sponsors Section with Revolving Band */}
-      <section className="bg-[#0a0a0a] py-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 mb-8">
-          <h2 className="text-3xl font-semibold text-center text-white">Our Sponsors</h2>
-        </div>
-        <div className="relative overflow-hidden">
-          <div className="flex animate-marquee">
-            {/* First set of sponsors */}
-            <div className="flex flex-shrink-0">
-              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
-                <span className="font-bold text-black text-center text-xl">WÜRTH ELEKTRONIK</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-[#c21c1c] rounded mx-4">
-                <span className="font-bold text-white text-center text-4xl">KONGSBERG</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
-                <span className="font-bold text-blue-600 text-center text-2xl">WaterLinked</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
-                <span className="font-bold text-black text-center text-2xl">NTNU</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-[#2a2a2a] border-2 border-gray-600 rounded mx-4">
-                <span className="font-bold text-white text-center text-xl">StatoilASO</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
-                <span className="font-bold text-black text-center text-xl">Norconsult</span>
-              </div>
-            </div>
-            {/* Duplicate set for seamless loop */}
-            <div className="flex flex-shrink-0">
-              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
-                <span className="font-bold text-black text-center text-xl">WÜRTH ELEKTRONIK</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-[#c21c1c] rounded mx-4">
-                <span className="font-bold text-white text-center text-4xl">KONGSBERG</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
-                <span className="font-bold text-blue-600 text-center text-2xl">WaterLinked</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
-                <span className="font-bold text-black text-center text-2xl">NTNU</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-[#2a2a2a] border-2 border-gray-600 rounded mx-4">
-                <span className="font-bold text-white text-center text-xl">StatoilASO</span>
-              </div>
-              <div className="flex items-center justify-center h-32 w-64 bg-white rounded mx-4">
-                <span className="font-bold text-black text-center text-xl">Norconsult</span>
-              </div>
+          {/* Team photo card */}
+          <div className="relative overflow-hidden rounded-lg min-h-80">
+            <Image
+              src="https://picsum.photos/seed/vortexteam/800/600"
+              alt="Vortex NTNU team photo"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute bottom-6 left-6">
+              <Link
+                href="/team"
+                className="bg-[#c21c1c] hover:bg-[#dc2626] text-white text-sm font-semibold px-5 py-2 transition-colors duration-200"
+              >
+                Meet the Team →
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section 
-        className="relative h-[400px] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600')",
-        }}
-      >
-        <div className="text-center">
-          <h2 className="text-4xl font-bold mb-8 text-white">WILL YOU RACE WITH US?</h2>
-          <div className="flex gap-4 justify-center">
-            <button className="px-6 py-3 bg-transparent border-2 border-white text-white rounded hover:bg-white hover:text-black transition-colors">
-              Become A Team Member
-            </button>
-            <button className="px-6 py-3 bg-transparent border-2 border-white text-white rounded hover:bg-white hover:text-black transition-colors">
-              Become A Partner
-            </button>
+      {/* ── 6. Strategy video ── */}
+      <section className="py-16 bg-[#1a1a1a]">
+        <div className="max-w-5xl mx-auto px-8">
+          <div className="text-center mb-10">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#c21c1c]">
+              Watch
+            </span>
+            <h2 className="mt-2 text-4xl font-bold text-white">Our Strategy</h2>
           </div>
+          <VideoEmbed
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Vortex NTNU Strategy Video"
+          />
         </div>
       </section>
 
-    </main>
+      {/* ── 7. Sponsor marquee ── */}
+      <section className="py-10 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+        <div className="max-w-7xl mx-auto px-8 mb-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-600 text-center">
+            Proudly supported by
+          </p>
+        </div>
+        <SponsorMarquee sponsors={sponsors} />
+      </section>
+
+      {/* ── 8. CTA banner ── */}
+      <section className="py-24 bg-[#1a1a1a]">
+        <div className="max-w-4xl mx-auto px-8 text-center flex flex-col items-center gap-6">
+          <h2 className="text-5xl font-bold text-white leading-tight">
+            Will you race with us?
+          </h2>
+          <p className="text-gray-400 text-lg max-w-xl">
+            Whether you code, build, solder, or market — there is a seat on our
+            submarine for you.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/join-us"
+              className="bg-[#c21c1c] hover:bg-[#dc2626] text-white font-semibold px-8 py-3 transition-colors duration-200"
+            >
+              Become a Team Member
+            </Link>
+            <Link
+              href="/contact"
+              className="border border-[#374151] hover:border-white text-gray-300 hover:text-white font-semibold px-8 py-3 transition-colors duration-200"
+            >
+              Become a Partner
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

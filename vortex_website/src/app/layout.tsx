@@ -1,100 +1,146 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from 'next/link';
+import Link from "next/link";
+import NavBar from "@/app/components/interactive/NavBar";
+import SocialIcons from "@/app/components/ui/SocialIcons";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Vortex NTNU",
-  description: "Vortex NTNU - Developing students on a deeper level",
+  description: "Vortex NTNU — Developing students on a deeper level",
 };
 
+/*
+ * RootLayout — the shared shell rendered around every page.
+ *
+ * Structure:
+ *   <NavBar />  — sticky top navigation (Client Component for active links + mobile menu)
+ *   {children}  — page content
+ *   <footer>    — 4-column footer: Quick Links, Sponsors, Social, Contact
+ *
+ * Design rationale:
+ * - The footer has four equal columns so visitors can always find navigation
+ *   (Quick Links), discover partners (Sponsors), find social channels, and get
+ *   contact details — all without scrolling back to the top.
+ * - Sponsor logos are listed as text names until real logo images are provided.
+ *   Text names are readable and take up no extra asset bandwidth.
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const quickLinks = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Team", href: "/team" },
+    { label: "Projects", href: "/projects" },
+    { label: "Competitions", href: "/competitions" },
+    { label: "Join Us", href: "/join-us" },
+    { label: "Contact", href: "/contact" },
+  ];
+
+  const sponsors = [
+    "Kongsberg Discovery",
+    "NTNU – IKT",
+    "WaterLinked",
+    "Würth Elektronik",
+    "StatoilASO",
+    "Norconsult",
+  ];
+
   return (
-    <html lang="en">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <header className="bg-[#1a1a1a] border-b border-gray-800 sticky top-0 z-50">
-          <nav className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-            <div className="flex items-center">
-              <Link href="/" className="text-red-600 text-2xl font-bold">
-                VORTEX
-              </Link>
-            </div>
-            <div className="flex gap-8 items-center">
-              <Link href="/" className="text-white hover:text-red-600 transition-colors">
-                HOME
-              </Link>
-              <Link href="/about" className="text-white hover:text-red-600 transition-colors">
-                ABOUT
-              </Link>
-              <Link href="/team" className="text-red-600 hover:text-red-500 transition-colors">
-                TEAM
-              </Link>
-              <Link href="/join-us" className="text-white hover:text-red-600 transition-colors">
-                JOIN US
-              </Link>
-              <Link href="/projects" className="text-white hover:text-red-600 transition-colors">
-                PROJECTS
-              </Link>
-              <Link href="/competitions" className="text-white hover:text-red-600 transition-colors">
-                COMPETITIONS
-              </Link>
-              <Link href="/contact" className="text-white hover:text-red-600 transition-colors">
-                CONTACT
-              </Link>
-              <Link 
-                href="/join-us" 
-                className="px-4 py-2 bg-transparent border-2 border-red-600 text-red-600 rounded hover:bg-red-600 hover:text-white transition-colors"
-              >
-                JOIN US
-              </Link>
-            </div>
-          </nav>
-        </header>
-        {children}
-        <footer className="bg-[#0a0a0a] border-t border-gray-800 py-12">
+        {/* Sticky navigation */}
+        <NavBar />
+
+        {/* Page content */}
+        <main>{children}</main>
+
+        {/* Footer */}
+        <footer className="bg-[#0a0a0a] border-t border-[#1a1a1a] py-14">
           <div className="max-w-7xl mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+            {/* 4-column grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+              {/* Quick Links */}
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-white">Our Sponsors</h3>
-                <ul className="space-y-2 text-gray-400 text-sm">
-                  <li>Kongsberg Discovery A&amp;S</li>
-                  <li>NTNU – Institute for kybernatikk</li>
-                  <li>WaterLinked</li>
-                  <li>Würth Elektronik</li>
-                  <li>StatoilASO</li>
-                  <li>Norconsult</li>
+                <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">
+                  Quick Links
+                </h4>
+                <ul className="flex flex-col gap-2">
+                  {quickLinks.map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className="text-gray-400 hover:text-white text-sm transition-colors duration-150"
+                      >
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
+
+              {/* Sponsors */}
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-white">Social Media</h3>
-                <div className="flex gap-4">
-                  <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                    <span className="text-white text-sm">f</span>
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                    <span className="text-white text-sm">in</span>
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                    <span className="text-white text-sm">ig</span>
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                    <span className="text-white text-sm">yt</span>
-                  </a>
-                </div>
+                <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">
+                  Our Sponsors
+                </h4>
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
+                  {sponsors.map((s) => (
+                    <li key={s} className="text-gray-400 text-sm">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
               </div>
+
+              {/* Social */}
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-white">Contact Us</h3>
-                <p className="text-gray-400 text-sm">Addresses:</p>
-                <p className="text-gray-400 text-sm">Klæbuveien 153,</p>
-                <p className="text-gray-400 text-sm mb-4">7031 Trondheim</p>
-                <p className="text-gray-400 text-sm">Email:</p>
-                <p className="text-gray-400 text-sm">post@vortexntnu.no</p>
+                <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">
+                  Follow Us
+                </h4>
+                <SocialIcons
+                  facebook="https://facebook.com/vortexntnu"
+                  linkedin="https://linkedin.com/company/vortexntnu"
+                  instagram="https://instagram.com/vortexntnu"
+                  youtube="https://youtube.com/@vortexntnu"
+                />
+              </div>
+
+              {/* Contact */}
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">
+                  Contact
+                </h4>
+                <address className="not-italic text-gray-400 text-sm flex flex-col gap-1">
+                  <span>Klæbuveien 153</span>
+                  <span>7031 Trondheim, Norway</span>
+                  <a
+                    href="mailto:post@vortexntnu.no"
+                    className="mt-2 text-[#c21c1c] hover:text-[#dc2626] transition-colors duration-150"
+                  >
+                    post@vortexntnu.no
+                  </a>
+                  <span className="mt-1 text-gray-600 text-xs">Org. nr. 919924851</span>
+                </address>
               </div>
             </div>
-            <div className="flex justify-center mt-8">
-              <div className="text-red-600 text-3xl font-bold">VORTEX</div>
+
+            {/* Bottom bar */}
+            <div className="border-t border-[#1a1a1a] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <span className="text-[#c21c1c] font-bold text-xl tracking-widest">VORTEX</span>
+              <p className="text-gray-600 text-xs">
+                © {new Date().getFullYear()} Vortex NTNU. All rights reserved.
+              </p>
             </div>
-            <p className="text-center text-gray-500 text-sm mt-4">Org. nr. 919924851</p>
           </div>
         </footer>
       </body>
