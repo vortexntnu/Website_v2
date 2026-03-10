@@ -20,6 +20,9 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## How to get Pocket base to work
+Add how to get PocketBase to work here. Make it clear how it is supposed to be like. Taking windows as an example, you need to download the binary file seperately. Explain how that works, and what follows to get pocketbase up and running.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
