@@ -1,56 +1,40 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
 /*
- * OceanBackground — a scroll-linked underwater environment layer.
+ * OceanBackground — a scrollable underwater environment.
  *
- * As the user scrolls down the home page, the background transitions through
- * ocean depth zones: sunlit surface → twilight zone → midnight zone → abyss.
+ * APPROACH: Every ocean layer (gradient, fish, sunrays, bubbles) is positioned
+ * absolutely within a container that spans the full height of the page content.
+ * This means the ocean physically exists at different depths in the document —
+ * scrolling genuinely moves you through it instead of just shifting a viewport
+ * overlay.
  *
- * Elements:
- *  - Full-page gradient that shifts from light cyan to deep navy/black
- *  - Animated sunrays at the top (CSS conic gradients)
- *  - SVG fish silhouettes that drift across at their assigned depth
- *  - Rising bubble particles
+ * - The gradient is a single static linear-gradient covering 100% of the page.
+ * - Sunrays and caustics are anchored to the top (the surface).
+ * - Fish are placed at absolute vertical positions matching their ecological zone.
+ * - Bubbles are distributed at various heights, each rising a short distance.
+ * - A fixed vignette overlay darkens viewport edges (a camera-lens effect).
  *
- * All animations are CSS-driven for performance. The scroll position is read
- * via IntersectionObserver + requestAnimationFrame to stay off the main thread.
+ * No scroll listeners are needed for the gradient or fish — the browser's native
+ * scroll handles revealing different depths. Only the vignette uses a scroll
+ * listener to deepen with depth.
  */
 
-/* ── Depth zone colours ──────────────────────────── */
-const DEPTH_STOPS = [
-  { at: 0, color: "rgba(12, 74, 110, 0.95)" },    // surface — deep teal
-  { at: 0.15, color: "rgba(8, 51, 85, 0.95)" },    // shallow
-  { at: 0.35, color: "rgba(5, 32, 58, 0.95)" },    // open water
-  { at: 0.55, color: "rgba(3, 20, 42, 0.95)" },    // twilight zone
-  { at: 0.75, color: "rgba(2, 12, 28, 0.95)" },    // midnight zone
-  { at: 1, color: "rgba(4, 4, 12, 0.98)" },         // abyss
-];
-
-function gradientAtScroll(t: number): string {
-  // Shift the gradient so the visible viewport always shows the depth-appropriate colour
-  return DEPTH_STOPS.map(
-    (s) => `${s.color} ${((s.at - t * 0.6) * 100 + 50).toFixed(1)}%`
-  ).join(", ");
-}
+import { useEffect, useState } from "react";
 
 /* ── Fish data ───────────────────────────────────── */
-type Fish = {
+type FishDef = {
   id: number;
-  svg: string;          // SVG path(s) for the fish shape
+  svg: string;
   viewBox: string;
-  depthMin: number;     // fraction 0–1 of page
-  depthMax: number;
-  size: number;         // px width
-  speed: number;        // seconds for one crossing
-  yOffset: number;      // % within its depth band
+  depthPct: number;     // % from top of the page (0 = surface, 100 = abyss)
+  size: number;
+  speed: number;
   direction: "ltr" | "rtl";
-  delay: number;        // animation delay in seconds
+  delay: number;
   opacity: number;
 };
 
-// Simple SVG fish shapes as path data
 const FISH_SHAPES = {
   smallFish: {
     viewBox: "0 0 60 30",
@@ -78,62 +62,65 @@ const FISH_SHAPES = {
   },
 };
 
-// Seed fish across depth zones — deterministic, no randomness during render
-const FISH_LIST: Fish[] = [
-  // Surface zone (0–25%) — small fish, dolphins
-  { id: 1, ...FISH_SHAPES.smallFish, depthMin: 0.02, depthMax: 0.18, size: 30, speed: 18, yOffset: 30, direction: "ltr", delay: 0, opacity: 0.15 },
-  { id: 2, ...FISH_SHAPES.smallFish, depthMin: 0.02, depthMax: 0.18, size: 25, speed: 22, yOffset: 60, direction: "rtl", delay: 5, opacity: 0.12 },
-  { id: 3, ...FISH_SHAPES.smallFish, depthMin: 0.05, depthMax: 0.22, size: 20, speed: 15, yOffset: 80, direction: "ltr", delay: 10, opacity: 0.1 },
+function fishColor(depthPct: number): string {
+  if (depthPct < 20) return "rgba(140, 200, 220, VAR)";   // silvery blue
+  if (depthPct < 40) return "rgba(100, 180, 160, VAR)";   // teal green
+  if (depthPct < 60) return "rgba(120, 140, 200, VAR)";   // slate blue
+  if (depthPct < 80) return "rgba(100, 200, 180, VAR)";   // bioluminescent teal
+  return "rgba(140, 180, 220, VAR)";                        // ghostly pale
+}
 
-  // Shallow zone (20–45%) — tropical fish, turtles
-  { id: 4, ...FISH_SHAPES.tropicalFish, depthMin: 0.18, depthMax: 0.38, size: 45, speed: 25, yOffset: 25, direction: "rtl", delay: 3, opacity: 0.12 },
-  { id: 5, ...FISH_SHAPES.turtle, depthMin: 0.2, depthMax: 0.4, size: 55, speed: 35, yOffset: 65, direction: "ltr", delay: 8, opacity: 0.1 },
-  { id: 6, ...FISH_SHAPES.tropicalFish, depthMin: 0.22, depthMax: 0.42, size: 35, speed: 20, yOffset: 45, direction: "ltr", delay: 14, opacity: 0.1 },
+// Fish placed at absolute depth positions (% of total page height)
+const FISH_LIST: FishDef[] = [
+  // Surface (0–18%) — small schooling fish
+  { id: 1,  ...FISH_SHAPES.smallFish,    depthPct: 5,   size: 30, speed: 18, direction: "ltr", delay: 0,  opacity: 0.15 },
+  { id: 2,  ...FISH_SHAPES.smallFish,    depthPct: 10,  size: 25, speed: 22, direction: "rtl", delay: 5,  opacity: 0.12 },
+  { id: 3,  ...FISH_SHAPES.smallFish,    depthPct: 15,  size: 20, speed: 15, direction: "ltr", delay: 10, opacity: 0.1  },
 
-  // Mid-depth (40–65%) — jellyfish, larger fish
-  { id: 7, ...FISH_SHAPES.jellyfish, depthMin: 0.38, depthMax: 0.58, size: 40, speed: 30, yOffset: 30, direction: "rtl", delay: 2, opacity: 0.1 },
-  { id: 8, ...FISH_SHAPES.jellyfish, depthMin: 0.42, depthMax: 0.62, size: 30, speed: 40, yOffset: 70, direction: "ltr", delay: 12, opacity: 0.08 },
-  { id: 9, ...FISH_SHAPES.whale, depthMin: 0.4, depthMax: 0.6, size: 90, speed: 45, yOffset: 50, direction: "rtl", delay: 6, opacity: 0.07 },
+  // Shallow (18–38%) — tropical fish, turtles
+  { id: 4,  ...FISH_SHAPES.tropicalFish, depthPct: 22,  size: 45, speed: 25, direction: "rtl", delay: 3,  opacity: 0.12 },
+  { id: 5,  ...FISH_SHAPES.turtle,       depthPct: 30,  size: 55, speed: 35, direction: "ltr", delay: 8,  opacity: 0.1  },
+  { id: 6,  ...FISH_SHAPES.tropicalFish, depthPct: 35,  size: 35, speed: 20, direction: "ltr", delay: 14, opacity: 0.1  },
 
-  // Deep zone (60–85%) — anglerfish with bioluminescence
-  { id: 10, ...FISH_SHAPES.anglerfish, depthMin: 0.6, depthMax: 0.8, size: 55, speed: 28, yOffset: 40, direction: "ltr", delay: 4, opacity: 0.12 },
-  { id: 11, ...FISH_SHAPES.anglerfish, depthMin: 0.65, depthMax: 0.85, size: 40, speed: 35, yOffset: 70, direction: "rtl", delay: 16, opacity: 0.1 },
+  // Mid-depth (38–60%) — jellyfish, whale
+  { id: 7,  ...FISH_SHAPES.jellyfish,    depthPct: 42,  size: 40, speed: 30, direction: "rtl", delay: 2,  opacity: 0.1  },
+  { id: 8,  ...FISH_SHAPES.jellyfish,    depthPct: 52,  size: 30, speed: 40, direction: "ltr", delay: 12, opacity: 0.08 },
+  { id: 9,  ...FISH_SHAPES.whale,        depthPct: 48,  size: 90, speed: 45, direction: "rtl", delay: 6,  opacity: 0.07 },
 
-  // Abyss (80–100%) — ghost-like deep creatures
-  { id: 12, ...FISH_SHAPES.jellyfish, depthMin: 0.8, depthMax: 1, size: 50, speed: 50, yOffset: 35, direction: "ltr", delay: 7, opacity: 0.06 },
-  { id: 13, ...FISH_SHAPES.whale, depthMin: 0.82, depthMax: 1, size: 110, speed: 60, yOffset: 60, direction: "rtl", delay: 20, opacity: 0.04 },
+  // Deep (60–82%) — anglerfish
+  { id: 10, ...FISH_SHAPES.anglerfish,   depthPct: 65,  size: 55, speed: 28, direction: "ltr", delay: 4,  opacity: 0.12 },
+  { id: 11, ...FISH_SHAPES.anglerfish,   depthPct: 75,  size: 40, speed: 35, direction: "rtl", delay: 16, opacity: 0.1  },
+
+  // Abyss (82–100%) — ghost creatures
+  { id: 12, ...FISH_SHAPES.jellyfish,    depthPct: 85,  size: 50, speed: 50, direction: "ltr", delay: 7,  opacity: 0.06 },
+  { id: 13, ...FISH_SHAPES.whale,        depthPct: 92,  size: 110, speed: 60, direction: "rtl", delay: 20, opacity: 0.04 },
 ];
 
 /* ── Bubble config ───────────────────────────────── */
+// Bubbles are distributed throughout the page height. Each rises ~300px from
+// its starting point, so they appear localised rather than crossing the whole page.
 type Bubble = {
   id: number;
-  left: number;   // % from left
-  size: number;   // px
-  speed: number;  // seconds to rise
-  delay: number;  // seconds
+  left: number;      // % horizontal position
+  topPct: number;    // % vertical starting position (within the page)
+  size: number;
+  speed: number;
+  delay: number;
   opacity: number;
 };
 
-const BUBBLES: Bubble[] = Array.from({ length: 20 }, (_, i) => ({
+const BUBBLES: Bubble[] = Array.from({ length: 30 }, (_, i) => ({
   id: i,
-  left: (i * 17 + 5) % 100,         // spread across width
-  size: 4 + (i % 5) * 3,
-  speed: 12 + (i % 7) * 4,
-  delay: (i * 2.3) % 15,
-  opacity: 0.08 + (i % 4) * 0.03,
+  left: (i * 13 + 7) % 97 + 1,        // spread across width (1–98%)
+  topPct: (i * 11 + 3) % 95 + 2,       // spread across height (2–97%)
+  size: 3 + (i % 5) * 2.5,
+  speed: 8 + (i % 6) * 3,
+  delay: (i * 1.7) % 12,
+  opacity: 0.06 + (i % 4) * 0.025,
 }));
 
-/* ── Depth zone colour for fish ──────────────────── */
-function fishColor(depthMin: number): string {
-  if (depthMin < 0.2) return "rgba(140, 200, 220, VAR)";    // silvery blue
-  if (depthMin < 0.4) return "rgba(100, 180, 160, VAR)";    // teal green
-  if (depthMin < 0.6) return "rgba(120, 140, 200, VAR)";    // slate blue
-  if (depthMin < 0.8) return "rgba(100, 200, 180, VAR)";    // bioluminescent teal
-  return "rgba(140, 180, 220, VAR)";                          // ghostly pale
-}
-
 export default function OceanBackground({ children }: { children: React.ReactNode }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  // Vignette still uses scroll for a viewport darkening effect
   const [scrollFraction, setScrollFraction] = useState(0);
 
   useEffect(() => {
@@ -142,10 +129,8 @@ export default function OceanBackground({ children }: { children: React.ReactNod
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        if (!containerRef.current) { ticking = false; return; }
-        const el = containerRef.current;
-        const scrollable = el.scrollHeight - window.innerHeight;
-        const t = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const t = docHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / docHeight)) : 0;
         setScrollFraction(t);
         ticking = false;
       });
@@ -155,72 +140,63 @@ export default function OceanBackground({ children }: { children: React.ReactNod
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const gradient = `linear-gradient(to bottom, ${gradientAtScroll(scrollFraction)})`;
-
-  // Sunray opacity fades as you go deeper
-  const sunrayOpacity = Math.max(0, 1 - scrollFraction * 3);
-
   return (
-    <div ref={containerRef} className="relative">
-      {/* ── Ocean gradient layer ── */}
+    <div className="relative">
+      {/* ── Ocean gradient — absolute, full page height ──
+          This is the core of the depth effect. A single tall gradient that
+          the browser reveals naturally as the user scrolls. */}
       <div
-        className="fixed inset-0 -z-10 transition-none"
-        style={{ background: gradient }}
+        className="absolute inset-0 -z-10"
+        style={{
+          background: `linear-gradient(to bottom,
+            rgba(12, 74, 110, 0.95) 0%,
+            rgba(8, 51, 85, 0.95) 15%,
+            rgba(5, 32, 58, 0.95) 35%,
+            rgba(3, 20, 42, 0.95) 55%,
+            rgba(2, 12, 28, 0.95) 75%,
+            rgba(4, 4, 12, 0.98) 100%
+          )`,
+        }}
       />
 
-      {/* ── Sunrays (visible near top) ── */}
-      {sunrayOpacity > 0.01 && (
+      {/* ── Sunrays — anchored to the top of the page (the surface) ──
+          Only covers the first ~40% of the page, fading out naturally. */}
+      <div
+        className="absolute top-0 left-0 right-0 -z-10 pointer-events-none ocean-sunrays"
+        style={{ height: "40%" }}
+      >
+        {/* Fade-out mask so rays don't end abruptly */}
         <div
-          className="fixed inset-0 -z-10 pointer-events-none ocean-sunrays"
-          style={{ opacity: sunrayOpacity }}
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(5,32,58,1) 100%)",
+          }}
         />
-      )}
-
-      {/* ── Light caustics overlay (top 40%) ── */}
-      {scrollFraction < 0.5 && (
-        <div
-          className="fixed inset-0 -z-10 pointer-events-none ocean-caustics"
-          style={{ opacity: Math.max(0, 0.12 - scrollFraction * 0.24) }}
-        />
-      )}
-
-      {/* ── Floating particles / marine snow ── */}
-      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
-        {/* Bubbles */}
-        {BUBBLES.map((b) => (
-          <div
-            key={b.id}
-            className="absolute ocean-bubble"
-            style={{
-              left: `${b.left}%`,
-              width: b.size,
-              height: b.size,
-              animationDuration: `${b.speed}s`,
-              animationDelay: `${b.delay}s`,
-              opacity: b.opacity,
-            }}
-          />
-        ))}
       </div>
 
-      {/* ── Fish layer ── */}
-      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+      {/* ── Caustics — only in the top ~25% (shallow water) ── */}
+      <div
+        className="absolute top-0 left-0 right-0 -z-10 pointer-events-none ocean-caustics"
+        style={{ height: "25%", opacity: 0.1 }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(8,51,85,1) 100%)",
+          }}
+        />
+      </div>
+
+      {/* ── Fish layer — absolute within full page ── */}
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
         {FISH_LIST.map((fish) => {
-          // Only render fish if the current scroll is within ±30% of their depth band
-          const midDepth = (fish.depthMin + fish.depthMax) / 2;
-          const dist = Math.abs(scrollFraction - midDepth);
-          if (dist > 0.35) return null;
-
-          const fadeFactor = Math.max(0, 1 - dist / 0.35);
-          const yPos = fish.depthMin * 100 + fish.yOffset * (fish.depthMax - fish.depthMin) * 100;
-          const colorStr = fishColor(fish.depthMin).replace("VAR", String(fish.opacity * fadeFactor));
-
+          const colorStr = fishColor(fish.depthPct).replace("VAR", String(fish.opacity));
           return (
             <div
               key={fish.id}
               className={`absolute ocean-fish-${fish.direction}`}
               style={{
-                top: `${yPos}%`,
+                top: `${fish.depthPct}%`,
                 width: fish.size,
                 height: fish.size * 0.6,
                 animationDuration: `${fish.speed}s`,
@@ -240,11 +216,31 @@ export default function OceanBackground({ children }: { children: React.ReactNod
         })}
       </div>
 
-      {/* ── Vignette (gets stronger deeper) ── */}
+      {/* ── Bubbles — scattered throughout the page, each rising locally ── */}
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        {BUBBLES.map((b) => (
+          <div
+            key={b.id}
+            className="absolute ocean-bubble-local"
+            style={{
+              left: `${b.left}%`,
+              top: `${b.topPct}%`,
+              width: b.size,
+              height: b.size,
+              animationDuration: `${b.speed}s`,
+              animationDelay: `${b.delay}s`,
+              opacity: b.opacity,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* ── Fixed vignette — viewport effect that deepens with scroll ── */}
       <div
-        className="fixed inset-0 -z-10 pointer-events-none"
+        className="fixed inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,${0.2 + scrollFraction * 0.4}) 100%)`,
+          zIndex: 1,
+          background: `radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,${(0.15 + scrollFraction * 0.45).toFixed(2)}) 100%)`,
         }}
       />
 
