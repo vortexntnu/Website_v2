@@ -40,34 +40,45 @@ const upcoming = {
   year: "2026",
   title: "TAC Challenge 2026",
   description:
-    "The TAC Challenge is an annual Norwegian underwater robotics competition. In 2026 we return with our latest AUV ORCA, refined after the RoboSub 2024 campaign. Tasks include acoustic pinger following, gate passing, and torpedo shooting.",
+    "The TAC Challenge is a subsea and aerial drone competition for students, organised by FFU. After winning 1st place in 2024, Vortex NTNU returns to defend the title. The competition has grown from 5 teams and 60 students in 2023 to 12 teams and 150 students from Norway, India, Poland, and Turkey.",
   imageSrc: "https://picsum.photos/seed/tac2026/1200/700",
   location: "Trondheim, Norway",
-  date: "July 2026",
+  date: "2026",
 };
 
 const past = [
   {
     year: "2024",
-    title: "RoboSub 2024",
-    result: "Top 10 Finish",
+    title: "TAC Challenge 2024",
+    result: "1st Place",
     description:
-      "RoboSub is the world's premier student AUV competition held in San Diego, USA. In 2024, Vortex NTNU competed with ORCA and achieved our best-ever placement. The vehicle completed gate-passing, buoy-interaction, and torpedo tasks in back-to-back runs.",
+      "After 4 years of participation, Vortex NTNU won 1st place at the TAC Challenge 2024. The competition grew significantly from 5 teams in 2023 to 12 teams and 150 students from multiple countries.",
     detail:
-      "The team of 12 students spent six months preparing ORCA for the competition. Key improvements included a new vision system using YOLO-based object detection and a fully redesigned electronics bay that reduced waterproofing failures to zero.",
-    image1: "https://picsum.photos/seed/robosub2024a/800/500",
-    image2: "https://picsum.photos/seed/robosub2024b/800/500",
+      "This victory validated years of development on both the AUV and ASV platforms. The team competed with the latest iteration of Orca and demonstrated advanced autonomous capabilities in subsea tasks.",
+    image1: "https://picsum.photos/seed/tac2024a/800/500",
+    image2: "https://picsum.photos/seed/tac2024b/800/500",
   },
   {
-    year: "2023",
-    title: "TAC Challenge 2023",
-    result: "2nd Place",
+    year: "2022",
+    title: "RoboSub 2022",
+    result: "5th Place",
     description:
-      "Competing with FREYA, Vortex took 2nd place at the 2023 TAC Challenge. The vehicle's new acoustic positioning system allowed it to locate and interact with underwater targets faster than any previous Vortex entry.",
+      "Vortex NTNU placed 5th at RoboSub 2022 held at the University of Maryland. The team prequalified to the semifinals with two runs. Vortex also earned 5th place in the Design Documentation category.",
     detail:
-      "This was the first competition where Vortex ran a fully autonomous mission without any manual interventions. The result validated two years of software development and opened the door for the RoboSub qualification application.",
-    image1: "https://picsum.photos/seed/tac2023a/800/500",
-    image2: "https://picsum.photos/seed/tac2023b/800/500",
+      "Two years of work and 30,000–40,000 work hours resulted in the Beluga AUV used for this competition. The team scored enough in the semifinals for a third run, though fell short of the finals.",
+    image1: "https://picsum.photos/seed/robosub2022a/800/500",
+    image2: "https://picsum.photos/seed/robosub2022b/800/500",
+  },
+  {
+    year: "2019",
+    title: "RoboSub 2019",
+    result: "First Participation",
+    description:
+      "In summer 2019, 11 students from Vortex NTNU traveled to San Diego to participate in RoboSub for the very first time. They competed with Manta, which had been converted from an ROV to an AUV in less than a year.",
+    detail:
+      "The development required rebuilding the existing ROV with new sensors and navigation equipment, improving existing software, and developing a simulation for testing — all within less than a year. This marked Vortex's shift from ROV to AUV development.",
+    image1: "https://picsum.photos/seed/robosub2019a/800/500",
+    image2: "https://picsum.photos/seed/robosub2019b/800/500",
   },
 ];
 
@@ -89,9 +100,9 @@ export default function CompetitionsPage() {
         <div className="max-w-7xl mx-auto px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white text-sm uppercase tracking-widest font-semibold">Best Result</p>
           <p className="text-white text-2xl md:text-3xl font-bold text-center">
-            2nd Place — TAC Challenge 2023
+            1st Place — TAC Challenge 2024
           </p>
-          <p className="text-red-200 text-sm">RoboSub Top 10 in 2024</p>
+          <p className="text-red-200 text-sm">RoboSub 5th Place in 2022</p>
         </div>
       </div>
 

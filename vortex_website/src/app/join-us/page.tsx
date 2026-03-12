@@ -42,17 +42,17 @@ const whyVortex = [
   {
     icon: "⚙️",
     title: "Real Engineering",
-    body: "Build hardware that dives to competition depth, runs autonomously, and gets torn down and rebuilt every year. No toy projects.",
+    body: "Put theory into practice by designing and building autonomous underwater and surface vehicles. Work with ROS, PCB design, CAD, machine learning, and more.",
   },
   {
     icon: "🌊",
     title: "International Stage",
-    body: "Compete at RoboSub in San Diego and TAC Challenge in Trondheim. Represent Norway on a global engineering platform.",
+    body: "Compete at RoboSub in the USA and TAC Challenge in Trondheim. In 2024, we won 1st place at TAC Challenge after 4 years of participation.",
   },
   {
     icon: "🤝",
-    title: "Tight-knit Community",
-    body: "100+ members across all study levels. Weekly meetings, regular socials, and a network that lasts well beyond graduation.",
+    title: "Collaborative Community",
+    body: "50+ members from 20+ study programs. Develop yourself as both an engineer and team member through hands-on collaboration.",
   },
 ];
 
@@ -61,21 +61,21 @@ const teams = [
     id: "software",
     name: "Software",
     subtitle: "The Brains of the Operation",
-    cardDescription: "Develops autonomy, computer vision, and mission planning for the AUV.",
+    cardDescription: "Develops control systems, SLAM, computer vision, and mission planning.",
     description1:
-      "The software team is responsible for everything that makes the AUV autonomous — from the low-level ROS 2 driver nodes that talk to sensors and thrusters, to the high-level mission planner that decides what to do next in the competition pool.",
+      "You will learn how to use the Robot Operating System (ROS) with Python and C++ to develop code for a highly advanced and robust platform, and how to test, deploy, and verify your code as part of a software team. Work includes control systems design, SLAM, computer vision and object detection, embedded software design, and underwater acoustic communication.",
     description2:
-      "You will work with Python, C++, OpenCV, and ROS 2. Experience with Linux and robotics is helpful but not required — we teach from scratch. We value curiosity and persistence over existing skill.",
+      "The Autonomous Systems sub-team designs and implements guidance and navigation stacks, fusing sensors such as GNSS, UGPS, DVL, and IMU, and develops mission planning schemes for competitions. Experience with Linux and robotics is helpful but not required — we teach from scratch.",
     cardImageSrc: "https://picsum.photos/seed/swcard/600/400",
     imageSrc: "https://picsum.photos/seed/swdetail/800/500",
   },
   {
     id: "mechanical",
     name: "Mechanical",
-    subtitle: "The Backbone of the AUV",
-    cardDescription: "Designs, manufactures, and tests the hull, thruster mounts, and mechanical systems.",
+    subtitle: "The Backbone of the Drones",
+    cardDescription: "Responsible for all physical structures — from concept design to assembly.",
     description1:
-      "The mechanical team translates design requirements into physical hardware. You will design parts in CAD (SolidWorks or Fusion 360), manufacture them in NTNU's workshop, and test them for waterproofness and structural integrity.",
+      "As a member of the mechanical team you will be responsible for all physical structures in our drones, including the entire process from concept design to prototyping and assembly of the final product.",
     description2:
       "We use materials ranging from aluminium and acrylic to 3D-printed PLA and carbon fibre. If you enjoy making things with your hands as much as designing them on a screen, this is your team.",
     cardImageSrc: "https://picsum.photos/seed/mechcard/600/400",
@@ -85,9 +85,9 @@ const teams = [
     id: "electronics",
     name: "Electronics",
     subtitle: "The Nervous System",
-    cardDescription: "Designs PCBs, power distribution, and all embedded systems.",
+    cardDescription: "Designs PCBs, power distribution, wiring, and embedded systems.",
     description1:
-      "The electronics team designs and builds all the custom circuit boards that run inside the AUV — from the main computer carrier board to the power management module and the thruster ESC board.",
+      "The electronics group is responsible for the power distribution, wiring, and communication buses in our drones. As part of the electronics team you will either design PCBs, utilise waterproof connections to enable power distribution and communication across different modules, or be responsible for embedded systems design.",
     description2:
       "You will use KiCad for PCB design, STM32 microcontrollers for embedded firmware, and a variety of test equipment (oscilloscopes, multimeters, logic analysers). Experience in PCB design or embedded C is a plus.",
     cardImageSrc: "https://picsum.photos/seed/eleccard/600/400",
@@ -97,9 +97,9 @@ const teams = [
     id: "marketing",
     name: "Marketing",
     subtitle: "Our Voice to the World",
-    cardDescription: "Manages brand, social media, sponsor relations, and external communications.",
+    cardDescription: "Markets the organisation with creative freedom — bold and creative individuals welcome.",
     description1:
-      "The marketing team ensures that Vortex has the funding and visibility to operate at a high level. This means managing relationships with our sponsors, creating content for social media, designing graphics, and writing reports.",
+      "The marketing group has a lot of freedom to market how they want, and we are excited to invite bold and creative individuals to apply, so that we can take our profile to new levels.",
     description2:
       "You do not need to be an engineer to join Vortex. Marketing students, communication students, and anyone with a passion for storytelling and design are just as welcome as coders and welders.",
     cardImageSrc: "https://picsum.photos/seed/mktcard/600/400",

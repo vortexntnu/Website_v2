@@ -34,31 +34,31 @@ import TimelineItem from "@/app/components/ui/TimelineItem";
 
 const valueCards = [
   {
-    title: "Collaboration",
-    body: "We work across disciplines — software, mechanical, electronics, and marketing — pulling in the same direction on every sprint.",
+    title: "Commitment",
+    body: "Members fulfill their responsibilities through optimum effort while prioritizing safety and delivering exceptional work.",
   },
   {
-    title: "Recognition",
-    body: "We compete at international venues like RoboSub to benchmark ourselves and earn recognition for Norwegian engineering talent.",
+    title: "Teamwork",
+    body: "A solid foundation for teamwork is a key factor for success. We recognise individual strengths within team performance.",
   },
   {
-    title: "Bridging",
-    body: "We bridge the gap between NTNU theory and industry practice by working on real hardware with real engineering constraints.",
+    title: "Innovation",
+    body: "We strive to make a unique product without limitations from our previous projects, solving complex problems through creative engineering.",
   },
 ];
 
 const technicalStats = [
-  { label: "Software", value: 45 },
+  { label: "Software", value: 40 },
   { label: "Electronics", value: 20 },
   { label: "Mechanical", value: 25 },
-  { label: "Marketing", value: 10 },
+  { label: "Marketing", value: 15 },
 ];
 
 const experienceStats = [
-  { label: "1st Year", value: 30 },
+  { label: "1st Year", value: 35 },
   { label: "2nd Year", value: 25 },
   { label: "3rd Year", value: 20 },
-  { label: "4th Year +", value: 25 },
+  { label: "4th Year +", value: 20 },
 ];
 
 const timelineItems = [
@@ -99,7 +99,7 @@ export default function AboutPage() {
       <HeroSection
         imageSrc="https://picsum.photos/seed/aboutteam/1920/1080"
         heading="Anchor Into Our Mission"
-        subheading="Building autonomous underwater vehicles and building the engineers who make them."
+        subheading="Enabling students at NTNU to develop themselves as engineers and team members through autonomous maritime vehicles."
         align="center"
         height="xl"
         overlay={0.55}
@@ -109,7 +109,7 @@ export default function AboutPage() {
       <section className="py-16 bg-[#1a1a1a]">
         <div className="max-w-3xl mx-auto px-8 text-center">
           <blockquote className="text-2xl font-light text-gray-200 italic leading-relaxed">
-            &ldquo;Many dreams, one powerful current.&rdquo;
+            &ldquo;Developing students on a deeper level.&rdquo;
           </blockquote>
           <p className="mt-4 text-sm text-[#c21c1c] uppercase tracking-widest font-semibold">
             Vortex NTNU
@@ -122,8 +122,8 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <SectionHeading
             label="Our Story"
-            title="From a garage project to international podiums"
-            subtitle="Founded in 2016 by a handful of NTNU engineering students, Vortex NTNU has grown into one of Norway's most active student robotics organisations. Each year we design, build, and compete with fully autonomous underwater vehicles — AUVs — at competitions like RoboSub in the United States."
+            title="From six students to international podiums"
+            subtitle="Founded in January 2015 by six NTNU engineering students, Vortex NTNU has grown into over 50 members from 20+ study programs. We are a student-led volunteer organization that designs and builds both hardware and software for autonomous underwater vehicles (AUVs), autonomous surface vehicles (ASVs), and remotely operated vehicles (ROVs), competing nationally and internationally at events like RoboSub and TAC Challenge."
           />
           <div
             className="relative h-80 rounded-lg overflow-hidden"
@@ -141,7 +141,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-8">
           <SectionHeading
             label="Who Are We?"
-            title="The values that unite us"
+            title="Our core values"
             align="center"
           />
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">

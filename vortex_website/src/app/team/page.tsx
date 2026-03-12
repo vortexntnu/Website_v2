@@ -25,7 +25,7 @@ export default function TeamPage() {
       <HeroSection
         imageSrc="https://picsum.photos/seed/teamhero/1920/1080"
         heading="Our Team"
-        subheading="The engineers, designers, and makers who build Vortex."
+        subheading="50+ students from 20+ study programs building autonomous maritime vehicles."
         align="center"
         height="lg"
         overlay={0.6}

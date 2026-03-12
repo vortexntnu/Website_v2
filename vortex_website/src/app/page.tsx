@@ -31,12 +31,13 @@ import type { Sponsor } from "@/app/lib/types";
  */
 
 const sponsors: Sponsor[] = [
-  { name: "WÜRTH ELEKTRONIK" },
   { name: "KONGSBERG" },
-  { name: "WaterLinked" },
+  { name: "Water Linked" },
+  { name: "Nortek" },
   { name: "NTNU" },
-  { name: "StatoilASO" },
-  { name: "Norconsult" },
+  { name: "FFU" },
+  { name: "Diab" },
+  { name: "MECHMAN" },
 ];
 
 const projects = [
@@ -45,36 +46,36 @@ const projects = [
     name: "ORCA",
     year: "2024",
     imageSrc: "https://picsum.photos/seed/orca2024/800/600",
-    description: "Our latest waterproof all-electric autonomous underwater vehicle.",
+    description: "Our newest autonomous underwater drone, built for autonomy and robustness.",
   },
   {
     id: "freya",
     name: "FREYA",
     year: "2023",
     imageSrc: "https://picsum.photos/seed/freya2023/800/600",
-    description: "First fully reformed drone with improved sensor suite.",
+    description: "Vortex's first autonomous surface vehicle (ASV), competing at Njord 2023.",
   },
   {
     id: "beluga",
     name: "BELUGA",
     year: "2021",
     imageSrc: "https://picsum.photos/seed/beluga2021/800/600",
-    description: "Introduced fully autonomous behaviour for competition tasks.",
+    description: "The first Vortex drone developed with fully autonomous behaviour in mind.",
   },
   {
     id: "manta",
     name: "MANTA",
     year: "2018",
     imageSrc: "https://picsum.photos/seed/manta2018/800/600",
-    description: "Converted from ROV to AUV — a pivotal turning point.",
+    description: "Started as an ROV, then converted to an AUV for RoboSub 2019.",
   },
 ];
 
 const stats = [
-  { value: "100+", label: "Active Members" },
-  { value: "8", label: "Competitions" },
+  { value: "50+", label: "Active Members" },
+  { value: "20+", label: "Study Programs" },
   { value: "6", label: "Drones Built" },
-  { value: "2016", label: "Founded" },
+  { value: "2015", label: "Founded" },
 ];
 
 export default function HomePage() {
@@ -84,7 +85,7 @@ export default function HomePage() {
       <HeroSection
         imageSrc="https://picsum.photos/seed/vortexhero/1920/1080"
         heading="Developing Students on a Deeper Level"
-        subheading="Your nautical journey starts here. Join Norway's leading student robotics organisation at NTNU."
+        subheading="A student organization at NTNU building autonomous underwater and surface vehicles. Your nautical journey starts here."
         align="left"
         height="screen"
         overlay={0.6}
@@ -102,8 +103,8 @@ export default function HomePage() {
         </span>
         <div className="relative max-w-4xl mx-auto px-8 text-center">
           <blockquote className="text-2xl md:text-3xl font-light text-gray-200 leading-relaxed italic">
-            Many streams, one powerful current. Together we dive deeper, build
-            bolder, and surface stronger.
+            Creating the future of engineers — opening doors for students in the
+            fascinating maritime industry.
           </blockquote>
           <p className="mt-6 text-sm font-semibold text-[#c21c1c] uppercase tracking-widest">
             — Vortex NTNU
@@ -189,9 +190,10 @@ export default function HomePage() {
                 Welcome to Vortex
               </h2>
               <p className="mt-4 text-gray-400 leading-relaxed">
-                Vortex NTNU is a student organisation at NTNU building autonomous
-                underwater vehicles. We give students real engineering experience
-                competing at international competitions like RoboSub.
+                Vortex NTNU is a student organization at NTNU created with the
+                purpose of building autonomous underwater and surface vessels. Over 50
+                students from 20+ study programs design, build, and compete with
+                AUVs, ASVs, and ROVs at competitions like RoboSub and TAC Challenge.
               </p>
             </div>
             <Link

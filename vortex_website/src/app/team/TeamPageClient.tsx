@@ -44,44 +44,43 @@ function makeMember(name: string, role: string, seed: string): TeamMember {
 
 const subTeams: SubTeam[] = [
   {
-    id: "leadership",
-    name: "Leadership",
+    id: "board",
+    name: "The Board",
     description: "Sets strategy, manages resources, and ensures the whole organisation moves as one unit.",
     members: [
-      makeMember("Tobias Drage Nolfi", "General Leader", "leader1"),
-      makeMember("Erik Andreas Lisleö", "CFO", "cfo1"),
-      makeMember("Markus Nordvik", "Technical Lead", "tech1"),
+      makeMember("Patrick A. Sheehan", "Project Manager / Chairman", "board1"),
+      makeMember("Sindre Mæhlum", "Deputy Project Manager", "board2"),
+      makeMember("Åsmund Vetle Bru Nøkling", "CTO Hardware", "board3"),
+      makeMember("Tristan E. Wolfram", "CTO Software", "board4"),
+      makeMember("Emil S. Sylte", "Chief Financial Officer", "board5"),
+      makeMember("Ingrid Nygård", "Marketing Lead", "board6"),
     ],
   },
   {
     id: "software",
     name: "Software",
-    description: "Develops all autonomy software — from computer vision and navigation to mission planning.",
+    description: "Develops all autonomy software — control systems, SLAM, computer vision, navigation, and mission planning using ROS, Python, and C++.",
     members: [
-      makeMember("Sarah Johnson", "Software Lead", "sw1"),
-      makeMember("Michael Chen", "Perception", "sw2"),
-      makeMember("Emma Wilson", "Navigation", "sw3"),
-      makeMember("Lasse Johansen", "Control", "sw4"),
+      makeMember("Tristan E. Wolfram", "CTO Software", "sw1"),
+      makeMember("Jørgen Fjermedal", "Situational Awareness Lead", "sw2"),
+      makeMember("Anders S. Høgden", "Autonomous Systems Lead", "sw3"),
+      makeMember("Andreas K. Svendsrud", "DevOps Lead", "sw4"),
     ],
   },
   {
     id: "mechanical",
     name: "Mechanical",
-    description: "Designs and manufactures the AUV hull, thruster mounts, and all mechanical subsystems.",
+    description: "Designs and manufactures all physical structures — from concept design to prototyping and assembly.",
     members: [
-      makeMember("Andreas Skagen", "Mechanical Lead", "mech1"),
-      makeMember("Yatavi Suresh", "Hull Design", "mech2"),
-      makeMember("Jørgen Fjørmedal", "Fabrication", "mech3"),
+      makeMember("Åsmund Vetle Bru Nøkling", "CTO Hardware", "mech1"),
     ],
   },
   {
     id: "electronics",
     name: "Electronics",
-    description: "Designs custom PCBs, power distribution, and all embedded systems for the AUV.",
+    description: "Responsible for power distribution, wiring, communication buses, PCB design, and embedded systems.",
     members: [
-      makeMember("Alvar Guddingerro", "Electronics Lead", "elec1"),
-      makeMember("Axel Jenssen", "Embedded Systems", "elec2"),
-      makeMember("Nina Berg", "Power Systems", "elec3"),
+      makeMember("Alvar Guddingsmo", "Electrical Team Leader", "elec1"),
     ],
   },
   {
@@ -89,8 +88,7 @@ const subTeams: SubTeam[] = [
     name: "Marketing",
     description: "Manages brand, social media, sponsor relations, and external communications.",
     members: [
-      makeMember("Ida Haugen", "Marketing Lead", "mkt1"),
-      makeMember("Olav Steen", "Graphic Design", "mkt2"),
+      makeMember("Ingrid Nygård", "Marketing Lead", "mkt1"),
     ],
   },
 ];

@@ -44,39 +44,39 @@ export const metadata: Metadata = {
 
 const contacts: ContactPerson[] = [
   {
-    name: "Tobias Drage Nolfi",
-    role: "General Leader",
-    email: "tobias@vortexntnu.no",
+    name: "Patrick A. Sheehan",
+    role: "Project Manager",
+    email: "post@vortexntnu.no",
     imageSrc: "https://picsum.photos/seed/contact1/400/400",
   },
   {
-    name: "Sarah Johnson",
-    role: "Software Lead",
-    email: "sarah@vortexntnu.no",
+    name: "Sindre Mæhlum",
+    role: "Deputy Project Manager",
+    email: "post@vortexntnu.no",
     imageSrc: "https://picsum.photos/seed/contact2/400/400",
   },
   {
-    name: "Andreas Skagen",
-    role: "Mechanical Lead",
-    email: "andreas@vortexntnu.no",
+    name: "Tristan E. Wolfram",
+    role: "CTO Software",
+    email: "post@vortexntnu.no",
     imageSrc: "https://picsum.photos/seed/contact3/400/400",
   },
   {
-    name: "Alvar Guddingerro",
-    role: "Electronics Lead",
-    email: "alvar@vortexntnu.no",
+    name: "Åsmund Vetle Bru Nøkling",
+    role: "CTO Hardware",
+    email: "post@vortexntnu.no",
     imageSrc: "https://picsum.photos/seed/contact4/400/400",
   },
   {
-    name: "Ida Haugen",
-    role: "Marketing Lead",
-    email: "ida@vortexntnu.no",
+    name: "Emil S. Sylte",
+    role: "Chief Financial Officer",
+    email: "post@vortexntnu.no",
     imageSrc: "https://picsum.photos/seed/contact5/400/400",
   },
   {
-    name: "Lasse Johansen",
-    role: "Sponsor Relations",
-    email: "lasse@vortexntnu.no",
+    name: "Ingrid Nygård",
+    role: "Marketing Lead",
+    email: "post@vortexntnu.no",
     imageSrc: "https://picsum.photos/seed/contact6/400/400",
   },
 ];
@@ -129,9 +129,9 @@ export default function ContactPage() {
              *   Share → Embed a map → copy the src URL.
              */}
             <GoogleMap
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1793.8!2d10.4068!3d63.4182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x466d319e7c7e0001%3A0x1234!2sKl%C3%A6buveien+153%2C+7031+Trondheim!5e0!3m2!1sen!2sno!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1793.8!2d10.4017!3d63.4195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x466d319e7c7e0001%3A0x1234!2sS.P.+Andersens+veg+5%2C+7031+Trondheim!5e0!3m2!1sen!2sno!4v1700000000000"
               height={320}
-              title="Vortex NTNU — Klæbuveien 153, Trondheim"
+              title="Vortex NTNU — S.P. Andersens veg 5, Trondheim"
             />
 
             {/* Address + social */}
@@ -141,7 +141,7 @@ export default function ContactPage() {
                   Address
                 </h3>
                 <address className="not-italic text-gray-300 flex flex-col gap-1">
-                  <span>Klæbuveien 153</span>
+                  <span>S.P. Andersens veg 5</span>
                   <span>7031 Trondheim, Norway</span>
                 </address>
               </div>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-3">
                   Org. Number
                 </h3>
-                <p className="text-gray-400">919924851</p>
+                <p className="text-gray-400">914 934 451</p>
               </div>
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-3">

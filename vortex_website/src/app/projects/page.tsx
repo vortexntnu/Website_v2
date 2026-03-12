@@ -43,7 +43,7 @@ const projects: Project[] = [
     name: "ORCA",
     year: "2024",
     description:
-      "Our latest AUV — a waterproof all-electric vehicle with a redesigned thruster layout, upgraded computer vision pipeline, and full ROS 2 integration. ORCA competed at RoboSub 2024 and achieved our best-ever placement.",
+      "Vortex's newest autonomous underwater drone, released in April 2024. Built for autonomy and robustness, Orca represented a new chapter in the organisation's AUV development. The team won 1st place at TAC Challenge 2024 after 4 years of participation.",
     imageSrc: "https://picsum.photos/seed/orca2024/800/600",
     side: "right",
   },
@@ -52,7 +52,7 @@ const projects: Project[] = [
     name: "FREYA",
     year: "2023",
     description:
-      "A complete redesign from hull to software stack. Freya introduced the modular electronics bay that made future iterations much faster to iterate on. First drone to run a full perception stack on dedicated GPU hardware.",
+      "An idea formed in 2021 that became Vortex's first autonomous surface vehicle (ASV). Freya competed at Njord 2023 — a first for both Njord and Vortex. Development continued through 23-24 with buoy detection, collision avoidance, and integration of the M3 Sonar from Kongsberg Discovery.",
     imageSrc: "https://picsum.photos/seed/freya2023/800/600",
     side: "left",
   },
@@ -61,7 +61,7 @@ const projects: Project[] = [
     name: "BELUGA",
     year: "2021",
     description:
-      "Beluga was the first Vortex AUV to demonstrate fully autonomous behaviour for multiple consecutive competition tasks. Built and tested entirely during the pandemic, it was a testament to remote collaboration.",
+      "The first Vortex drone developed with fully autonomous behaviour in mind. Beluga competed at RoboSub 2021 (held digitally due to COVID) and RoboSub 2022 where Vortex placed 5th. Two years of work and 30,000-40,000 work hours went into this vehicle.",
     imageSrc: "https://picsum.photos/seed/beluga2021/800/600",
     side: "right",
   },
@@ -70,7 +70,7 @@ const projects: Project[] = [
     name: "MANTA",
     year: "2018",
     description:
-      "A pivotal year — Manta was converted from a remotely operated vehicle (ROV) to a fully autonomous AUV. This required a complete software rewrite and new sensor suite, laying the foundation for all future vehicles.",
+      "Manta started life as an ROV but was converted to an AUV in 2019 — a pivotal shift from remote-controlled to autonomous drones. In summer 2019, 11 students traveled to San Diego for Vortex's first-ever RoboSub competition.",
     imageSrc: "https://picsum.photos/seed/manta2018/800/600",
     side: "left",
   },
@@ -79,7 +79,7 @@ const projects: Project[] = [
     name: "TERRAPIN",
     year: "2017",
     description:
-      "The second drone in Vortex history. Terrapin refined the electrical architecture and introduced the first working hydrophone array for acoustic positioning.",
+      "The second installment in Vortex's fleet, with a more subtle exterior compared to its predecessor. Built by a team of 18 students, Terrapin refined the electrical architecture and competed at the MATE ROV competition in Long Beach.",
     imageSrc: "https://picsum.photos/seed/terrapin2017/800/600",
     side: "right",
   },
@@ -88,7 +88,7 @@ const projects: Project[] = [
     name: "MAELSTROM",
     year: "2016",
     description:
-      "The very first drone created by Vortex NTNU. Built from scratch by a small founding team, Maelstrom proved that NTNU students could build competitive underwater robotics hardware.",
+      "The very first drone created by Vortex NTNU. Founded in 2015 by six students, the team grew to 20 members and achieved 16th place in their competition debut — establishing NTNU's only permanent ROV program at the time.",
     imageSrc: "https://picsum.photos/seed/maelstrom2016/800/600",
     side: "left",
   },
@@ -101,7 +101,7 @@ export default function ProjectsPage() {
       <HeroSection
         imageSrc="https://picsum.photos/seed/projectshero/1920/1080"
         heading="Our Drones"
-        subheading="Six generations of autonomous underwater vehicles, each one smarter than the last."
+        subheading="Six generations of autonomous underwater and surface vehicles — from ROV to AUV to ASV."
         align="center"
         height="lg"
         overlay={0.6}
