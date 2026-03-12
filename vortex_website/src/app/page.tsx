@@ -1,33 +1,31 @@
 import Link from "next/link";
 import Image from "next/image";
-import HeroSection from "@/app/components/ui/HeroSection";
 import SponsorMarquee from "@/app/components/ui/SponsorMarquee";
 import VideoEmbed from "@/app/components/ui/VideoEmbed";
+import OceanBackground from "@/app/components/interactive/OceanBackground";
 import type { Sponsor } from "@/app/lib/types";
 
 /*
  * Home page — the primary landing page for Vortex NTNU.
  *
- * Section layout:
- *   1. HeroSection       — full-viewport hero with tagline + CTA
- *   2. Quote             — inspirational organisational quote
- *   3. Projects grid     — 4 flagship drones as clickable cards
- *   4. Stats strip       — 4 key numbers at a glance
- *   5. About cards       — "Welcome to Vortex" + team photo side-by-side
- *   6. Strategy video    — embedded team overview video
- *   7. Sponsor marquee   — infinite-scrolling sponsor banner
- *   8. CTA banner        — final call to join or partner
+ * UNDERWATER DEPTH THEME:
+ * The entire page is wrapped in <OceanBackground>, which provides a scroll-
+ * linked ocean gradient that transitions from sunlit surface blues at the top
+ * to abyssal darkness at the bottom. Fish silhouettes, bubbles, sunrays, and
+ * caustic light patterns layer behind the content.
  *
- * Design rationale:
- * - The hero is full-viewport height (`screen`) so visitors immediately feel
- *   immersed before any content competes for attention.
- * - The quote section uses oversized decorative quotation marks (large, red,
- *   low opacity) as a background element — a typographic technique that adds
- *   visual weight without adding noise.
- * - The stats strip breaks up content and gives visitors quick credibility
- *   signals (member count, years, etc.) without requiring them to read paragraphs.
- * - Project cards link directly to the Projects page with a hash anchor so
- *   users jump straight to the drone they clicked.
+ * Section backgrounds use semi-transparent colours so the ocean gradient
+ * bleeds through, creating the illusion of descending into the deep.
+ *
+ * Section layout:
+ *   1. Hero              — surface zone: sunrays, light water, scroll prompt
+ *   2. Quote             — shallow water with light filtering through
+ *   3. Projects grid     — open water: turtles and tropical fish drift past
+ *   4. Stats strip       — brand-red accent strip (the Vortex submarine)
+ *   5. About cards       — twilight zone: darker, jellyfish appear
+ *   6. Strategy video    — midnight zone: deep blue
+ *   7. Sponsor marquee   — deep ocean
+ *   8. CTA banner        — the abyss: darkest, anglerfish glow
  */
 
 const sponsors: Sponsor[] = [
@@ -80,29 +78,62 @@ const stats = [
 
 export default function HomePage() {
   return (
-    <>
-      {/* ── 1. Hero ── */}
-      <HeroSection
-        imageSrc="https://picsum.photos/seed/vortexhero/1920/1080"
-        heading="Developing Students on a Deeper Level"
-        subheading="A student organization at NTNU building autonomous underwater and surface vehicles. Your nautical journey starts here."
-        align="left"
-        height="screen"
-        overlay={0.6}
-        cta={{ label: "JOIN THE TEAM", href: "/join-us" }}
-      />
+    <OceanBackground>
+      {/* ── 1. Hero — SURFACE ZONE ──
+          Custom hero for the ocean theme: no background image, instead uses
+          the ocean gradient + sunrays as the visual backdrop. The lighter
+          blue tones of the surface zone create natural contrast with white text. */}
+      <section className="relative w-full h-screen overflow-hidden flex items-end">
+        {/* Surface shimmer overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/20 via-transparent to-transparent" />
 
-      {/* ── 2. Quote ── */}
-      <section className="relative py-24 bg-[#0a0a0a] overflow-hidden">
-        {/* Decorative quotation mark — large, red, very transparent */}
+        {/* Wave pattern at top edge */}
+        <svg
+          className="absolute top-0 left-0 w-full h-16 text-cyan-800/10"
+          viewBox="0 0 1200 40"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,20 Q150,0 300,20 Q450,40 600,20 Q750,0 900,20 Q1050,40 1200,20 L1200,0 L0,0 Z"
+            fill="currentColor"
+          />
+        </svg>
+
+        {/* Hero content */}
+        <div className="relative z-10 flex flex-col items-start text-left max-w-7xl mx-auto px-8 pb-16 w-full">
+          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight animate-fade-in-up drop-shadow-lg">
+            Developing Students<br />on a Deeper Level
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-cyan-100/80 max-w-2xl animate-fade-in-up drop-shadow-md">
+            A student organization at NTNU building autonomous underwater and
+            surface vehicles. Your nautical journey starts here.
+          </p>
+          <Link
+            href="/join-us"
+            className="mt-8 inline-block bg-[#c21c1c] hover:bg-[#dc2626] text-white font-semibold px-8 py-3 transition-colors duration-200 animate-fade-in-up"
+          >
+            JOIN THE TEAM
+          </Link>
+
+          {/* Scroll indicator — styled as a diving prompt */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-cyan-200/60 text-sm">
+            <span className="tracking-widest text-xs uppercase">Dive in</span>
+            <span className="animate-bounce text-lg">↓</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 2. Quote — SHALLOW WATERS ── */}
+      <section className="relative py-24 overflow-hidden">
         <span
           aria-hidden="true"
-          className="absolute -top-8 left-8 text-[180px] font-serif leading-none text-[#c21c1c] opacity-10 select-none pointer-events-none"
+          className="absolute -top-8 left-8 text-[180px] font-serif leading-none text-cyan-400 opacity-5 select-none pointer-events-none"
         >
           &ldquo;
         </span>
         <div className="relative max-w-4xl mx-auto px-8 text-center">
-          <blockquote className="text-2xl md:text-3xl font-light text-gray-200 leading-relaxed italic">
+          <blockquote className="text-2xl md:text-3xl font-light text-cyan-50/90 leading-relaxed italic drop-shadow-sm">
             Creating the future of engineers — opening doors for students in the
             fascinating maritime industry.
           </blockquote>
@@ -112,15 +143,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 3. Projects grid ── */}
-      <section className="py-16 bg-[#0a0a0a]">
+      {/* ── 3. Projects grid — OPEN WATER ── */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#c21c1c]">
                 Our Drones
               </span>
-              <h2 className="mt-2 text-4xl font-bold text-white">Featured Projects</h2>
+              <h2 className="mt-2 text-4xl font-bold text-white drop-shadow-sm">Featured Projects</h2>
             </div>
             <Link
               href="/projects"
@@ -135,22 +166,18 @@ export default function HomePage() {
               <Link
                 key={p.id}
                 href={`/projects#${p.id}`}
-                className="group relative aspect-[3/4] overflow-hidden rounded-lg block"
+                className="group relative aspect-[3/4] overflow-hidden rounded-lg block border border-white/5"
               >
-                {/* Photo */}
                 <Image
                   src={p.imageSrc}
                   alt={p.name}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                {/* Dark gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                {/* Year badge */}
                 <span className="absolute top-3 left-3 bg-[#c21c1c] text-white text-xs font-semibold px-2 py-0.5">
                   {p.year}
                 </span>
-                {/* Name + description */}
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <h3 className="text-white font-bold text-lg">{p.name}</h3>
                   <p className="text-gray-300 text-xs leading-relaxed mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -163,8 +190,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 4. Stats strip ── */}
-      <section className="py-12 bg-[#c21c1c]">
+      {/* ── 4. Stats strip — THE SUBMARINE ──
+          Keeps the brand-red colour as a bold horizontal divider,
+          like a submarine slicing through the ocean layers. */}
+      <section className="py-12 bg-[#c21c1c]/90 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((s) => (
@@ -177,11 +206,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 5. About cards ── */}
-      <section className="py-16 bg-[#0a0a0a]">
+      {/* ── 5. About cards — TWILIGHT ZONE ── */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Welcome card */}
-          <div className="relative overflow-hidden rounded-lg bg-[#1a1a1a] p-10 flex flex-col justify-between min-h-80">
+          <div className="relative overflow-hidden rounded-lg bg-black/40 backdrop-blur-sm border border-white/5 p-10 flex flex-col justify-between min-h-80">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#c21c1c]">
                 About Us
@@ -189,7 +218,7 @@ export default function HomePage() {
               <h2 className="mt-3 text-3xl font-bold text-white">
                 Welcome to Vortex
               </h2>
-              <p className="mt-4 text-gray-400 leading-relaxed">
+              <p className="mt-4 text-gray-300/80 leading-relaxed">
                 Vortex NTNU is a student organization at NTNU created with the
                 purpose of building autonomous underwater and surface vessels. Over 50
                 students from 20+ study programs design, build, and compete with
@@ -205,7 +234,7 @@ export default function HomePage() {
           </div>
 
           {/* Team photo card */}
-          <div className="relative overflow-hidden rounded-lg min-h-80">
+          <div className="relative overflow-hidden rounded-lg min-h-80 border border-white/5">
             <Image
               src="https://picsum.photos/seed/vortexteam/800/600"
               alt="Vortex NTNU team photo"
@@ -225,39 +254,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 6. Strategy video ── */}
-      <section className="py-16 bg-[#1a1a1a]">
+      {/* ── 6. Strategy video — MIDNIGHT ZONE ── */}
+      <section className="py-16">
         <div className="max-w-5xl mx-auto px-8">
           <div className="text-center mb-10">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#c21c1c]">
               Watch
             </span>
-            <h2 className="mt-2 text-4xl font-bold text-white">Our Strategy</h2>
+            <h2 className="mt-2 text-4xl font-bold text-white drop-shadow-sm">Our Strategy</h2>
           </div>
-          <VideoEmbed
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="Vortex NTNU Strategy Video"
-          />
+          <div className="rounded-lg overflow-hidden border border-white/5">
+            <VideoEmbed
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="Vortex NTNU Strategy Video"
+            />
+          </div>
         </div>
       </section>
 
-      {/* ── 7. Sponsor marquee ── */}
-      <section className="py-10 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+      {/* ── 7. Sponsor marquee — DEEP OCEAN ── */}
+      <section className="py-10 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-8 mb-6">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-600 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest text-cyan-300/20 text-center">
             Proudly supported by
           </p>
         </div>
         <SponsorMarquee sponsors={sponsors} />
       </section>
 
-      {/* ── 8. CTA banner ── */}
-      <section className="py-24 bg-[#1a1a1a]">
+      {/* ── 8. CTA banner — THE ABYSS ── */}
+      <section className="py-24">
         <div className="max-w-4xl mx-auto px-8 text-center flex flex-col items-center gap-6">
-          <h2 className="text-5xl font-bold text-white leading-tight">
-            Will you race with us?
+          <h2 className="text-5xl font-bold text-white leading-tight drop-shadow-lg">
+            Will you dive with us?
           </h2>
-          <p className="text-gray-400 text-lg max-w-xl">
+          <p className="text-gray-400/80 text-lg max-w-xl">
             Whether you code, build, solder, or market — there is a seat on our
             submarine for you.
           </p>
@@ -270,13 +301,13 @@ export default function HomePage() {
             </Link>
             <Link
               href="/contact"
-              className="border border-[#374151] hover:border-white text-gray-300 hover:text-white font-semibold px-8 py-3 transition-colors duration-200"
+              className="border border-cyan-400/20 hover:border-white/40 text-gray-300 hover:text-white font-semibold px-8 py-3 transition-colors duration-200"
             >
               Become a Partner
             </Link>
           </div>
         </div>
       </section>
-    </>
+    </OceanBackground>
   );
 }
