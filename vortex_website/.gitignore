@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# claude
+.claude/
+
 # dependencies
 /node_modules
 /.pnp
@@ -30,8 +33,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Environment variables (Don't leak secrets!)
+.env
+.env.local# env files (can opt-in for committing if needed)
 
 # vercel
 .vercel
@@ -39,3 +43,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# PocketBase local data (Don't sync actual DB/Users)
+pb_data/
+
+# PocketBase Executables (Mac/Windows/Linux versions)
+pocketbase
+pocketbase.exe
+
+# OS junk
+.DS_Store
+Thumbs.db
