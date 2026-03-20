@@ -1,0 +1,15 @@
+home: https://www.vortexntnu.no/
+about: https://www.vortexntnu.no/about-us
+team: https://www.vortexntnu.no/blank-7
+join us: https://www.vortexntnu.no/join-us
+projects: https://www.vortexntnu.no/projects
+competitions: https://www.vortexntnu.no/robosub
+contact us: https://www.vortexntnu.no/contact-us
+earlier teams: https://www.vortexntnu.no/earlier
+earlier individual teams: https://www.vortexntnu.no/team-[year]
+orca 2024: https://www.vortexntnu.no/projects/orca-2024
+freya 2023: https://www.vortexntnu.no/projects/freya-2023
+beluga 2021: https://www.vortexntnu.no/projects/beluga-2021
+manta 2018: https://www.vortexntnu.no/projects/manta-2018
+terrapin 2017: https://www.vortexntnu.no/projects/terrapin-2017
+maelstrom 2016: https://www.vortexntnu.no/projects/maelstrom-2016
