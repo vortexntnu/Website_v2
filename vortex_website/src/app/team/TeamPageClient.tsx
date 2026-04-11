@@ -43,7 +43,7 @@ function makeMember(name: string, role: string, seed: string): TeamMember {
     name,
     role,
     imageSrc: "/images/team/placeholder-profile.png",
-    linkedinHref: "https://linkedin.com",
+    // linkedinHref: "https://linkedin.com",
   };
 }
 
