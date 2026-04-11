@@ -42,7 +42,7 @@ function makeMember(name: string, role: string, seed: string): TeamMember {
   return {
     name,
     role,
-    imageSrc: `https://picsum.photos/seed/${seed}/400/400`,
+    imageSrc: "/images/team/placeholder-profile.png",
     linkedinHref: "https://linkedin.com",
   };
 }
