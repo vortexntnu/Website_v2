@@ -48,10 +48,10 @@ const valueCards = [
 ];
 
 const technicalStats = [
-  { label: "Software", value: 40 },
-  { label: "Electronics", value: 20 },
-  { label: "Mechanical", value: 25 },
-  { label: "Marketing", value: 15 },
+  { label: "Software & Autonomy", value: 39 },
+  { label: "Hardware", value: 31 },
+  { label: "Operations", value: 17 },
+  { label: "Marketing & Web", value: 13 },
 ];
 
 const experienceStats = [
@@ -174,7 +174,7 @@ export default function AboutPage() {
                   <StatBar key={s.label} label={s.label} value={s.value} max={100} />
                 ))}
               </div>
-              <p className="mt-3 text-xs text-gray-600">Approximate member count per specialisation.</p>
+              <p className="mt-3 text-xs text-gray-600">Approximate percentage of members per group (59 total).</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-white mb-6">Experience Level</h3>

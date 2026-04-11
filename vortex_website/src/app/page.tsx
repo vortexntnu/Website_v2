@@ -71,7 +71,7 @@ export default function HomePage() {
           </h1>
           <p className="mt-5 text-base md:text-lg text-cyan-100/55 max-w-lg animate-fade-in-up">
             A student organization at NTNU building autonomous underwater and
-            surface vehicles — where engineering meets the ocean.
+            surface vehicles, where engineering meets the ocean.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 animate-fade-in-up">
             <Link
@@ -273,7 +273,7 @@ export default function HomePage() {
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#c21c1c]">Watch</span>
             <h2 className="mt-3 text-4xl font-bold text-white leading-tight">Vortex in Action</h2>
             <p className="mt-4 text-gray-500 leading-relaxed text-sm">
-              From sensor integration to autonomous missions — see how we bring our
+              From sensor integration to autonomous missions: see how we bring our
               engineering to life in the water.
             </p>
             <Link
