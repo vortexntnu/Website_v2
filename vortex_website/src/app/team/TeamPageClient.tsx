@@ -244,7 +244,7 @@ export default function TeamPageClient() {
       {/* Team photo */}
       <div className="relative w-full aspect-video rounded-lg overflow-hidden">
         <Image
-          src={`https://picsum.photos/seed/team${activeYear}${activeTabId}/1200/600`}
+          src="/images/competitions/orca-team.jpg"
           alt={`${activeTeam.name} team ${activeYear}`}
           fill
           className="object-cover"

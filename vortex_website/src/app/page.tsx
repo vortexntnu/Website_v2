@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import SponsorMarquee from "@/app/components/ui/SponsorMarquee";
-import VideoEmbed from "@/app/components/ui/VideoEmbed";
 import OceanBackground from "@/app/components/interactive/OceanBackground";
 import type { Sponsor } from "@/app/lib/types";
 
@@ -266,29 +265,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 6. STRATEGY VIDEO — MIDNIGHT ZONE ── */}
+      {/* ── 6. PROMO VIDEO — MIDNIGHT ZONE ── */}
       <section className="py-16 px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
           {/* Context text */}
           <div className="md:col-span-2">
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#c21c1c]">Watch</span>
-            <h2 className="mt-3 text-4xl font-bold text-white leading-tight">Our Strategy</h2>
+            <h2 className="mt-3 text-4xl font-bold text-white leading-tight">Vortex in Action</h2>
             <p className="mt-4 text-gray-500 leading-relaxed text-sm">
-              Each year, Vortex NTNU publishes a strategy video outlining our technical
-              roadmap, competition goals, and the vision driving our team forward.
+              From sensor integration to autonomous missions — see how we bring our
+              engineering to life in the water.
             </p>
             <Link
-              href="/projects"
+              href="/competitions"
               className="mt-6 inline-block text-sm font-semibold text-white border-b border-[#c21c1c] pb-0.5 hover:text-[#c21c1c] transition-colors duration-150"
             >
-              Explore projects →
+              See more of TAC 2024 →
             </Link>
           </div>
-          {/* Video embed */}
+          {/* Local promo video */}
           <div className="md:col-span-3 overflow-hidden border border-white/5">
-            <VideoEmbed
-              src="https://www.youtube.com/embed/O8-msBVepOc"
-              title="Vortex NTNU Beluga Strategy Video"
+            <video
+              src="/videos/promo/Vortex%20promo%20(2).mp4"
+              controls
+              className="w-full block"
             />
           </div>
         </div>
