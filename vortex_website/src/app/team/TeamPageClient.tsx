@@ -96,9 +96,12 @@ const subTeams: SubTeam[] = [
   {
     id: "web-development",
     name: "Web Development",
-    description: "The Web Development Team is responsible for maintaining and developing Vortex’s website. We ensure it functions smoothly, stays updated, and reflects Vortex’s activities and identity in a professional way. The team is currently transitioning from Wix to a fully self-developed solution using React and TypeScript for the frontend and PocketBase for the backend. This shift allows us to have greater flexibility, control, and scalability in developing the website further.",
+    description: "The Web Development Team is responsible for maintaining and developing Vortex's website. We ensure it functions smoothly, stays updated, and reflects Vortex's activities and identity in a professional way. The team is currently transitioning from Wix to a fully self-developed solution using React and TypeScript for the frontend and PocketBase for the backend. This shift allows us to have greater flexibility, control, and scalability in developing the website further.",
     members: [
-      makeMember("Ingrid Nygård", "Web Development Lead", "web1"),
+      makeMember("Weixin Lu", "Leader of Web Development Group / Member of Marketing", "web1"),
+      makeMember("Ashish Bhardwaj", "Member of Web Development", "web2"),
+      makeMember("Biraveen Gnanasampanthan", "Member of Web Development", "web3"),
+      makeMember("Ricardo Sonda Guiraudeli", "Member of Web Development", "web4"),
     ],
   },
   {
