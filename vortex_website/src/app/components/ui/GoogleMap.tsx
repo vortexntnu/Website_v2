@@ -18,7 +18,7 @@ type GoogleMapProps = {
 export default function GoogleMap({
   src,
   height = 400,
-  title = "Vortex NTNU location",
+  title = "Vortex office",
 }: GoogleMapProps) {
   return (
     <div className="w-full overflow-hidden rounded-lg border border-[#374151]">

@@ -5,6 +5,7 @@ import ContactCard from "@/app/components/ui/ContactCard";
 import GoogleMap from "@/app/components/ui/GoogleMap";
 import SocialIcons from "@/app/components/ui/SocialIcons";
 import ContactForm from "@/app/components/interactive/ContactForm";
+import type { ContactPerson } from "@/app/lib/types";
 
 /*
  * Contact page — connect visitors to the right people at Vortex NTNU.
@@ -41,36 +42,42 @@ export const metadata: Metadata = {
   description: "Get in touch with Vortex NTNU. Reach our team leads, find our location, or send us a message.",
 };
 
-const contacts = [
+const contacts: ContactPerson[] = [
   {
     name: "Patrick A. Sheehan",
     role: "Project Manager",
     email: "post@vortexntnu.no",
+    imageSrc: "https://picsum.photos/seed/contact1/400/400",
   },
   {
     name: "Sindre Mæhlum",
     role: "Deputy Project Manager",
     email: "post@vortexntnu.no",
+    imageSrc: "https://picsum.photos/seed/contact2/400/400",
   },
   {
     name: "Tristan E. Wolfram",
     role: "CTO Software",
     email: "post@vortexntnu.no",
+    imageSrc: "https://picsum.photos/seed/contact3/400/400",
   },
   {
     name: "Åsmund Vetle Bru Nøkling",
     role: "CTO Hardware",
     email: "post@vortexntnu.no",
+    imageSrc: "https://picsum.photos/seed/contact4/400/400",
   },
   {
     name: "Emil S. Sylte",
     role: "Chief Financial Officer",
     email: "post@vortexntnu.no",
+    imageSrc: "https://picsum.photos/seed/contact5/400/400",
   },
   {
     name: "Ingrid Nygård",
     role: "Marketing Lead",
     email: "post@vortexntnu.no",
+    imageSrc: "https://picsum.photos/seed/contact6/400/400",
   },
 ];
 
@@ -79,7 +86,7 @@ export default function ContactPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="/images/competitions/orca-team.jpg"
+        imageSrc="https://picsum.photos/seed/contacthero/1920/1080"
         heading="Got any questions?"
         subheading="Please do not hesitate to contact us. Our team leads are happy to hear from prospective members, sponsors, and partners."
         align="center"
@@ -102,6 +109,7 @@ export default function ContactPage() {
                 name={c.name}
                 role={c.role}
                 email={c.email}
+                imageSrc={c.imageSrc}
               />
             ))}
           </div>
@@ -115,15 +123,15 @@ export default function ContactPage() {
           {/* Left: map + address */}
           <div className="flex flex-col gap-8">
             {/*
-             * Google Maps embed for Klæbuveien 153, Trondheim.
+             * Google Maps embed for S.P. Andersens veg 5, 7031 Trondheim.
              * The embed URL below is a public iframe link — no API key needed.
              * To update: go to maps.google.com → search the address →
              *   Share → Embed a map → copy the src URL.
              */}
             <GoogleMap
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1793.8!2d10.4017!3d63.4195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x466d319e7c7e0001%3A0x1234!2sS.P.+Andersens+veg+5%2C+7031+Trondheim!5e0!3m2!1sen!2sno!4v1700000000000"
+              src="https://www.google.com/maps?q=S.P.+Andersens+veg+5,+7031+Trondheim,+Norway&output=embed"
               height={320}
-              title="Vortex NTNU — S.P. Andersens veg 5, Trondheim"
+              title="Vortex NTNU location"
             />
 
             {/* Address + social */}

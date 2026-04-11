@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   const sponsors = [
     "KONGSBERG",
-    "Water Linked",
+    "WaterLinked",
     "Nortek",
     "NTNU Department of Engineering and Cybernetics",
     "FFU",
@@ -113,7 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   facebook="https://facebook.com/vortexntnu"
                   linkedin="https://linkedin.com/company/vortexntnu"
                   instagram="https://instagram.com/vortexntnu"
-                  youtube="https://youtube.com/@vortexntnu8471"
+                  youtube="https://youtube.com/@vortexntnu"
                 />
               </div>
 
@@ -123,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   Contact
                 </h4>
                 <address className="not-italic text-gray-400 text-sm flex flex-col gap-1">
-                  <span>Klæbuveien 153</span>
+                  <span>S. P. Andersens veg 1</span>
                   <span>7031 Trondheim, Norway</span>
                   <a
                     href="mailto:post@vortexntnu.no"

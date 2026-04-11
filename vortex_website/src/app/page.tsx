@@ -101,7 +101,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="border-l-2 border-[#c21c1c] pl-8 max-w-3xl">
             <p className="text-3xl md:text-4xl font-light text-white/90 leading-relaxed">
-              Creating the future of engineers — opening doors for students in the
+              Creating the future of engineers and opening doors for students in the
               fascinating maritime industry.
             </p>
             <p className="mt-6 text-xs font-semibold text-[#c21c1c] uppercase tracking-[0.3em]">
