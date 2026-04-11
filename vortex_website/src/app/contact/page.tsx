@@ -5,7 +5,6 @@ import ContactCard from "@/app/components/ui/ContactCard";
 import GoogleMap from "@/app/components/ui/GoogleMap";
 import SocialIcons from "@/app/components/ui/SocialIcons";
 import ContactForm from "@/app/components/interactive/ContactForm";
-import type { ContactPerson } from "@/app/lib/types";
 
 /*
  * Contact page — connect visitors to the right people at Vortex NTNU.
@@ -42,42 +41,36 @@ export const metadata: Metadata = {
   description: "Get in touch with Vortex NTNU. Reach our team leads, find our location, or send us a message.",
 };
 
-const contacts: ContactPerson[] = [
+const contacts = [
   {
     name: "Patrick A. Sheehan",
     role: "Project Manager",
     email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact1/400/400",
   },
   {
     name: "Sindre Mæhlum",
     role: "Deputy Project Manager",
     email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact2/400/400",
   },
   {
     name: "Tristan E. Wolfram",
     role: "CTO Software",
     email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact3/400/400",
   },
   {
     name: "Åsmund Vetle Bru Nøkling",
     role: "CTO Hardware",
     email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact4/400/400",
   },
   {
     name: "Emil S. Sylte",
     role: "Chief Financial Officer",
     email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact5/400/400",
   },
   {
     name: "Ingrid Nygård",
     role: "Marketing Lead",
     email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact6/400/400",
   },
 ];
 
@@ -109,7 +102,6 @@ export default function ContactPage() {
                 name={c.name}
                 role={c.role}
                 email={c.email}
-                imageSrc={c.imageSrc}
               />
             ))}
           </div>
