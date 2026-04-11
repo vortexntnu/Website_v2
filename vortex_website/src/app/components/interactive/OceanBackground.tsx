@@ -208,7 +208,7 @@ export default function OceanBackground({ children }: { children: React.ReactNod
                 viewBox={fish.viewBox}
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full h-full"
-                style={fish.direction === "rtl" ? { transform: "scaleX(-1)" } : undefined}
+                style={fish.direction === "ltr" ? { transform: "scaleX(-1)" } : undefined}
                 dangerouslySetInnerHTML={{ __html: fish.svg }}
               />
             </div>

@@ -41,7 +41,7 @@ const upcoming = {
   title: "TAC Challenge 2026",
   description:
     "The TAC Challenge is a subsea and aerial drone competition for students, organised by FFU. After winning 1st place in 2024, Vortex NTNU returns to defend the title. The competition has grown from 5 teams and 60 students in 2023 to 12 teams and 150 students from Norway, India, Poland, and Turkey.",
-  imageSrc: "https://picsum.photos/seed/tac2026/1200/700",
+  imageSrc: "/images/competitions/freya-warship.png",
   location: "Trondheim, Norway",
   date: "2026",
 };
@@ -55,8 +55,8 @@ const past = [
       "After 4 years of participation, Vortex NTNU won 1st place at the TAC Challenge 2024. The competition grew significantly from 5 teams in 2023 to 12 teams and 150 students from multiple countries.",
     detail:
       "This victory validated years of development on both the AUV and ASV platforms. The team competed with the latest iteration of Orca and demonstrated advanced autonomous capabilities in subsea tasks.",
-    image1: "https://picsum.photos/seed/tac2024a/800/500",
-    image2: "https://picsum.photos/seed/tac2024b/800/500",
+    image1: "/images/competitions/tac2024-celebration.png",
+    image2: "/images/competitions/tac2024-team.png",
   },
   {
     year: "2022",
@@ -66,8 +66,8 @@ const past = [
       "Vortex NTNU placed 5th at RoboSub 2022 held at the University of Maryland. The team prequalified to the semifinals with two runs. Vortex also earned 5th place in the Design Documentation category.",
     detail:
       "Two years of work and 30,000–40,000 work hours resulted in the Beluga AUV used for this competition. The team scored enough in the semifinals for a third run, though fell short of the finals.",
-    image1: "https://picsum.photos/seed/robosub2022a/800/500",
-    image2: "https://picsum.photos/seed/robosub2022b/800/500",
+    image1: "/images/competitions/deploying-drone.jpg",
+    image2: "/images/competitions/orca-pool-testing.jpg",
   },
   {
     year: "2019",
@@ -77,8 +77,8 @@ const past = [
       "In summer 2019, 11 students from Vortex NTNU traveled to San Diego to participate in RoboSub for the very first time. They competed with Manta, which had been converted from an ROV to an AUV in less than a year.",
     detail:
       "The development required rebuilding the existing ROV with new sensors and navigation equipment, improving existing software, and developing a simulation for testing — all within less than a year. This marked Vortex's shift from ROV to AUV development.",
-    image1: "https://picsum.photos/seed/robosub2019a/800/500",
-    image2: "https://picsum.photos/seed/robosub2019b/800/500",
+    image1: "/images/competitions/orca-field.jpg",
+    image2: "/images/competitions/boat-divers.png",
   },
 ];
 
@@ -87,7 +87,7 @@ export default function CompetitionsPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="https://picsum.photos/seed/compshero/1920/1080"
+        imageSrc="/images/competitions/tac2024-celebration-2.png"
         heading="Competitions"
         subheading="Where years of engineering meet the water."
         align="center"

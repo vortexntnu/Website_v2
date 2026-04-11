@@ -44,7 +44,7 @@ const projects: Project[] = [
     year: "2024",
     description:
       "Vortex's newest autonomous underwater drone, released in April 2024. Built for autonomy and robustness, Orca represented a new chapter in the organisation's AUV development. The team won 1st place at TAC Challenge 2024 after 4 years of participation.",
-    imageSrc: "https://picsum.photos/seed/orca2024/800/600",
+    imageSrc: "/images/drones/orca.png",
     side: "right",
   },
   {
@@ -53,7 +53,7 @@ const projects: Project[] = [
     year: "2023",
     description:
       "An idea formed in 2021 that became Vortex's first autonomous surface vehicle (ASV). Freya competed at Njord 2023 — a first for both Njord and Vortex. Development continued through 23-24 with buoy detection, collision avoidance, and integration of the M3 Sonar from Kongsberg Discovery.",
-    imageSrc: "https://picsum.photos/seed/freya2023/800/600",
+    imageSrc: "/images/drones/freya.png",
     side: "left",
   },
   {
@@ -62,7 +62,7 @@ const projects: Project[] = [
     year: "2021",
     description:
       "The first Vortex drone developed with fully autonomous behaviour in mind. Beluga competed at RoboSub 2021 (held digitally due to COVID) and RoboSub 2022 where Vortex placed 5th. Two years of work and 30,000-40,000 work hours went into this vehicle.",
-    imageSrc: "https://picsum.photos/seed/beluga2021/800/600",
+    imageSrc: "/images/drones/beluga.png",
     side: "right",
   },
   {
@@ -71,7 +71,7 @@ const projects: Project[] = [
     year: "2018",
     description:
       "Manta started life as an ROV but was converted to an AUV in 2019 — a pivotal shift from remote-controlled to autonomous drones. In summer 2019, 11 students traveled to San Diego for Vortex's first-ever RoboSub competition.",
-    imageSrc: "https://picsum.photos/seed/manta2018/800/600",
+    imageSrc: "/images/drones/manta.png",
     side: "left",
   },
   {
@@ -80,7 +80,7 @@ const projects: Project[] = [
     year: "2017",
     description:
       "The second installment in Vortex's fleet, with a more subtle exterior compared to its predecessor. Built by a team of 18 students, Terrapin refined the electrical architecture and competed at the MATE ROV competition in Long Beach.",
-    imageSrc: "https://picsum.photos/seed/terrapin2017/800/600",
+    imageSrc: "/images/drones/terrapin.png",
     side: "right",
   },
   {
@@ -89,7 +89,7 @@ const projects: Project[] = [
     year: "2016",
     description:
       "The very first drone created by Vortex NTNU. Founded in 2015 by six students, the team grew to 20 members and achieved 16th place in their competition debut — establishing NTNU's only permanent ROV program at the time.",
-    imageSrc: "https://picsum.photos/seed/maelstrom2016/800/600",
+    imageSrc: "/images/drones/maelstrom.png",
     side: "left",
   },
 ];
@@ -99,7 +99,7 @@ export default function ProjectsPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="https://picsum.photos/seed/projectshero/1920/1080"
+        imageSrc="/images/competitions/orca-pool-testing.jpg"
         heading="Our Drones"
         subheading="Six generations of autonomous underwater and surface vehicles — from ROV to AUV to ASV."
         align="center"

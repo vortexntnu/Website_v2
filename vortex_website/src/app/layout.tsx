@@ -47,12 +47,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ];
 
   const sponsors = [
-    "Kongsberg Discovery",
-    "NTNU – IKT",
-    "WaterLinked",
+    "KONGSBERG",
+    "Water Linked",
+    "Nortek",
+    "NTNU Department of Engineering and Cybernetics",
+    "FFU",
+    "Diab",
     "Würth Elektronik",
-    "StatoilASO",
-    "Norconsult",
+    "Stratum 3D",
   ];
 
   return (
@@ -111,7 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   facebook="https://facebook.com/vortexntnu"
                   linkedin="https://linkedin.com/company/vortexntnu"
                   instagram="https://instagram.com/vortexntnu"
-                  youtube="https://youtube.com/@vortexntnu"
+                  youtube="https://youtube.com/@vortexntnu8471"
                 />
               </div>
 

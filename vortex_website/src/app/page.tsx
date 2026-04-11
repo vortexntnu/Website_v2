@@ -6,13 +6,14 @@ import OceanBackground from "@/app/components/interactive/OceanBackground";
 import type { Sponsor } from "@/app/lib/types";
 
 const sponsors: Sponsor[] = [
-  { name: "KONGSBERG" },
-  { name: "Water Linked" },
-  { name: "Nortek" },
-  { name: "NTNU" },
-  { name: "FFU" },
-  { name: "Diab" },
-  { name: "MECHMAN" },
+  { name: "KONGSBERG", logoSrc: "/images/sponsors/kongsberg.png", href: "https://www.kongsberg.com", logoHeight: 90 },
+  { name: "Water Linked", logoSrc: "/images/sponsors/waterlinked.svg", href: "https://www.waterlinked.com", invertColors: true ,logoHeight:30},
+  { name: "Nortek", logoSrc: "/images/sponsors/nortek.svg", href: "https://www.nortekgroup.com" },
+  { name: "NTNU Department of Engineering and Cybernetics", logoSrc: "/images/sponsors/ntnu.svg", href: "https://www.ntnu.edu/itk" },
+  { name: "FFU", logoSrc: "/images/sponsors/ffu.png", href: "https://www.ffu.no", invertColors: true },
+  { name: "Diab", logoSrc: "/images/sponsors/diab.png", href: "https://www.diabgroup.com" },
+  { name: "Würth Elektronik", logoSrc: "/images/sponsors/wurth-elektronik.svg", href: "https://www.we-online.com", logoHeight: 60 },
+  { name: "Stratum 3D", logoSrc: "/images/sponsors/stratum3d.png", href: "https://stratum3d.no" },
 ];
 
 const projects = [
@@ -20,28 +21,28 @@ const projects = [
     id: "orca",
     name: "ORCA",
     year: "2024",
-    imageSrc: "https://picsum.photos/seed/orca2024/800/600",
-    description: "Our newest autonomous underwater drone, built for autonomy and robustness.",
+    imageSrc: "/images/drones/orca.png",
+    description: "Our newest underwater drone, built for autonomy and robustness.",
   },
   {
     id: "freya",
     name: "FREYA",
     year: "2023",
-    imageSrc: "https://picsum.photos/seed/freya2023/800/600",
+    imageSrc: "/images/drones/freya.png",
     description: "Vortex's first autonomous surface vehicle (ASV), competing at Njord 2023.",
   },
   {
     id: "beluga",
     name: "BELUGA",
     year: "2021",
-    imageSrc: "https://picsum.photos/seed/beluga2021/800/600",
+    imageSrc: "/images/drones/beluga.png",
     description: "The first Vortex drone developed with fully autonomous behaviour in mind.",
   },
   {
     id: "manta",
     name: "MANTA",
     year: "2018",
-    imageSrc: "https://picsum.photos/seed/manta2018/800/600",
+    imageSrc: "/images/drones/manta.png",
     description: "Started as an ROV, then converted to an AUV for RoboSub 2019.",
   },
 ];
@@ -251,7 +252,7 @@ export default function HomePage() {
           {/* Photo card — narrower (2/5) */}
           <div className="lg:col-span-2 relative overflow-hidden min-h-72 border border-white/5">
             <Image
-              src="https://picsum.photos/seed/vortexteam/800/600"
+              src="/images/competitions/tac2024-team.png"
               alt="Vortex NTNU team photo"
               fill
               className="object-cover"
@@ -286,21 +287,21 @@ export default function HomePage() {
           {/* Video embed */}
           <div className="md:col-span-3 overflow-hidden border border-white/5">
             <VideoEmbed
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Vortex NTNU Strategy Video"
+              src="https://www.youtube.com/embed/O8-msBVepOc"
+              title="Vortex NTNU Beluga Strategy Video"
             />
           </div>
         </div>
       </section>
 
       {/* ── 7. SPONSOR MARQUEE — DEEP OCEAN ── */}
-      <section className="py-10">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-8 mb-8 flex items-center gap-5">
-          <div className="flex-1 h-px bg-white/5" />
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-600 shrink-0">
+          <div className="flex-1 h-px bg-black/10" />
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 shrink-0">
             Proudly supported by
           </p>
-          <div className="flex-1 h-px bg-white/5" />
+          <div className="flex-1 h-px bg-black/10" />
         </div>
         <SponsorMarquee sponsors={sponsors} />
       </section>

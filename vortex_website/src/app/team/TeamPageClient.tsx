@@ -31,7 +31,12 @@ import type { TeamMember, SubTeam } from "@/app/lib/types";
 // ── Static team data ──────────────────────────────────────────────────────────
 // Replace with PocketBase fetch when backend is ready.
 
-const years = ["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016"];
+// Academic years, 3 years back from current (e.g. "2025/2026", "2024/2025", "2023/2024")
+const currentCalendarYear = new Date().getFullYear();
+const years = Array.from({ length: 3 }, (_, i) => {
+  const end = currentCalendarYear - i;
+  return `${end - 1}/${end}`;
+});
 
 function makeMember(name: string, role: string, seed: string): TeamMember {
   return {
@@ -57,36 +62,89 @@ const subTeams: SubTeam[] = [
     ],
   },
   {
-    id: "software",
-    name: "Software",
-    description: "Develops all autonomy software — control systems, SLAM, computer vision, navigation, and mission planning using ROS, Python, and C++.",
-    members: [
-      makeMember("Tristan E. Wolfram", "CTO Software", "sw1"),
-      makeMember("Jørgen Fjermedal", "Situational Awareness Lead", "sw2"),
-      makeMember("Anders S. Høgden", "Autonomous Systems Lead", "sw3"),
-      makeMember("Andreas K. Svendsrud", "DevOps Lead", "sw4"),
-    ],
-  },
-  {
-    id: "mechanical",
-    name: "Mechanical",
-    description: "Designs and manufactures all physical structures — from concept design to prototyping and assembly.",
-    members: [
-      makeMember("Åsmund Vetle Bru Nøkling", "CTO Hardware", "mech1"),
-    ],
-  },
-  {
     id: "electronics",
     name: "Electronics",
-    description: "Responsible for power distribution, wiring, communication buses, PCB design, and embedded systems.",
+    description: "We are responsible for all the electronics  and thereby they work with PCB and circuit design, which the vessel's functionality depends greatly on. Power supply solution, signal processing and acoustics are key tasks we work with as well.",
     members: [
       makeMember("Alvar Guddingsmo", "Electrical Team Leader", "elec1"),
     ],
   },
   {
+    id: "mechanical",
+    name: "Mechanical",
+    description: "We work with 3D modeling in CAD & SolidWorks; developing the physical parts of the vessles.  Essentially, we combine fluid statics with bright solutions to develop a stable and safe vehicle which will perform to the best of its abilities.",
+    members: [
+      makeMember("Åsmund Vetle Bru Nøkling", "CTO Hardware", "mech1"),
+    ],
+  },
+  {
+    id: "web-development",
+    name: "Web Development",
+    description: "The Web Development Team is responsible for maintaining and developing Vortex’s website. We ensure it functions smoothly, stays updated, and reflects Vortex’s activities and identity in a professional way. The team is currently transitioning from Wix to a fully self-developed solution using React and TypeScript for the frontend and PocketBase for the backend. This shift allows us to have greater flexibility, control, and scalability in developing the website further.",
+    members: [
+      makeMember("Ingrid Nygård", "Web Development Lead", "web1"),
+    ],
+  },
+  {
+    id: "software",
+    name: "Software",
+    description: "Develops core software systems, architecture, tooling, and integrations that support Vortex's autonomous vehicles and team workflows.",
+    members: [
+      makeMember("Tristan E. Wolfram", "Software Lead", "sw1"),
+    ],
+  },
+  {
+    id: "control",
+    name: "Control",
+    description: "The control group develops the algorithms that govern the vehicle's physical behavior. They create custom controllers that translate autonomous commands and sensor data into precise thrust allocation and steering, ensuring safe and reliable maneuvering in all six degrees of freedom.",
+    members: [
+      makeMember("Anders S. Høgden", "Control Lead", "ctrl1"),
+    ],
+  },
+  {
+    id: "autonomy",
+    name: "Autonomy",
+    description: "We design, implement, test and tune controllers and path following algorithms for the drones, with the aim of making our AUV and ASV autonomous.",
+    members: [
+      makeMember("Tristan E. Wolfram", "Autonomy Lead", "auto1"),
+    ],
+  },
+  {
+    id: "perception",
+    name: "Perception",
+    description: "Builds sensor fusion and computer vision pipelines to understand the environment in real time.",
+    members: [
+      makeMember("Jørgen Fjermedal", "Perception Lead", "perc1"),
+    ],
+  },
+  {
+    id: "embedded",
+    name: "Embedded",
+    description: "Develops firmware and low-level software for onboard electronics, communication, and real-time systems.",
+    members: [
+      makeMember("Alvar Guddingsmo", "Embedded Lead", "emb1"),
+    ],
+  },
+  {
+    id: "admin",
+    name: "Admin",
+    description: "Coordinates organization, planning, logistics, and operations to keep all teams aligned and effective.",
+    members: [
+      makeMember("Sindre Mæhlum", "Admin Lead", "admin1"),
+    ],
+  },
+  {
+    id: "gui",
+    name: "GUI",
+    description: "The Percetion team ensures our drones perceive their surroundings. They work with sonar, lidar and cameras with the goal of performing object detection, target tracking as well as mapping the environment.",
+    members: [
+      makeMember("Andreas K. Svendsrud", "GUI Lead", "gui1"),
+    ],
+  },
+ {
     id: "marketing",
     name: "Marketing",
-    description: "Manages brand, social media, sponsor relations, and external communications.",
+    description: "Vortex’s marketing team promotes the organization’s brand, projects, and members. They manage the brand image,  create content, handle social media, and public relations, and also design the website. Their efforts boost engagement, increase organizational awareness, and drive growth.",
     members: [
       makeMember("Ingrid Nygård", "Marketing Lead", "mkt1"),
     ],
@@ -136,6 +194,11 @@ export default function TeamPageClient() {
         onSelect={setActiveTabId}
       />
 
+      {/* Team description */}
+      <div>
+        <p className="text-gray-400 max-w-2xl">{activeTeam.description}</p>
+      </div>
+
       {/* Team photo */}
       <div className="relative w-full aspect-video rounded-lg overflow-hidden">
         <Image
@@ -150,12 +213,6 @@ export default function TeamPageClient() {
             {activeYear} — {activeTeam.name}
           </span>
         </div>
-      </div>
-
-      {/* Team description */}
-      <div>
-        <h2 className="text-3xl font-bold text-white mb-2">Meet the team</h2>
-        <p className="text-gray-400 max-w-2xl">{activeTeam.description}</p>
       </div>
 
       {/* Member cards */}
