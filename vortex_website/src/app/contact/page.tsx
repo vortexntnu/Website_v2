@@ -109,7 +109,6 @@ export default function ContactPage() {
                 name={c.name}
                 role={c.role}
                 email={c.email}
-                imageSrc={c.imageSrc}
               />
             ))}
           </div>
