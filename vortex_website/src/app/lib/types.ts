@@ -5,7 +5,6 @@
 export type TeamMember = {
   name: string;
   role: string;
-  imageSrc: string;
   linkedinHref?: string;
 };
 
@@ -43,7 +42,6 @@ export type ContactPerson = {
   name: string;
   role: string;
   email: string;
-  imageSrc: string;
 };
 
 export type Competition = {

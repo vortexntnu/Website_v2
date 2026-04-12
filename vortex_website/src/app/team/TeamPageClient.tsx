@@ -42,7 +42,6 @@ function makeMember(name: string, role: string, seed: string): TeamMember {
   return {
     name,
     role,
-    imageSrc: "/images/team/placeholder-profile.png",
     // linkedinHref: "https://linkedin.com",
   };
 }
@@ -264,7 +263,6 @@ export default function TeamPageClient() {
             key={member.name}
             name={member.name}
             role={member.role}
-            imageSrc={member.imageSrc}
             linkedinHref={member.linkedinHref}
           />
         ))}

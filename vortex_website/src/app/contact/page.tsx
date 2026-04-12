@@ -44,40 +44,34 @@ export const metadata: Metadata = {
 
 const contacts: ContactPerson[] = [
   {
-    name: "Patrick A. Sheehan",
+    name: "Andreas Skagen",
     role: "Project Manager",
-    email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact1/400/400",
+    email: "andreas.skagen@vortexntnu.no",
   },
   {
-    name: "Sindre Mæhlum",
-    role: "Deputy Project Manager",
-    email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact2/400/400",
+    name: "Alvar Guddingsmo",
+    role: "Chief Technical Officer Hardware",
+    email: "alvar.guddingsmo@vortexntnu.no",
   },
   {
-    name: "Tristan E. Wolfram",
-    role: "CTO Software",
-    email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact3/400/400",
-  },
-  {
-    name: "Åsmund Vetle Bru Nøkling",
-    role: "CTO Hardware",
-    email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact4/400/400",
-  },
-  {
-    name: "Emil S. Sylte",
+    name: "Axel Robert Olivier Jenssen",
     role: "Chief Financial Officer",
-    email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact5/400/400",
+    email: "axel.jenssen@vortexntnu.no",
   },
   {
-    name: "Ingrid Nygård",
-    role: "Marketing Lead",
-    email: "post@vortexntnu.no",
-    imageSrc: "https://picsum.photos/seed/contact6/400/400",
+    name: "Lasse Johansen",
+    role: "Deputy Project Manager",
+    email: "lasse.johansen@vortexntnu.no",
+  },
+  {
+    name: "Jørgen Fjermedal",
+    role: "Chief Technical Officer Software",
+    email: "jorgen.fjermedal@vortexntnu.no",
+  },
+  {
+    name: "Yatavi Suresh",
+    role: "Chief Marketing Officer",
+    email: "yatavi.suresh@vortexntnu.no",
   },
 ];
 
@@ -109,7 +103,6 @@ export default function ContactPage() {
                 name={c.name}
                 role={c.role}
                 email={c.email}
-                imageSrc={c.imageSrc}
               />
             ))}
           </div>

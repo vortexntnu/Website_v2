@@ -1,9 +1,6 @@
-import Image from "next/image";
-
 type TeamMemberCardProps = {
   name: string;
   role: string;
-  imageSrc: string;
   linkedinHref?: string;
 };
 
@@ -11,8 +8,6 @@ type TeamMemberCardProps = {
  * TeamMemberCard — profile card displayed in the Team page member grid.
  *
  * Design rationale:
- * - A square-cropped profile photo with the name and role below is the most
- *   legible layout for a grid of people — it lets the eye scan names quickly.
  * - The card background uses --bg-secondary (#1a1a1a) so it lifts off the
  *   page background without needing a border or shadow.
  * - The LinkedIn icon (official SVG path) is used instead of "In →" text so
@@ -23,21 +18,10 @@ type TeamMemberCardProps = {
 export default function TeamMemberCard({
   name,
   role,
-  imageSrc,
   linkedinHref,
 }: TeamMemberCardProps) {
   return (
     <div className="group flex flex-col bg-[#1a1a1a] rounded-lg overflow-hidden hover:bg-[#262626] transition-colors duration-200">
-      {/* Profile photo */}
-      <div className="relative aspect-square w-full">
-        <Image
-          src={imageSrc}
-          alt={name}
-          fill
-          className="object-cover object-top"
-        />
-      </div>
-
       {/* Info */}
       <div className="p-4 flex flex-col gap-1">
         <p className="text-white font-semibold text-sm leading-snug">{name}</p>
