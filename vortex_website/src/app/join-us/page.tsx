@@ -40,17 +40,14 @@ export const metadata: Metadata = {
 
 const whyVortex = [
   {
-    icon: "⚙️",
     title: "Real Engineering",
     body: "Put theory into practice by designing and building autonomous underwater and surface vehicles. Work with ROS, PCB design, CAD, machine learning, and more.",
   },
   {
-    icon: "🌊",
     title: "International Stage",
     body: "Compete at RoboSub in the USA and TAC Challenge in Trondheim. In 2024, we won 1st place at TAC Challenge after 4 years of participation.",
   },
   {
-    icon: "🤝",
     title: "Collaborative Community",
     body: "50+ members from 20+ study programs. Develop yourself as both an engineer and team member through hands-on collaboration.",
   },
@@ -66,8 +63,8 @@ const teams = [
       "You will learn how to use the Robot Operating System (ROS) with Python and C++ to develop code for a highly advanced and robust platform, and how to test, deploy, and verify your code as part of a software team. Work includes control systems design, SLAM, computer vision and object detection, embedded software design, and underwater acoustic communication.",
     description2:
       "The Autonomous Systems sub-team designs and implements guidance and navigation stacks, fusing sensors such as GNSS, UGPS, DVL, and IMU, and develops mission planning schemes for competitions. Experience with Linux and robotics is helpful but not required — we teach from scratch.",
-    cardImageSrc: "https://picsum.photos/seed/swcard/600/400",
-    imageSrc: "https://picsum.photos/seed/swdetail/800/500",
+    cardImageSrc: "/images/teams/software-coding.png",
+    imageSrc: "/images/teams/simulation.png",
   },
   {
     id: "mechanical",
@@ -78,8 +75,8 @@ const teams = [
       "As a member of the mechanical team you will be responsible for all physical structures in our drones, including the entire process from concept design to prototyping and assembly of the final product.",
     description2:
       "We use materials ranging from aluminium and acrylic to 3D-printed PLA and carbon fibre. If you enjoy making things with your hands as much as designing them on a screen, this is your team.",
-    cardImageSrc: "https://picsum.photos/seed/mechcard/600/400",
-    imageSrc: "https://picsum.photos/seed/mechdetail/800/500",
+    cardImageSrc: "/images/teams/mechanical-working.png",
+    imageSrc: "/images/teams/mechanical-beluga.png",
   },
   {
     id: "electronics",
@@ -90,8 +87,8 @@ const teams = [
       "The electronics group is responsible for the power distribution, wiring, and communication buses in our drones. As part of the electronics team you will either design PCBs, utilise waterproof connections to enable power distribution and communication across different modules, or be responsible for embedded systems design.",
     description2:
       "You will use KiCad for PCB design, STM32 microcontrollers for embedded firmware, and a variety of test equipment (oscilloscopes, multimeters, logic analysers). Experience in PCB design or embedded C is a plus.",
-    cardImageSrc: "https://picsum.photos/seed/eleccard/600/400",
-    imageSrc: "https://picsum.photos/seed/elecdetail/800/500",
+    cardImageSrc: "/images/teams/electronics-pcb.png",
+    imageSrc: "/images/team/vortex-monitoring.png",
   },
   {
     id: "marketing",
@@ -102,8 +99,8 @@ const teams = [
       "The marketing group has a lot of freedom to market how they want, and we are excited to invite bold and creative individuals to apply, so that we can take our profile to new levels.",
     description2:
       "You do not need to be an engineer to join Vortex. Marketing students, communication students, and anyone with a passion for storytelling and design are just as welcome as coders and welders.",
-    cardImageSrc: "https://picsum.photos/seed/mktcard/600/400",
-    imageSrc: "https://picsum.photos/seed/mktdetail/800/500",
+    cardImageSrc: "/images/team/presentation.jpg",
+    imageSrc: "/images/team/walking.png",
   },
 ];
 
@@ -112,7 +109,7 @@ export default function JoinUsPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="https://picsum.photos/seed/joinushero/1920/1080"
+        imageSrc="/images/teams/mechanical-beluga.png"
         heading="Join The Team!"
         subheading="Applications are open for the 2027 generation. All study levels and backgrounds welcome."
         align="center"

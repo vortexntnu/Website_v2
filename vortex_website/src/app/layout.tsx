@@ -47,12 +47,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ];
 
   const sponsors = [
-    "Kongsberg Discovery",
-    "NTNU – IKT",
+    "KONGSBERG",
     "WaterLinked",
+    "Nortek",
+    "NTNU Department of Engineering and Cybernetics",
+    "FFU",
+    "Diab",
     "Würth Elektronik",
-    "StatoilASO",
-    "Norconsult",
+    "Stratum 3D",
   ];
 
   return (
@@ -121,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   Contact
                 </h4>
                 <address className="not-italic text-gray-400 text-sm flex flex-col gap-1">
-                  <span>Klæbuveien 153</span>
+                  <span>S. P. Andersens veg 1</span>
                   <span>7031 Trondheim, Norway</span>
                   <a
                     href="mailto:post@vortexntnu.no"

@@ -23,7 +23,7 @@ export default function TeamPage() {
   return (
     <>
       <HeroSection
-        imageSrc="https://picsum.photos/seed/teamhero/1920/1080"
+        imageSrc="/images/team/happy-member.jpg"
         heading="Our Team"
         subheading="50+ students from 20+ study programs building autonomous maritime vehicles."
         align="center"

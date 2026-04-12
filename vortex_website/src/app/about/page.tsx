@@ -48,10 +48,10 @@ const valueCards = [
 ];
 
 const technicalStats = [
-  { label: "Software", value: 40 },
-  { label: "Electronics", value: 20 },
-  { label: "Mechanical", value: 25 },
-  { label: "Marketing", value: 15 },
+  { label: "Software & Autonomy", value: 39 },
+  { label: "Hardware", value: 31 },
+  { label: "Operations", value: 17 },
+  { label: "Marketing & Web", value: 13 },
 ];
 
 const experienceStats = [
@@ -66,28 +66,28 @@ const timelineItems = [
     label: "Semester 1",
     period: "Mid-August → Late December",
     body: "Kick-off, onboarding new members, hardware design reviews, and the first full integration sprint before winter break.",
-    imageSrc: "https://picsum.photos/seed/semester1/800/500",
+    imageSrc: "/images/teams/software-coding.png",
     side: "right" as const,
   },
   {
     label: "Winter Break",
     period: "January",
     body: "Focused individual study, documentation, and preparing hardware for the second semester test campaigns.",
-    imageSrc: "https://picsum.photos/seed/winter/800/500",
+    imageSrc: "/images/teams/electronics-pcb.png",
     side: "left" as const,
   },
   {
     label: "Semester 2",
     period: "Mid-January → June",
     body: "Full-speed integration, pool testing, and competition preparation. Final tuning leading up to RoboSub or other summer events.",
-    imageSrc: "https://picsum.photos/seed/semester2/800/500",
+    imageSrc: "/images/teams/pool-test.png",
     side: "right" as const,
   },
   {
     label: "Summer Competition",
     period: "July → August",
     body: "International competition, post-mortem analysis, and early planning for the next generation AUV.",
-    imageSrc: "https://picsum.photos/seed/summer/800/500",
+    imageSrc: "/images/competitions/tac2024-team.png",
     side: "left" as const,
   },
 ];
@@ -97,7 +97,7 @@ export default function AboutPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="https://picsum.photos/seed/aboutteam/1920/1080"
+        imageSrc="/images/competitions/orca-team.jpg"
         heading="Anchor Into Our Mission"
         subheading="Enabling students at NTNU to develop themselves as engineers and team members through autonomous maritime vehicles."
         align="center"
@@ -128,7 +128,7 @@ export default function AboutPage() {
           <div
             className="relative h-80 rounded-lg overflow-hidden"
             style={{
-              backgroundImage: "url('https://picsum.photos/seed/story/800/600')",
+              backgroundImage: "url('/images/team/walking.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -174,7 +174,7 @@ export default function AboutPage() {
                   <StatBar key={s.label} label={s.label} value={s.value} max={100} />
                 ))}
               </div>
-              <p className="mt-3 text-xs text-gray-600">Approximate member count per specialisation.</p>
+              <p className="mt-3 text-xs text-gray-600">Approximate percentage of members per group (59 total).</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-white mb-6">Experience Level</h3>

@@ -31,14 +31,19 @@ import type { TeamMember, SubTeam } from "@/app/lib/types";
 // ── Static team data ──────────────────────────────────────────────────────────
 // Replace with PocketBase fetch when backend is ready.
 
-const years = ["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016"];
+// Academic years, 3 years back from current (e.g. "2025/2026", "2024/2025", "2023/2024")
+const currentCalendarYear = new Date().getFullYear();
+const years = Array.from({ length: 3 }, (_, i) => {
+  const end = currentCalendarYear - i;
+  return `${end - 1}/${end}`;
+});
 
 function makeMember(name: string, role: string, seed: string): TeamMember {
   return {
     name,
     role,
-    imageSrc: `https://picsum.photos/seed/${seed}/400/400`,
-    linkedinHref: "https://linkedin.com",
+    imageSrc: "/images/team/placeholder-profile.png",
+    // linkedinHref: "https://linkedin.com",
   };
 }
 
@@ -48,47 +53,142 @@ const subTeams: SubTeam[] = [
     name: "The Board",
     description: "Sets strategy, manages resources, and ensures the whole organisation moves as one unit.",
     members: [
-      makeMember("Patrick A. Sheehan", "Project Manager / Chairman", "board1"),
-      makeMember("Sindre Mæhlum", "Deputy Project Manager", "board2"),
-      makeMember("Åsmund Vetle Bru Nøkling", "CTO Hardware", "board3"),
-      makeMember("Tristan E. Wolfram", "CTO Software", "board4"),
-      makeMember("Emil S. Sylte", "Chief Financial Officer", "board5"),
-      makeMember("Ingrid Nygård", "Marketing Lead", "board6"),
-    ],
-  },
-  {
-    id: "software",
-    name: "Software",
-    description: "Develops all autonomy software — control systems, SLAM, computer vision, navigation, and mission planning using ROS, Python, and C++.",
-    members: [
-      makeMember("Tristan E. Wolfram", "CTO Software", "sw1"),
-      makeMember("Jørgen Fjermedal", "Situational Awareness Lead", "sw2"),
-      makeMember("Anders S. Høgden", "Autonomous Systems Lead", "sw3"),
-      makeMember("Andreas K. Svendsrud", "DevOps Lead", "sw4"),
-    ],
-  },
-  {
-    id: "mechanical",
-    name: "Mechanical",
-    description: "Designs and manufactures all physical structures — from concept design to prototyping and assembly.",
-    members: [
-      makeMember("Åsmund Vetle Bru Nøkling", "CTO Hardware", "mech1"),
+      makeMember("Andreas Skagen", "Project Manager / Chairman of the Board", "board1"),
+      makeMember("Alvar Guddingsmo", "Chief Technical Officer Hardware / Member of the Board", "board2"),
+      makeMember("Axel Robert Olivier Jenssen", "Chief Financial Officer / Member of the Board", "board3"),
+      makeMember("Jørgen Fjermedal", "Chief Technical Officer Software / Member of the Board", "board4"),
+      makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "board5"),
+      makeMember("Yatavi Suresh", "Marketing Lead / Member of the Board", "board6"),
     ],
   },
   {
     id: "electronics",
     name: "Electronics",
-    description: "Responsible for power distribution, wiring, communication buses, PCB design, and embedded systems.",
+    description: "We are responsible for all the electronics and thereby they work with PCB and circuit design, which the vessel's functionality depends greatly on. Power supply solution, signal processing and acoustics are key tasks we work with as well.",
     members: [
-      makeMember("Alvar Guddingsmo", "Electrical Team Leader", "elec1"),
+      makeMember("Tormod Kleiv Von Haffenbrädl", "Leader of Electrical Group", "elec1"),
+      makeMember("Birk Simen Geitanger Bønes", "Member of Electronics", "elec2"),
+      makeMember("Endre Fotland", "Member of Electronics", "elec3"),
+      makeMember("Erlend Langeggen", "Member of Electronics", "elec4"),
+      makeMember("Fredrik Flo", "Member of Electronics", "elec5"),
+      makeMember("Oliver Bormark Sæther", "Member of Electronics", "elec6"),
+      makeMember("Peder Anton Rustadbakken", "Member of Electronics", "elec7"),
+      makeMember("Vikingur Sigurdsson", "Member of Electronics / Member of Embedded", "elec8"),
+      makeMember("Øystein Romundstad Gjessing", "Member of Electronics", "elec9"),
     ],
   },
   {
+    id: "mechanical",
+    name: "Mechanical",
+    description: "We work with 3D modeling in CAD & SolidWorks; developing the physical parts of the vessels. Essentially, we combine fluid statics with bright solutions to develop a stable and safe vehicle which will perform to the best of its abilities.",
+    members: [
+      makeMember("Nora Aasbo Heiberg", "Leader of Mechanical Group", "mech1"),
+      makeMember("Eirik Skage", "Member of Mechanical", "mech2"),
+      makeMember("Igor Nachman", "Member of Mechanical", "mech3"),
+      makeMember("Levi Ivan Wangensteen", "Member of Mechanical", "mech4"),
+      makeMember("Luckra Yaempryong", "Member of Mechanical", "mech5"),
+      makeMember("Martine Solberg", "Member of Mechanical", "mech6"),
+      makeMember("Niclas Svardal", "Member of Mechanical", "mech7"),
+      makeMember("Simen Lund Gronli", "Member of Mechanical", "mech8"),
+      makeMember("Torkil Sand Torvanger", "Member of Mechanical", "mech9"),
+    ],
+  },
+  {
+    id: "web-development",
+    name: "Web Development",
+    description: "The Web Development Team is responsible for maintaining and developing Vortex's website. We ensure it functions smoothly, stays updated, and reflects Vortex's activities and identity in a professional way. The team is currently transitioning from Wix to a fully self-developed solution using React and TypeScript for the frontend and PocketBase for the backend. This shift allows us to have greater flexibility, control, and scalability in developing the website further.",
+    members: [
+      makeMember("Weixin Lu", "Leader of Web Development Group / Member of Marketing", "web1"),
+      makeMember("Ashish Bhardwaj", "Member of Web Development", "web2"),
+      makeMember("Biraveen Gnanasampanthan", "Member of Web Development", "web3"),
+      makeMember("Ricardo Sonda Guiraudeli", "Member of Web Development", "web4"),
+    ],
+  },
+  {
+    id: "software",
+    name: "Software",
+    description: "Develops core software systems, architecture, tooling, and integrations that support Vortex's autonomous vehicles and team workflows.",
+    members: [
+      makeMember("Tristan E. Wolfram", "Software Lead", "sw1"),
+    ],
+  },
+  {
+    id: "control",
+    name: "Control",
+    description: "The control group develops the algorithms that govern the vehicle's physical behavior. They create custom controllers that translate autonomous commands and sensor data into precise thrust allocation and steering, ensuring safe and reliable maneuvering in all six degrees of freedom.",
+    members: [
+      makeMember("Cyprian Osinski", "Leader of Control Group", "ctrl1"),
+      makeMember("Ahmed Borchani", "Member of Control", "ctrl2"),
+      makeMember("Akira Techapattaraporn", "Member of Control", "ctrl3"),
+      makeMember("Anbit Adhikari", "Member of Control", "ctrl4"),
+      makeMember("Filip Nilsen", "Member of Control", "ctrl5"),
+      makeMember("Henrik Mæland Haakenaasen", "Member of Control", "ctrl6"),
+      makeMember("Patrick A. Sheehan", "Member of Control", "ctrl7"),
+      makeMember("Thomas Paulsen", "Member of Control", "ctrl8"),
+    ],
+  },
+  {
+    id: "autonomy",
+    name: "Autonomy",
+    description: "We design, implement, test and tune controllers and path following algorithms for the drones, with the aim of making our AUV and ASV autonomous.",
+    members: [
+      makeMember("Jorgen Fjermedal", "CTO Software / Member of the Board", "auto1"),
+      makeMember("Hinthujan Thigarajah", "Member of Autonomy", "auto2"),
+      makeMember("Sina Aanstad", "Member of Autonomy", "auto3"),
+    ],
+  },
+  {
+    id: "perception",
+    name: "Perception",
+    description: "The Perception team ensures our drones perceive their surroundings. They work with sonar, lidar and cameras with the goal of performing object detection, target tracking as well as mapping the environment.",
+    members: [
+      makeMember("Andreas Kluge Svendsrud", "Leader of Perception Group", "perc1"),
+      makeMember("Anton Tran", "Member of Perception", "perc2"),
+      makeMember("Gard Eltvik Gronnerod", "Member of Perception", "perc3"),
+      makeMember("Jens Christian Aanestad", "Member of Perception", "perc4"),
+      makeMember("Mads Engesvoll", "Member of Perception", "perc5"),
+      makeMember("Ole Agaton Ellingsberg Helmers", "Member of Perception", "perc6"),
+      makeMember("Sophia Mina Friedensburg", "Member of Perception", "perc7"),
+    ],
+  },
+  {
+    id: "embedded",
+    name: "Embedded",
+    description: "Develops firmware and low-level software for onboard electronics, communication, and real-time systems.",
+    members: [
+      makeMember("Alvar Guddingsmo", "Embedded Lead", "emb1"),
+    ],
+  },
+  {
+    id: "admin",
+    name: "Admin",
+    description: "The Admin & Logistics team ensures that Vortex NTNU runs smoothly behind the scenes. We handle organization wide coordination, internal communication, and practical logistics to support all technical and operational teams. Our goal is to reduce the administrative load on team leads, maintain efficient workflows, and secure continuity between project years.",
+    members: [
+      makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "admin1"),
+      makeMember("Ole Alexander Vimo Herrem", "Member of Admin", "admin2"),
+      makeMember("Ravn Nordling Tonnesen", "Member of Admin", "admin3"),
+      makeMember("Waldemar Riiser", "Member of Admin", "admin4"),
+    ],
+  },
+  {
+    id: "gui",
+    name: "GUI",
+    description: "The GUI group designs and develops the interfaces that allow operators to interact seamlessly with our vehicle's systems. They transform complex data streams into intuitive visual displays, enabling real-time monitoring, control, and diagnostics.",
+    members: [
+      makeMember("Jorgen Fjermedal", "CTO Software / Member of the Board", "gui1"),
+      makeMember("Eirik Stokker Aksdal", "Member of GUI", "gui2"),
+      makeMember("Jonas Rundfloen", "Member of GUI", "gui3"),
+    ],
+  },
+ {
     id: "marketing",
     name: "Marketing",
-    description: "Manages brand, social media, sponsor relations, and external communications.",
+    description: "Vortex's marketing team promotes the organization's brand, projects, and members. They manage the brand image, create content, handle social media and public relations, and also design the website. Their efforts boost engagement, increase organizational awareness, and drive growth.",
     members: [
-      makeMember("Ingrid Nygård", "Marketing Lead", "mkt1"),
+      makeMember("Yatavi Suresh", "Leader of Marketing Group / Member of the Board", "mkt1"),
+      makeMember("Iver Haddal", "Member of Marketing", "mkt2"),
+      makeMember("Julie Qiao Hall", "Member of Marketing", "mkt3"),
+      makeMember("Weixin Lu", "Member of Marketing / Leader of Web Development", "mkt4"),
     ],
   },
 ];
@@ -136,10 +236,15 @@ export default function TeamPageClient() {
         onSelect={setActiveTabId}
       />
 
+      {/* Team description */}
+      <div>
+        <p className="text-gray-400 max-w-2xl">{activeTeam.description}</p>
+      </div>
+
       {/* Team photo */}
       <div className="relative w-full aspect-video rounded-lg overflow-hidden">
         <Image
-          src={`https://picsum.photos/seed/team${activeYear}${activeTabId}/1200/600`}
+          src="/images/competitions/orca-team.jpg"
           alt={`${activeTeam.name} team ${activeYear}`}
           fill
           className="object-cover"
@@ -150,12 +255,6 @@ export default function TeamPageClient() {
             {activeYear} — {activeTeam.name}
           </span>
         </div>
-      </div>
-
-      {/* Team description */}
-      <div>
-        <h2 className="text-3xl font-bold text-white mb-2">Meet the team</h2>
-        <p className="text-gray-400 max-w-2xl">{activeTeam.description}</p>
       </div>
 
       {/* Member cards */}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Sponsor } from "@/app/lib/types";
 
 type SponsorMarqueeProps = {
@@ -7,15 +8,9 @@ type SponsorMarqueeProps = {
 /**
  * SponsorMarquee — infinite-scrolling sponsor banner.
  *
- * Design rationale:
- * - Sponsors are a key requirement for student organisations — they fund
- *   the hardware and competitions. A moving banner keeps them visible without
- *   dedicating a large static grid that could look sparse.
- * - We duplicate the sponsors array so the animation loops seamlessly:
- *   when the first copy scrolls off-screen the second copy is already in view,
- *   and the animation resets to zero without any visible jump.
- * - Pausing on hover (via `.marquee-wrapper:hover .animate-marquee` in
- *   globals.css) lets users read sponsor names without chasing them.
+ * Uses margin-right (not gap) on every item so that each item carries its own
+ * trailing space. This makes the doubled list exactly 2× a single copy's width,
+ * so translateX(-50%) lands precisely at the seam — giving a seamless loop.
  */
 export default function SponsorMarquee({ sponsors }: SponsorMarqueeProps) {
   // Duplicate for seamless looping
@@ -23,15 +18,43 @@ export default function SponsorMarquee({ sponsors }: SponsorMarqueeProps) {
 
   return (
     <div className="marquee-wrapper overflow-hidden w-full">
-      <div className="animate-marquee flex gap-16 items-center whitespace-nowrap w-max">
-        {doubled.map((s, i) => (
-          <span
-            key={i}
-            className="text-gray-400 text-lg font-semibold tracking-wide hover:text-white transition-colors duration-150 cursor-default"
-          >
-            {s.name}
-          </span>
-        ))}
+      <div className="animate-marquee flex items-center whitespace-nowrap w-max">
+        {doubled.map((s, i) => {
+          const inner = s.logoSrc ? (
+            <Image
+              src={s.logoSrc}
+              alt={s.name}
+              width={120}
+              height={s.logoHeight ?? 40}
+              className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-150 w-auto"
+              style={{
+                height: s.logoHeight ?? 40,
+                ...(s.invertColors ? { filter: "invert(1)" } : {}),
+              }}
+            />
+          ) : (
+            <span className="text-gray-500 text-lg font-semibold tracking-wide hover:text-gray-900 transition-colors duration-150">
+              {s.name}
+            </span>
+          );
+
+          return s.href ? (
+            <a
+              key={i}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mr-16 flex items-center justify-center"
+              aria-label={s.name}
+            >
+              {inner}
+            </a>
+          ) : (
+            <span key={i} className="mr-16 flex items-center justify-center cursor-default">
+              {inner}
+            </span>
+          );
+        })}
       </div>
     </div>
   );

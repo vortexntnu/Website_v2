@@ -123,15 +123,15 @@ export default function ContactPage() {
           {/* Left: map + address */}
           <div className="flex flex-col gap-8">
             {/*
-             * Google Maps embed for Klæbuveien 153, Trondheim.
+             * Google Maps embed for S.P. Andersens veg 5, 7031 Trondheim.
              * The embed URL below is a public iframe link — no API key needed.
              * To update: go to maps.google.com → search the address →
              *   Share → Embed a map → copy the src URL.
              */}
             <GoogleMap
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1793.8!2d10.4017!3d63.4195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x466d319e7c7e0001%3A0x1234!2sS.P.+Andersens+veg+5%2C+7031+Trondheim!5e0!3m2!1sen!2sno!4v1700000000000"
+              src="https://www.google.com/maps?q=S.P.+Andersens+veg+5,+7031+Trondheim,+Norway&output=embed"
               height={320}
-              title="Vortex NTNU — S.P. Andersens veg 5, Trondheim"
+              title="Vortex NTNU location"
             />
 
             {/* Address + social */}

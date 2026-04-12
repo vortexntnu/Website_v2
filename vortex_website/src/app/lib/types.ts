@@ -35,6 +35,8 @@ export type Sponsor = {
   logoText?: string; // placeholder text when no logo image
   logoSrc?: string;
   href?: string;
+  invertColors?: boolean; // invert logo colors (e.g. white logos on white background)
+  logoHeight?: number;   // override default logo height in px
 };
 
 export type ContactPerson = {
