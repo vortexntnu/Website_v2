@@ -48,14 +48,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ];
 
   const sponsors = [
-    "KONGSBERG",
-    "WaterLinked",
-    "Nortek",
-    "NTNU Department of Engineering and Cybernetics",
-    "FFU",
-    "Diab",
-    "Würth Elektronik",
-    "Stratum 3D",
+    { name: "KONGSBERG", href: "https://www.kongsberg.com" },
+    { name: "Water Linked", href: "https://www.waterlinked.com" },
+    { name: "Nortek", href: "https://www.nortekgroup.com" },
+    { name: "NTNU", href: "https://www.ntnu.edu/itk" },
+    { name: "FFU", href: "https://www.ffu.no" },
+    { name: "Diab", href: "https://www.diabgroup.com" },
+    { name: "Würth Elektronik", href: "https://www.we-online.com" },
+    { name: "Stratum 3D", href: "https://stratum3d.no" },
   ];
 
   return (
@@ -98,8 +98,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </h4>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
                   {sponsors.map((s) => (
-                    <li key={s} className="text-gray-400 text-sm">
-                      {s}
+                    <li key={s.name}>
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white text-sm transition-colors duration-150"
+                      >
+                        {s.name}
+                      </a>
                     </li>
                   ))}
                 </ul>
