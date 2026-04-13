@@ -24,9 +24,9 @@ export default function SponsorMarquee({ sponsors }: SponsorMarqueeProps) {
             <Image
               src={s.logoSrc}
               alt={s.name}
-              width={120}
+              width={s.logoWidth ?? 180}
               height={s.logoHeight ?? 40}
-              className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-150 w-auto"
+              className="object-contain opacity-100 hover:opacity-100 transition-opacity duration-150 w-auto"
               style={{
                 height: s.logoHeight ?? 40,
                 ...(s.invertColors ? { filter: "invert(1)" } : {}),

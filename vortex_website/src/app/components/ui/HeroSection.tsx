@@ -60,6 +60,8 @@ export default function HeroSection({
         src={imageSrc}
         alt={heading}
         fill
+        sizes="100vw"
+        quality={90}
         className="object-cover object-center"
         priority
       />

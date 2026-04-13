@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Image from "next/image";
 import NavBar from "@/app/components/interactive/NavBar";
 import SocialIcons from "@/app/components/ui/SocialIcons";
 
@@ -113,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   facebook="https://facebook.com/vortexntnu"
                   linkedin="https://linkedin.com/company/vortexntnu"
                   instagram="https://instagram.com/vortexntnu"
-                  youtube="https://youtube.com/@vortexntnu"
+                  youtube="https://www.youtube.com/@vortexntnu8472"
                 />
               </div>
 
@@ -138,7 +139,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* Bottom bar */}
             <div className="border-t border-[#1a1a1a] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-[#c21c1c] font-bold text-xl tracking-widest">VORTEX</span>
+              <Image
+                src="/images/logos/LogoSideProjectTextLight.svg"
+                alt="Vortex"
+                width={180}
+                height={40}
+                className="h-12 w-auto"
+              />
               <p className="text-gray-600 text-xs">
                 © {new Date().getFullYear()} Vortex NTNU. All rights reserved.
               </p>

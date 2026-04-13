@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -42,8 +43,15 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 w-full bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between">
         {/* Logo / wordmark */}
-        <Link href="/" className="text-[#c21c1c] font-bold text-xl tracking-widest">
-          VORTEX
+        <Link href="/" className="inline-flex items-center -ml-6 md:-ml-10" aria-label="Vortex home">
+          <Image
+            src="/images/logos/LogoTextLight.svg"
+            alt="Vortex logo"
+            width={48}
+            height={48}
+            className="h-30 w-25"
+            priority
+          />
         </Link>
 
         {/* Desktop nav links */}
