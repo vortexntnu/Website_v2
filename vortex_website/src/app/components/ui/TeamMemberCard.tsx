@@ -3,7 +3,7 @@ import Image from "next/image";
 type TeamMemberCardProps = {
   name: string;
   role: string;
-  imageSrc: string;
+  imageSrc?: string;
   linkedinHref?: string;
 };
 
@@ -11,14 +11,13 @@ type TeamMemberCardProps = {
  * TeamMemberCard — profile card displayed in the Team page member grid.
  *
  * Design rationale:
- * - A square-cropped profile photo with the name and role below is the most
- *   legible layout for a grid of people — it lets the eye scan names quickly.
  * - The card background uses --bg-secondary (#1a1a1a) so it lifts off the
  *   page background without needing a border or shadow.
  * - The LinkedIn icon (official SVG path) is used instead of "In →" text so
  *   international visitors immediately recognise the platform.
  * - The card has a subtle hover scale so the grid feels interactive even
  *   though the only action is the LinkedIn link.
+ * - Profile photos are square (no rounded-*) per the engineering brand aesthetic.
  */
 export default function TeamMemberCard({
   name,
@@ -28,14 +27,35 @@ export default function TeamMemberCard({
 }: TeamMemberCardProps) {
   return (
     <div className="group flex flex-col bg-[#1a1a1a] rounded-lg overflow-hidden hover:bg-[#262626] transition-colors duration-200">
-      {/* Profile photo */}
-      <div className="relative aspect-square w-full">
-        <Image
-          src={imageSrc}
-          alt={name}
-          fill
-          className="object-cover object-top"
-        />
+      {/* Photo */}
+      <div className="relative w-full aspect-square bg-[#262626]">
+        {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={name}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
+            quality={90}
+            className="object-cover object-top"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-600">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-12 h-12"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1}
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+          </div>
+        )}
       </div>
 
       {/* Info */}

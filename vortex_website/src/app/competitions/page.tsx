@@ -119,6 +119,8 @@ export default function CompetitionsPage() {
                 src={upcoming.imageSrc}
                 alt={upcoming.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
                 className="object-cover"
               />
             </div>
@@ -178,6 +180,8 @@ export default function CompetitionsPage() {
                         src={comp.image1}
                         alt={`${comp.title} photo 1`}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={90}
                         className="object-cover"
                       />
                     </div>
@@ -186,6 +190,8 @@ export default function CompetitionsPage() {
                         src={comp.image2}
                         alt={`${comp.title} photo 2`}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={90}
                         className="object-cover"
                       />
                     </div>
