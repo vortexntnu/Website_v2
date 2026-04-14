@@ -5,6 +5,7 @@
 export type TeamMember = {
   name: string;
   role: string;
+  imageSrc?: string;
   linkedinHref?: string;
 };
 
@@ -36,6 +37,7 @@ export type Sponsor = {
   href?: string;
   invertColors?: boolean; // invert logo colors (e.g. white logos on white background)
   logoHeight?: number;   // override default logo height in px
+  logoWidth?: number;    // override requested image width in px for wide logos
 };
 
 export type ContactPerson = {

@@ -56,7 +56,7 @@ const past = [
     detail:
       "This victory validated years of development on both the AUV and ASV platforms. The team competed with the latest iteration of Orca and demonstrated advanced autonomous capabilities in subsea tasks.",
     image1: "/images/competitions/tac2024-celebration.png",
-    // image2: "/images/competitions/tac2024-team.png",
+    image2: "/images/competitions/tac2024-team.png",
   },
   {
     year: "2022",
@@ -66,8 +66,8 @@ const past = [
       "Vortex NTNU placed 5th at RoboSub 2022 held at the University of Maryland. The team prequalified to the semifinals with two runs. Vortex also earned 5th place in the Design Documentation category.",
     detail:
       "Two years of work and 30,000–40,000 work hours resulted in the Beluga AUV used for this competition. The team scored enough in the semifinals for a third run, though fell short of the finals.",
-    // image1: "/images/competitions/deploying-drone.jpg",
-    // image2: "/images/competitions/orca-pool-testing.jpg",
+    image1: "/images/competitions/deploying-drone.jpg",
+    image2: "/images/competitions/orca-pool-testing.jpg",
   },
   {
     year: "2019",
@@ -77,8 +77,8 @@ const past = [
       "In summer 2019, 11 students from Vortex NTNU traveled to San Diego to participate in RoboSub for the very first time. They competed with Manta, which had been converted from an ROV to an AUV in less than a year.",
     detail:
       "The development required rebuilding the existing ROV with new sensors and navigation equipment, improving existing software, and developing a simulation for testing — all within less than a year. This marked Vortex's shift from ROV to AUV development.",
-    // image1: "/images/competitions/orca-field.jpg",
-    // image2: "/images/competitions/boat-divers.png",
+    image1: "/images/competitions/orca-field.jpg",
+    image2: "/images/competitions/boat-divers.png",
   },
 ];
 
@@ -119,6 +119,8 @@ export default function CompetitionsPage() {
                 src={upcoming.imageSrc}
                 alt={upcoming.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
                 className="object-cover"
               />
             </div>
@@ -178,6 +180,8 @@ export default function CompetitionsPage() {
                         src={comp.image1}
                         alt={`${comp.title} photo 1`}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={90}
                         className="object-cover"
                       />
                     </div>
@@ -186,6 +190,8 @@ export default function CompetitionsPage() {
                         src={comp.image2}
                         alt={`${comp.title} photo 2`}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={90}
                         className="object-cover"
                       />
                     </div>

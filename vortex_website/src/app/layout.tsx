@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Image from "next/image";
 import NavBar from "@/app/components/interactive/NavBar";
 import SocialIcons from "@/app/components/ui/SocialIcons";
 
@@ -47,14 +48,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ];
 
   const sponsors = [
-    "KONGSBERG",
-    "WaterLinked",
-    "Nortek",
-    "NTNU Department of Engineering and Cybernetics",
-    "FFU",
-    "Diab",
-    "Würth Elektronik",
-    "Stratum 3D",
+    { name: "KONGSBERG", href: "https://www.kongsberg.com" },
+    { name: "Water Linked", href: "https://www.waterlinked.com" },
+    { name: "Nortek", href: "https://www.nortekgroup.com" },
+    { name: "NTNU", href: "https://www.ntnu.edu/itk" },
+    { name: "FFU", href: "https://www.ffu.no" },
+    { name: "Diab", href: "https://www.diabgroup.com" },
+    { name: "Würth Elektronik", href: "https://www.we-online.com" },
+    { name: "Stratum 3D", href: "https://stratum3d.no" },
   ];
 
   return (
@@ -97,8 +98,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </h4>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
                   {sponsors.map((s) => (
-                    <li key={s} className="text-gray-400 text-sm">
-                      {s}
+                    <li key={s.name}>
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white text-sm transition-colors duration-150"
+                      >
+                        {s.name}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -113,7 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   facebook="https://facebook.com/vortexntnu"
                   linkedin="https://linkedin.com/company/vortexntnu"
                   instagram="https://instagram.com/vortexntnu"
-                  youtube="https://youtube.com/@vortexntnu"
+                  youtube="https://www.youtube.com/@vortexntnu8472"
                 />
               </div>
 
@@ -138,7 +146,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* Bottom bar */}
             <div className="border-t border-[#1a1a1a] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-[#c21c1c] font-bold text-xl tracking-widest">VORTEX</span>
+              <Image
+                src="/images/logos/LogoSideProjectTextLight.svg"
+                alt="Vortex"
+                width={180}
+                height={40}
+                className="h-12 w-auto"
+              />
               <p className="text-gray-600 text-xs">
                 © {new Date().getFullYear()} Vortex NTNU. All rights reserved.
               </p>

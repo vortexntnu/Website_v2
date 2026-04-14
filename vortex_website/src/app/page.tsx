@@ -5,10 +5,16 @@ import OceanBackground from "@/app/components/interactive/OceanBackground";
 import type { Sponsor } from "@/app/lib/types";
 
 const sponsors: Sponsor[] = [
-  { name: "KONGSBERG", logoSrc: "/images/sponsors/kongsberg.png", href: "https://www.kongsberg.com", logoHeight: 90 },
-  { name: "Water Linked", logoSrc: "/images/sponsors/waterlinked.svg", href: "https://www.waterlinked.com", invertColors: true ,logoHeight:30},
-  { name: "Nortek", logoSrc: "/images/sponsors/nortek.svg", href: "https://www.nortekgroup.com" },
-  { name: "NTNU Department of Engineering and Cybernetics", logoSrc: "/images/sponsors/ntnu.svg", href: "https://www.ntnu.edu/itk" },
+  { name: "KONGSBERG", logoSrc: "/images/sponsors/kongsberg.svg", href: "https://www.kongsberg.com", logoHeight: 90 },
+  { name: "Water Linked", logoSrc: "/images/sponsors/waterlinked_dark.svg", href: "https://www.waterlinked.com", logoHeight:30},
+  { name: "Nortek", logoSrc: "/images/sponsors/nortek.svg", href: "https://www.nortekgroup.com", logoHeight: 50 },
+  {
+    name: "NTNU Department of Engineering and Cybernetics",
+    logoSrc: "/images/sponsors/inst_for_teknisk_kybernetikk_bredde_eng.jpg",
+    href: "https://www.ntnu.edu/itk",
+    logoWidth: 340,
+    logoHeight: 40,
+  },
   { name: "FFU", logoSrc: "/images/sponsors/ffu.png", href: "https://www.ffu.no", invertColors: true },
   { name: "Diab", logoSrc: "/images/sponsors/diab.png", href: "https://www.diabgroup.com" },
   { name: "Würth Elektronik", logoSrc: "/images/sponsors/wurth-elektronik.svg", href: "https://www.we-online.com", logoHeight: 60 },
@@ -135,7 +141,7 @@ export default function HomePage() {
               className="group relative overflow-hidden block border border-white/5 sm:col-span-2 lg:col-span-2"
               style={{ height: 300 }}
             >
-              <Image src={projects[0].imageSrc} alt={projects[0].name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <Image src={projects[0].imageSrc} alt={projects[0].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 850px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
               <span className="absolute top-4 left-4 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5 tracking-wide">
                 {projects[0].year}
@@ -155,7 +161,7 @@ export default function HomePage() {
               className="group relative overflow-hidden block border border-white/5 sm:row-span-2 lg:row-span-2"
               style={{ height: 300 }}
             >
-              <Image src={projects[1].imageSrc} alt={projects[1].name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <Image src={projects[1].imageSrc} alt={projects[1].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <span className="absolute top-4 left-4 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[1].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -170,7 +176,7 @@ export default function HomePage() {
               className="group relative overflow-hidden block border border-white/5"
               style={{ height: 220 }}
             >
-              <Image src={projects[2].imageSrc} alt={projects[2].name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <Image src={projects[2].imageSrc} alt={projects[2].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
               <span className="absolute top-3 left-3 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[2].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -185,7 +191,7 @@ export default function HomePage() {
               className="group relative overflow-hidden block border border-white/5"
               style={{ height: 220 }}
             >
-              <Image src={projects[3].imageSrc} alt={projects[3].name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <Image src={projects[3].imageSrc} alt={projects[3].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
               <span className="absolute top-3 left-3 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[3].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -254,6 +260,8 @@ export default function HomePage() {
               src="/images/competitions/tac2024-team.png"
               alt="Vortex NTNU team photo"
               fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              quality={90}
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />

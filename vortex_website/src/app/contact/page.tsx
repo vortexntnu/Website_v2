@@ -163,7 +163,7 @@ export default function ContactPage() {
                   facebook="https://facebook.com/vortexntnu"
                   linkedin="https://linkedin.com/company/vortexntnu"
                   instagram="https://instagram.com/vortexntnu"
-                  youtube="https://youtube.com/@vortexntnu"
+                  youtube="https://www.youtube.com/@vortexntnu8471"
                   size="lg"
                 />
               </div>

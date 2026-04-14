@@ -147,9 +147,6 @@ export default function JoinUsPage() {
                 key={item.title}
                 className="bg-[#1a1a1a] rounded-lg p-8 flex flex-col gap-4 text-center items-center"
               >
-                <span className="text-4xl" role="img" aria-label={item.title}>
-                  {item.icon}
-                </span>
                 <h3 className="text-lg font-bold text-white">{item.title}</h3>
                 <p className="text-gray-400 leading-relaxed text-sm">{item.body}</p>
               </div>

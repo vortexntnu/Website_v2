@@ -61,6 +61,8 @@ export default function ExpandableTeamSection({ teams }: ExpandableTeamSectionPr
                 src={team.cardImageSrc}
                 alt={team.name}
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                quality={90}
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/40" />
@@ -102,6 +104,8 @@ export default function ExpandableTeamSection({ teams }: ExpandableTeamSectionPr
                 src={active.imageSrc}
                 alt={active.name}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
                 className="object-cover"
               />
             </div>
