@@ -295,6 +295,10 @@ export default function HomePage() {
           <div className="md:col-span-3 overflow-hidden border border-white/5">
             <video
               src="/videos/Vortex_promo_one.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
               controls
               className="w-full block"
             />
