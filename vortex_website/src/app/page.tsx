@@ -6,7 +6,7 @@ import type { Sponsor } from "@/app/lib/types";
 
 const sponsors: Sponsor[] = [
   { name: "KONGSBERG", logoSrc: "/images/sponsors/kongsberg.svg", href: "https://www.kongsberg.com", logoHeight: 90 },
-  { name: "Water Linked", logoSrc: "/images/sponsors/waterlinked_dark.svg", href: "https://www.waterlinked.com", logoHeight:30},
+  { name: "Water Linked", logoSrc: "/images/sponsors/Waterlinked_dark.svg", href: "https://www.waterlinked.com", logoHeight:30},
   { name: "Nortek", logoSrc: "/images/sponsors/nortek.svg", href: "https://www.nortekgroup.com", logoHeight: 50 },
   {
     name: "NTNU Department of Engineering and Cybernetics",
