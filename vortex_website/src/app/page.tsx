@@ -294,7 +294,7 @@ export default function HomePage() {
           {/* Local promo video */}
           <div className="md:col-span-3 overflow-hidden border border-white/5">
             <video
-              src="/videos/promo/Vortex%20promo%20(2).mp4"
+              src="/videos/promo/Vortex_promo_one.mp4"
               controls
               className="w-full block"
             />
