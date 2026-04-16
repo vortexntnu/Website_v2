@@ -143,7 +143,7 @@ export default function HomePage() {
               style={{ height: 300 }}
             >
               <Image src={projects[0].imageSrc} alt={projects[0].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 850px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
               <span className="absolute top-4 left-4 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5 tracking-wide">
                 {projects[0].year}
               </span>
@@ -163,7 +163,7 @@ export default function HomePage() {
               style={{ height: 300 }}
             >
               <Image src={projects[1].imageSrc} alt={projects[1].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-transparent" />
               <span className="absolute top-4 left-4 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[1].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <h3 className="text-white font-bold text-xl">{projects[1].name}</h3>
@@ -178,7 +178,7 @@ export default function HomePage() {
               style={{ height: 220 }}
             >
               <Image src={projects[2].imageSrc} alt={projects[2].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
               <span className="absolute top-3 left-3 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[2].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="text-white font-bold text-lg">{projects[2].name}</h3>
@@ -193,7 +193,7 @@ export default function HomePage() {
               style={{ height: 220 }}
             >
               <Image src={projects[3].imageSrc} alt={projects[3].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
               <span className="absolute top-3 left-3 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[3].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="text-white font-bold text-lg">{projects[3].name}</h3>
@@ -265,7 +265,7 @@ export default function HomePage() {
               quality={90}
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/55 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
               <p className="text-white/40 text-xs uppercase tracking-widest">The Team</p>
               <p className="text-white font-semibold mt-1 text-sm">50+ members across NTNU</p>
