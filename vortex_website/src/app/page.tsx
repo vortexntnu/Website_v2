@@ -321,7 +321,7 @@ export default function HomePage() {
       {/* ── 8. CTA BANNER — THE ABYSS ── */}
       <section className="py-28 px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="border border-white/5 bg-black/20 px-10 py-16 md:px-16 flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+          <div className="border border-white/5 bg-black/20 px-10 py-16 md:px-16 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-600 mb-4">Join Us</p>
               <h2 className="text-5xl md:text-6xl font-bold text-white leading-[1.05] max-w-xl">
@@ -332,20 +332,12 @@ export default function HomePage() {
                 submarine for you.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
-              <Link
-                href="/join-us"
-                className="bg-[#c21c1c] hover:bg-[#dc2626] text-white font-semibold px-8 py-3 transition-colors duration-200 text-center"
-              >
-                Become a Member
-              </Link>
-              <Link
-                href="/contact"
-                className="border border-white/10 hover:border-white/25 text-gray-400 hover:text-white font-semibold px-8 py-3 transition-colors duration-200 text-center"
-              >
-                Become a Partner
-              </Link>
-            </div>
+            <Link
+              href="/join-us"
+              className="bg-[#c21c1c] hover:bg-[#dc2626] text-white font-semibold px-14 py-5 text-lg transition-colors duration-200 text-center shrink-0"
+            >
+              Become a Member →
+            </Link>
           </div>
         </div>
       </section>
