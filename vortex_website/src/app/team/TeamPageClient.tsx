@@ -38,11 +38,11 @@ const years = Array.from({ length: 3 }, (_, i) => {
   return `${end - 1}/${end}`;
 });
 
-function makeMember(name: string, role: string, seed: string): TeamMember {
+function makeMember(name: string, role: string, imageSrc?: string): TeamMember {
   return {
     name,
     role,
-    imageSrc: "/images/team/placeholder-profile.png",
+    ...(imageSrc ? { imageSrc } : {}),
     // linkedinHref: "https://linkedin.com",
   };
 }
@@ -53,12 +53,12 @@ const subTeams: SubTeam[] = [
     name: "The Board",
     description: "Sets strategy, manages resources, and ensures the whole organisation moves as one unit.",
     members: [
-      makeMember("Andreas Skagen", "Project Manager / Chairman of the Board", "board1"),
-      makeMember("Alvar Guddingsmo", "Chief Technical Officer Hardware / Member of the Board", "board2"),
-      makeMember("Axel Robert Olivier Jenssen", "Chief Financial Officer / Member of the Board", "board3"),
-      makeMember("Jørgen Fjermedal", "Chief Technical Officer Software / Member of the Board", "board4"),
-      makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "board5"),
-      makeMember("Yatavi Suresh", "Marketing Lead / Member of the Board", "board6"),
+      makeMember("Andreas Skagen", "Project Manager / Chairman of the Board", "/images/jpg/Board Andreas Skagen.jpg"),
+      makeMember("Alvar Guddingsmo", "Chief Technical Officer Hardware / Member of the Board", "/images/jpg/Alvar_edited.jpg"),
+      makeMember("Axel Robert Olivier Jenssen", "Chief Financial Officer / Member of the Board", "/images/jpg/Board  Axel Robert Olivier Jenssen.jpg"),
+      makeMember("Jørgen Fjermedal", "Chief Technical Officer Software / Member of the Board", "/images/jpg/Board Jørgen Fjermedal.jpg"),
+      makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "/images/jpg/Board Lasse Johansen.jpg"),
+      makeMember("Yatavi Suresh", "Marketing Lead / Member of the Board", "/images/jpg/Marketing Lead and Board Yatavi Suresh.jpg"),
     ],
   },
   {
@@ -66,15 +66,15 @@ const subTeams: SubTeam[] = [
     name: "Electronics",
     description: "We are responsible for all the electronics and thereby they work with PCB and circuit design, which the vessel's functionality depends greatly on. Power supply solution, signal processing and acoustics are key tasks we work with as well.",
     members: [
-      makeMember("Tormod Kleiv Von Haffenbrädl", "Leader of Electrical Group", "elec1"),
-      makeMember("Birk Simen Geitanger Bønes", "Member of Electronics", "elec2"),
-      makeMember("Endre Fotland", "Member of Electronics", "elec3"),
-      makeMember("Erlend Langeggen", "Member of Electronics", "elec4"),
-      makeMember("Fredrik Flo", "Member of Electronics", "elec5"),
-      makeMember("Oliver Bormark Sæther", "Member of Electronics", "elec6"),
-      makeMember("Peder Anton Rustadbakken", "Member of Electronics", "elec7"),
-      makeMember("Vikingur Sigurdsson", "Member of Electronics / Member of Embedded", "elec8"),
-      makeMember("Øystein Romundstad Gjessing", "Member of Electronics", "elec9"),
+      makeMember("Tormod Kleiv Von Haffenbrädl", "Leader of Electrical Group", "/images/jpg/Electronics Lead Tormod Kleiv Von Haffenbradl name.jpg"),
+      makeMember("Birk Simen Geitanger Bønes", "Member of Electronics", "/images/jpg/Electronics Birk Simen Geitanger Bønes.jpg"),
+      makeMember("Endre Fotland", "Member of Electronics", "/images/jpg/Electronics Endre Fotland.jpg"),
+      makeMember("Erlend Langeggen", "Member of Electronics", "/images/jpg/Electronics Erlend Langeggen.jpg"),
+      makeMember("Fredrik Flo", "Member of Electronics", "/images/jpg/Electronics Fredrik Flo.jpg"),
+      makeMember("Oliver Bormark Sæther", "Member of Electronics", "/images/jpg/Electronics Oliver Børmark Sæther.jpg"),
+      makeMember("Peder Anton Rustadbakken", "Member of Electronics", "/images/jpg/Electronics Peder Anton Rustadbakken.jpg"),
+      makeMember("Vikingur Sigurdsson", "Member of Electronics / Member of Embedded", "/images/jpg/Electronics Vikingur Sigurdsson.jpg"),
+      makeMember("Øystein Romundstad Gjessing", "Member of Electronics", "/images/jpg/Electronics Øystein Romundstad Gjessing.jpg"),
     ],
   },
   {
@@ -82,15 +82,15 @@ const subTeams: SubTeam[] = [
     name: "Mechanical",
     description: "We work with 3D modeling in CAD & SolidWorks; developing the physical parts of the vessels. Essentially, we combine fluid statics with bright solutions to develop a stable and safe vehicle which will perform to the best of its abilities.",
     members: [
-      makeMember("Nora Aasbo Heiberg", "Leader of Mechanical Group", "mech1"),
-      makeMember("Eirik Skage", "Member of Mechanical", "mech2"),
-      makeMember("Igor Nachman", "Member of Mechanical", "mech3"),
-      makeMember("Levi Ivan Wangensteen", "Member of Mechanical", "mech4"),
-      makeMember("Luckra Yaempryong", "Member of Mechanical", "mech5"),
-      makeMember("Martine Solberg", "Member of Mechanical", "mech6"),
-      makeMember("Niclas Svardal", "Member of Mechanical", "mech7"),
-      makeMember("Simen Lund Gronli", "Member of Mechanical", "mech8"),
-      makeMember("Torkil Sand Torvanger", "Member of Mechanical", "mech9"),
+      makeMember("Nora Aasbo Heiberg", "Leader of Mechanical Group", "/images/jpg/Mechanical Lead Nora Aasbø Heiberg.jpg"),
+      makeMember("Eirik Skage", "Member of Mechanical", "/images/jpg/Mechanical Eirik Skage.jpg"),
+      makeMember("Igor Nachman", "Member of Mechanical", "/images/jpg/Mechanical Igor Nachman.jpg"),
+      makeMember("Levi Ivan Wangensteen", "Member of Mechanical", "/images/jpg/Mechancial and Marketing Levi Ivan Wangensteen.jpg"),
+      makeMember("Luckra Yaempryong", "Member of Mechanical", "/images/jpg/Mechanical Lucknara Yaemprayong.jpg"),
+      makeMember("Martine Solberg", "Member of Mechanical", "/images/jpg/Mechanical Martine Solberg.jpg"),
+      makeMember("Niclas Svardal", "Member of Mechanical", "/images/jpg/GUI Niclas Svardal.jpg"),
+      makeMember("Simen Lund Gronli", "Member of Mechanical", "/images/jpg/Mechanical Simen Lund Grønli.jpg"),
+      makeMember("Torkil Sand Torvanger", "Member of Mechanical", "/images/jpg/Mechanical Torkil Sand Torvanger.jpg"),
     ],
   },
   {
@@ -98,10 +98,10 @@ const subTeams: SubTeam[] = [
     name: "Web Development",
     description: "The Web Development Team is responsible for maintaining and developing Vortex's website. We ensure it functions smoothly, stays updated, and reflects Vortex's activities and identity in a professional way. The team is currently transitioning from Wix to a fully self-developed solution using React and TypeScript for the frontend and PocketBase for the backend. This shift allows us to have greater flexibility, control, and scalability in developing the website further.",
     members: [
-      makeMember("Weixin Lu", "Leader of Web Development Group / Member of Marketing", "web1"),
-      makeMember("Ashish Bhardwaj", "Member of Web Development", "web2"),
-      makeMember("Biraveen Gnanasampanthan", "Member of Web Development", "web3"),
-      makeMember("Ricardo Sonda Guiraudeli", "Member of Web Development", "web4"),
+      makeMember("Weixin Lu", "Leader of Web Development Group / Member of Marketing", "/images/jpg/Marketing Weixin Lu.jpg"),
+      makeMember("Ashish Bhardwaj", "Member of Web Development", "/images/jpg/Ashish_edited.jpg"),
+      makeMember("Biraveen Gnanasampanthan", "Member of Web Development", "/images/jpg/Biraveen_edited.jpg"),
+      makeMember("Ricardo Sonda Guiraudeli", "Member of Web Development", "/images/jpg/Ricardo_edited.jpg"),
     ],
   },
   {
@@ -109,7 +109,7 @@ const subTeams: SubTeam[] = [
     name: "Software",
     description: "Develops core software systems, architecture, tooling, and integrations that support Vortex's autonomous vehicles and team workflows.",
     members: [
-      makeMember("Tristan E. Wolfram", "Software Lead", "sw1"),
+      makeMember("Tristan E. Wolfram", "Software Lead", "/images/jpg/Tristian_edited.jpg"),
     ],
   },
   {
@@ -117,14 +117,14 @@ const subTeams: SubTeam[] = [
     name: "Control",
     description: "The control group develops the algorithms that govern the vehicle's physical behavior. They create custom controllers that translate autonomous commands and sensor data into precise thrust allocation and steering, ensuring safe and reliable maneuvering in all six degrees of freedom.",
     members: [
-      makeMember("Cyprian Osinski", "Leader of Control Group", "ctrl1"),
-      makeMember("Ahmed Borchani", "Member of Control", "ctrl2"),
-      makeMember("Akira Techapattaraporn", "Member of Control", "ctrl3"),
-      makeMember("Anbit Adhikari", "Member of Control", "ctrl4"),
-      makeMember("Filip Nilsen", "Member of Control", "ctrl5"),
-      makeMember("Henrik Mæland Haakenaasen", "Member of Control", "ctrl6"),
-      makeMember("Patrick A. Sheehan", "Member of Control", "ctrl7"),
-      makeMember("Thomas Paulsen", "Member of Control", "ctrl8"),
+      makeMember("Cyprian Osinski", "Leader of Control Group", "/images/jpg/Control Lead Cyprian Pawel Osinski.jpg"),
+      makeMember("Ahmed Borchani", "Member of Control", "/images/jpg/Control Ahmed Borchani.jpg"),
+      makeMember("Akira Techapattaraporn", "Member of Control", "/images/jpg/Control Akira Techapattaraporn.jpg"),
+      makeMember("Anbit Adhikari", "Member of Control", "/images/jpg/Control Anbit Adhikari.jpg"),
+      makeMember("Filip Nilsen", "Member of Control", "/images/jpg/Control Filip Nilsen.jpg"),
+      makeMember("Henrik Mæland Haakenaasen", "Member of Control", "/images/jpg/Control Henrik Mæland Haakenaasen.jpg"),
+      makeMember("Patrick A. Sheehan", "Member of Control", "/images/jpg/Pat_edited.jpg"),
+      makeMember("Thomas Paulsen", "Member of Control", "/images/jpg/Control THomas Paulsen.jpg"),
     ],
   },
   {
@@ -132,9 +132,9 @@ const subTeams: SubTeam[] = [
     name: "Autonomy",
     description: "We design, implement, test and tune controllers and path following algorithms for the drones, with the aim of making our AUV and ASV autonomous.",
     members: [
-      makeMember("Jorgen Fjermedal", "CTO Software / Member of the Board", "auto1"),
-      makeMember("Hinthujan Thigarajah", "Member of Autonomy", "auto2"),
-      makeMember("Sina Aanstad", "Member of Autonomy", "auto3"),
+      makeMember("Jorgen Fjermedal", "CTO Software / Member of the Board", "/images/jpg/Jørgen Fjermedal_edited.jpg"),
+      makeMember("Hinthujan Thigarajah", "Member of Autonomy", "/images/jpg/Autonomy Hinthujan Thigarajah.jpg"),
+      makeMember("Sina Aanstad", "Member of Autonomy", "/images/jpg/Autonomy Sina Aanstad.jpg"),
     ],
   },
   {
@@ -142,13 +142,13 @@ const subTeams: SubTeam[] = [
     name: "Perception",
     description: "The Perception team ensures our drones perceive their surroundings. They work with sonar, lidar and cameras with the goal of performing object detection, target tracking as well as mapping the environment.",
     members: [
-      makeMember("Andreas Kluge Svendsrud", "Leader of Perception Group", "perc1"),
-      makeMember("Anton Tran", "Member of Perception", "perc2"),
-      makeMember("Gard Eltvik Gronnerod", "Member of Perception", "perc3"),
-      makeMember("Jens Christian Aanestad", "Member of Perception", "perc4"),
-      makeMember("Mads Engesvoll", "Member of Perception", "perc5"),
-      makeMember("Ole Agaton Ellingsberg Helmers", "Member of Perception", "perc6"),
-      makeMember("Sophia Mina Friedensburg", "Member of Perception", "perc7"),
+      makeMember("Andreas Kluge Svendsrud", "Leader of Perception Group", "/images/jpg/Perception Lead Andreas Kluge Svendsrud.jpg"),
+      makeMember("Anton Tran", "Member of Perception", "/images/jpg/Perception Anton Tran.jpg"),
+      makeMember("Gard Eltvik Gronnerod", "Member of Perception", "/images/jpg/Perception Gard Eltvik Grønnerød.jpg"),
+      makeMember("Jens Christian Aanestad", "Member of Perception", "/images/jpg/Perception Jens Christian Aanestad.jpg"),
+      makeMember("Mads Engesvoll", "Member of Perception", "/images/jpg/Perception Mads Engesvoll.jpg"),
+      makeMember("Ole Agaton Ellingsberg Helmers", "Member of Perception", "/images/jpg/Perception Ole Agaton Ellingsberg Helmers.jpg"),
+      makeMember("Sophia Mina Friedensburg", "Member of Perception", "/images/jpg/Perception Sophia Mina Friedensburg.jpg"),
     ],
   },
   {
@@ -156,7 +156,7 @@ const subTeams: SubTeam[] = [
     name: "Embedded",
     description: "Develops firmware and low-level software for onboard electronics, communication, and real-time systems.",
     members: [
-      makeMember("Alvar Guddingsmo", "Embedded Lead", "emb1"),
+      makeMember("Alvar Guddingsmo", "Embedded Lead", "/images/jpg/Alvar_edited.jpg"),
     ],
   },
   {
@@ -164,10 +164,10 @@ const subTeams: SubTeam[] = [
     name: "Admin",
     description: "The Admin & Logistics team ensures that Vortex NTNU runs smoothly behind the scenes. We handle organization wide coordination, internal communication, and practical logistics to support all technical and operational teams. Our goal is to reduce the administrative load on team leads, maintain efficient workflows, and secure continuity between project years.",
     members: [
-      makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "admin1"),
-      makeMember("Ole Alexander Vimo Herrem", "Member of Admin", "admin2"),
-      makeMember("Ravn Nordling Tonnesen", "Member of Admin", "admin3"),
-      makeMember("Waldemar Riiser", "Member of Admin", "admin4"),
+      makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "/images/jpg/Board Lasse Johansen.jpg"),
+      makeMember("Ole Alexander Vimo Herrem", "Member of Admin", "/images/jpg/Admin Ole Alexander Vimo Herrem.jpg"),
+      makeMember("Ravn Nordling Tonnesen", "Member of Admin", "/images/jpg/Admin Ravn Nordling Tønnesen.jpg"),
+      makeMember("Waldemar Riiser", "Member of Admin", "/images/jpg/Admin Waldemar Riiser.jpg"),
     ],
   },
   {
@@ -175,20 +175,20 @@ const subTeams: SubTeam[] = [
     name: "GUI",
     description: "The GUI group designs and develops the interfaces that allow operators to interact seamlessly with our vehicle's systems. They transform complex data streams into intuitive visual displays, enabling real-time monitoring, control, and diagnostics.",
     members: [
-      makeMember("Jorgen Fjermedal", "CTO Software / Member of the Board", "gui1"),
-      makeMember("Eirik Stokker Aksdal", "Member of GUI", "gui2"),
-      makeMember("Jonas Rundfloen", "Member of GUI", "gui3"),
+      makeMember("Jorgen Fjermedal", "CTO Software / Member of the Board", "/images/jpg/Jørgen Fjermedal_edited.jpg"),
+      makeMember("Eirik Stokker Aksdal", "Member of GUI", "/images/jpg/GUI Eirik Stokker Aksdal.jpg"),
+      makeMember("Jonas Rundfloen", "Member of GUI", "/images/jpg/GUI Jonas Rundfloen.jpg"),
     ],
   },
- {
+  {
     id: "marketing",
     name: "Marketing",
     description: "Vortex's marketing team promotes the organization's brand, projects, and members. They manage the brand image, create content, handle social media and public relations, and also design the website. Their efforts boost engagement, increase organizational awareness, and drive growth.",
     members: [
-      makeMember("Yatavi Suresh", "Leader of Marketing Group / Member of the Board", "mkt1"),
-      makeMember("Iver Haddal", "Member of Marketing", "mkt2"),
-      makeMember("Julie Qiao Hall", "Member of Marketing", "mkt3"),
-      makeMember("Weixin Lu", "Member of Marketing / Leader of Web Development", "mkt4"),
+      makeMember("Yatavi Suresh", "Leader of Marketing Group / Member of the Board", "/images/jpg/Marketing Lead and Board Yatavi Suresh.jpg"),
+      makeMember("Iver Haddal", "Member of Marketing", "/images/jpg/Marketing Iver Haddal.jpg"),
+      makeMember("Julie Qiao Hall", "Member of Marketing", "/images/jpg/Marketing Julie Hall.jpg"),
+      makeMember("Weixin Lu", "Member of Marketing / Leader of Web Development", "/images/jpg/Marketing Weixin Lu.jpg"),
     ],
   },
 ];
@@ -247,6 +247,8 @@ export default function TeamPageClient() {
           src="/images/competitions/orca-team.jpg"
           alt={`${activeTeam.name} team ${activeYear}`}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1280px"
+          quality={90}
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
