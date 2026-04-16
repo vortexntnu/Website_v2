@@ -74,7 +74,7 @@ export default function NavBar() {
         {/* Desktop CTA */}
         <Link
           href="/join-us"
-          className="hidden md:inline-block bg-[#c21c1c] hover:bg-[#dc2626] text-white text-sm font-semibold px-5 py-2 transition-colors duration-200"
+          className="hidden md:inline-flex items-center justify-center bg-[#c21c1c] hover:bg-[#dc2626] text-white text-sm font-semibold px-5 py-2 transition-colors duration-200"
         >
           APPLY
         </Link>
@@ -115,7 +115,7 @@ export default function NavBar() {
           <Link
             href="/join-us"
             onClick={() => setOpen(false)}
-            className="mt-2 inline-block bg-[#c21c1c] text-white text-sm font-semibold px-5 py-2 w-fit"
+            className="mt-2 inline-flex items-center justify-center bg-[#c21c1c] text-white text-sm font-semibold px-5 py-2 w-fit"
           >
             APPLY
           </Link>
