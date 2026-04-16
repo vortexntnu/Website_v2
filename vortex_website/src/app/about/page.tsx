@@ -1,8 +1,8 @@
 import HeroSection from "@/app/components/ui/HeroSection";
 import SectionHeading from "@/app/components/ui/SectionHeading";
 import RedLabel from "@/app/components/ui/RedLabel";
-import StatBar from "@/app/components/ui/StatBar";
 import TimelineItem from "@/app/components/ui/TimelineItem";
+import PieChart from "@/app/components/interactive/PieChart";
 
 /*
  * About page — tells the Vortex NTNU story: who we are, what we value, and
@@ -48,17 +48,37 @@ const valueCards = [
 ];
 
 const technicalStats = [
-  { label: "Software & Autonomy", value: 39 },
-  { label: "Hardware", value: 31 },
-  { label: "Operations", value: 17 },
-  { label: "Marketing & Web", value: 13 },
+  { label: "Automation and Intelligent Systems (BIAIS)", value: 2 },
+  { label: "Film Production (BFVPROF)", value: 1 },
+  { label: "Civil and Environmental Engineering (MTBYGG)", value: 1 },
+  { label: "Control System Engineering", value: 1 },
+  { label: "Cyber Security and Data Communication (MTKOM)", value: 1 },
+  { label: "Computer Science (BIDATA)", value: 1 },
+  { label: "Computer Science Master (MTDT)", value: 7 },
+  { label: "Electronics Systems Design and Innovation (MTELSYS)", value: 6 },
+  { label: "Electronic Systems Engineer (BIELSYS)", value: 2 },
+  { label: "Energy and the Environment (MTENERG)", value: 1 },
+  { label: "Aerospace Engineer Bachelor (BIFLY)", value: 1 },
+  { label: "Renewable Energy (BIFOREN)", value: 1 },
+  { label: "Applied Physics and Mathematics (MTFYMA)", value: 1 },
+  { label: "Industrial Design Engineering (MTDESIG)", value: 2  },
+  { label: "Industrial Economics and Technology Management (MTIØT)", value: 2  },
+  { label: "Informatics (BIT)", value: 2  },
+  { label: "Engineering and ICT (MTING)", value: 1 },
+  { label: "Cybernetics and Robotics (MTTK)", value: 14 },
+  { label: "Logistics Engineering (FTHINGLOG)", value: 2 },
+  { label: "Marine Technology (MTMART)", value: 5 },
+  { label: "Marine and Maritime Intelligent Robotics (MSMIR)", value: 2 },
+  { label: "Mechanical Engineering (MTMASKIN)", value: 1 },
+  { label: "Mechanical Engineering Bachelor (BIMASKIN)", value: 1 },
+
 ];
 
 const experienceStats = [
-  { label: "1st Year", value: 35 },
-  { label: "2nd Year", value: 25 },
-  { label: "3rd Year", value: 20 },
-  { label: "4th Year +", value: 20 },
+  { label: "1st Year", value: 11 },
+  { label: "2nd Year", value: 20 },
+  { label: "3rd Year", value: 13 },
+  { label: "4th Year +", value: 14 },
 ];
 
 const timelineItems = [
@@ -167,24 +187,8 @@ export default function AboutPage() {
             align="center"
           />
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-6">Technical Distribution</h3>
-              <div className="flex flex-col gap-5">
-                {technicalStats.map((s) => (
-                  <StatBar key={s.label} label={s.label} value={s.value} max={100} />
-                ))}
-              </div>
-              <p className="mt-3 text-xs text-gray-600">Approximate percentage of members per group (59 total).</p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-6">Experience Level</h3>
-              <div className="flex flex-col gap-5">
-                {experienceStats.map((s) => (
-                  <StatBar key={s.label} label={s.label} value={s.value} max={100} />
-                ))}
-              </div>
-              <p className="mt-3 text-xs text-gray-600">Approximate percentage of members per year of study.</p>
-            </div>
+            <PieChart title="Study Program Distribution" data={technicalStats} collapsibleLegend />
+            <PieChart title="Year of Study Distribution" data={experienceStats} />
           </div>
         </div>
       </section>

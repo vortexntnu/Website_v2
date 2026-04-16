@@ -64,11 +64,11 @@ export default function HomePage() {
     <OceanBackground>
 
       {/* ── 1. HERO — SURFACE ZONE ── */}
-      <section className="relative w-full h-screen overflow-hidden flex items-end">
-
+      <section className="relative w-full h-screen overflow-hidden">
 
         {/* Hero content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-8 pb-16 mb-50 w-full">
+        <div className="absolute bottom-[28%] inset-x-0 z-10">
+        <div className="max-w-7xl mx-auto px-8 w-full">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300/40 mb-4">
             Vortex NTNU — Trondheim, Norway
           </p>
@@ -94,9 +94,10 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+        </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-18 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-cyan-200/40 z-10">
+        <div className="hidden md:flex absolute bottom-28 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-cyan-200/40 z-10">
           <span className="tracking-widest text-xs uppercase">Dive in</span>
           <span className="animate-bounce text-lg">↓</span>
         </div>
