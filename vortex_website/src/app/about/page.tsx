@@ -48,17 +48,18 @@ const valueCards = [
 ];
 
 const technicalStats = [
-  { label: "Software & Autonomy", value: 39 },
-  { label: "Hardware", value: 31 },
-  { label: "Operations", value: 17 },
-  { label: "Marketing & Web", value: 13 },
+  { label: "Software & Autonomy", value: 19 },
+  { label: "Hardware", value: 24 },
+  { label: "Operations", value: 3 },
+  { label: "Marketing & Web", value: 5 },
 ];
 
 const experienceStats = [
-  { label: "1st Year", value: 35 },
-  { label: "2nd Year", value: 25 },
-  { label: "3rd Year", value: 20 },
-  { label: "4th Year +", value: 20 },
+  { label: "1st Year", value:14 },
+  { label: "2nd Year", value: 17 },
+  { label: "3rd Year", value: 12 },
+  { label: "4th Year +", value: 7 },
+  { label: "5th Year +", value: 3 },
 ];
 
 const timelineItems = [
@@ -171,19 +172,19 @@ export default function AboutPage() {
               <h3 className="text-lg font-semibold text-white mb-6">Technical Distribution</h3>
               <div className="flex flex-col gap-5">
                 {technicalStats.map((s) => (
-                  <StatBar key={s.label} label={s.label} value={s.value} max={100} />
+                  <StatBar key={s.label} label={s.label} value={s.value} max={51} />
                 ))}
               </div>
-              <p className="mt-3 text-xs text-gray-600">Approximate percentage of members per group (59 total).</p>
+              <p className="mt-3 text-xs text-gray-600">Number of members per group (51 total).</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-white mb-6">Experience Level</h3>
               <div className="flex flex-col gap-5">
                 {experienceStats.map((s) => (
-                  <StatBar key={s.label} label={s.label} value={s.value} max={100} />
+                  <StatBar key={s.label} label={s.label} value={s.value} max={53} />
                 ))}
               </div>
-              <p className="mt-3 text-xs text-gray-600">Approximate percentage of members per year of study.</p>
+              <p className="mt-3 text-xs text-gray-600">Number of members per year of study (53 total).</p>
             </div>
           </div>
         </div>
