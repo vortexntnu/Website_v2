@@ -3,38 +3,27 @@
 import { useState } from "react";
 import Image from "next/image";
 
+type SubTeam = {
+  name: string;
+  description: string;
+};
+
 type TeamSectionData = {
   id: string;
   name: string;
   subtitle: string;
   description1: string;
-  description2: string;
+  description2?: string;
   imageSrc: string;
-  cardImageSrc: string; // small card thumbnail
+  cardImageSrc: string;
   cardDescription: string;
+  subTeams?: SubTeam[];
 };
 
 type ExpandableTeamSectionProps = {
   teams: TeamSectionData[];
 };
 
-/**
- * ExpandableTeamSection — accordion-style team cards for the Join Us page.
- *
- * Design rationale:
- * - The original page had each team's full description in a repeated
- *   full-width section that required scrolling past all teams even if you
- *   only cared about one. An accordion collapses irrelevant content and
- *   makes the page scannable.
- * - The explore-cards grid at the top shows all four teams at a glance with
- *   a thumbnail and short description. Clicking one opens the detail panel
- *   inline below the grid — this is the "progressive disclosure" pattern:
- *   show a summary, let the user request more detail.
- * - The expanded panel uses a smooth max-height transition (via Tailwind
- *   `transition-all duration-300`) because CSS transitions on `height` require
- *   a known target value. `max-height: 9999px` is a common workaround that
- *   creates a smooth opening effect without JavaScript height calculation.
- */
 export default function ExpandableTeamSection({ teams }: ExpandableTeamSectionProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -88,27 +77,50 @@ export default function ExpandableTeamSection({ teams }: ExpandableTeamSectionPr
         }`}
       >
         {active && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 bg-[#1a1a1a] rounded-lg p-8 items-center">
-            {/* Text side */}
-            <div className="flex flex-col gap-4">
-              <span className="inline-block bg-[#c21c1c] text-white text-sm font-semibold px-4 py-2 uppercase tracking-wide w-fit">
-                {active.name}
-              </span>
-              <h3 className="text-2xl font-bold text-white">{active.subtitle}</h3>
-              <p className="text-gray-300 leading-relaxed">{active.description1}</p>
-              <p className="text-gray-400 leading-relaxed">{active.description2}</p>
+          <div className="flex flex-col gap-8 bg-[#1a1a1a] rounded-lg p-8">
+            {/* Top: text + image */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="flex flex-col gap-4">
+                <span className="inline-block bg-[#c21c1c] text-white text-sm font-semibold px-4 py-2 uppercase tracking-wide w-fit">
+                  {active.name}
+                </span>
+                <h3 className="text-2xl font-bold text-white">{active.subtitle}</h3>
+                <p className="text-gray-300 leading-relaxed">{active.description1}</p>
+                {active.description2 && (
+                  <p className="text-gray-400 leading-relaxed">{active.description2}</p>
+                )}
+              </div>
+              <div className="relative aspect-video w-full rounded-lg overflow-hidden">
+                <Image
+                  src={active.imageSrc}
+                  alt={active.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={90}
+                  className="object-cover"
+                />
+              </div>
             </div>
-            {/* Image side */}
-            <div className="relative aspect-video w-full rounded-lg overflow-hidden">
-              <Image
-                src={active.imageSrc}
-                alt={active.name}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                quality={90}
-                className="object-cover"
-              />
-            </div>
+
+            {/* Sub-teams */}
+            {active.subTeams && active.subTeams.length > 0 && (
+              <div className="border-t border-[#374151] pt-8">
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#c21c1c] mb-6">
+                  Sub-teams
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  {active.subTeams.map((sub) => (
+                    <div
+                      key={sub.name}
+                      className="bg-[#262626] border border-[#374151] p-5 rounded-lg flex flex-col gap-2 w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]"
+                    >
+                      <h5 className="text-white font-semibold text-lg">{sub.name}</h5>
+                      <p className="text-gray-400 text-base leading-relaxed">{sub.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
