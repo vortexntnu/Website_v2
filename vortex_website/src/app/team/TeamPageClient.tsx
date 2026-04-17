@@ -31,12 +31,8 @@ import type { TeamMember, SubTeam } from "@/app/lib/types";
 // ── Static team data ──────────────────────────────────────────────────────────
 // Replace with PocketBase fetch when backend is ready.
 
-// Academic years, 3 years back from current (e.g. "2025/2026", "2024/2025", "2023/2024")
-const currentCalendarYear = new Date().getFullYear();
-const years = Array.from({ length: 3 }, (_, i) => {
-  const end = currentCalendarYear - i;
-  return `${end - 1}/${end}`;
-});
+// Academic year shown on the team page.
+const years = ["2025/2026"];
 
 function makeMember(name: string, role: string, imageSrc?: string): TeamMember {
   return {
@@ -44,6 +40,7 @@ function makeMember(name: string, role: string, imageSrc?: string): TeamMember {
     role,
     ...(imageSrc ? { imageSrc } : {}),
     // linkedinHref: "https://linkedin.com",
+    
   };
 }
 
