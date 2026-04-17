@@ -130,7 +130,7 @@ const teams = [
     description1:
       "The Marketing & Web team shapes Vortex's public identity. They manage our brand, create content, and build the digital platforms that connect the organisation with students, sponsors, and the wider world.",
     cardImageSrc: "/images/team/presentation.jpg",
-    imageSrc: "/images/team/walking.png",
+    imageSrc: "/images/team/CR_Marketing0.jpg",
     subTeams: [
       {
         name: "Marketing",
