@@ -14,6 +14,7 @@ export type SubTeam = {
   name: string;
   description: string;
   members: TeamMember[];
+  photoSrc?: string;
 };
 
 export type YearTeam = {
