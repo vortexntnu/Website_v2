@@ -5,20 +5,85 @@ import OceanBackground from "@/app/components/interactive/OceanBackground";
 import type { Sponsor } from "@/app/lib/types";
 
 const sponsors: Sponsor[] = [
-  { name: "KONGSBERG", logoSrc: "/images/sponsors/kongsberg.svg", href: "https://www.kongsberg.com", logoHeight: 90 },
-  { name: "Water Linked", logoSrc: "/images/sponsors/Waterlinked_dark.svg", href: "https://www.waterlinked.com", logoHeight:30},
-  { name: "Nortek", logoSrc: "/images/sponsors/nortek.svg", href: "https://www.nortekgroup.com", logoHeight: 50 },
+  {
+    name: "KONGSBERG",
+    logoSrc: "/images/sponsors/kongsberg.svg",
+    href: "https://www.kongsberg.com",
+    scale: 1,
+    logoHeight: 100,
+    hitWidth: 0,
+    hitPadX: 30,
+  },
+  {
+    name: "Water Linked",
+    logoSrc: "/images/sponsors/Waterlinked_dark.svg",
+    href: "https://www.waterlinked.com",
+    scale: 0.7,
+    hitWidth: 0,
+    hitPadX: 30,
+  },
+  {
+    name: "Nortek",
+    logoSrc: "/images/sponsors/nortek.svg",
+    href: "https://www.nortekgroup.com",
+    hitWidth: 0,
+    hitPadX: 30,
+  },
   {
     name: "NTNU Department of Engineering and Cybernetics",
     logoSrc: "/images/sponsors/inst_for_teknisk_kybernetikk_bredde_eng.jpg",
     href: "https://www.ntnu.edu/itk",
-    logoWidth: 340,
-    logoHeight: 40,
+    scale: 0.8,
+    hitWidth: 0,
+    hitPadX: 30,
   },
-  { name: "FFU", logoSrc: "/images/sponsors/ffu.png", href: "https://www.ffu.no", invertColors: true },
-  { name: "Diab", logoSrc: "/images/sponsors/diab.png", href: "https://www.diabgroup.com" },
-  { name: "Würth Elektronik", logoSrc: "/images/sponsors/wurth-elektronik.svg", href: "https://www.we-online.com", logoHeight: 60 },
-  { name: "Stratum 3D", logoSrc: "/images/sponsors/stratum3d.png", href: "https://stratum3d.no" },
+  {
+    name: "FFU",
+    logoSrc: "/images/sponsors/ffu.png",
+    href: "https://www.ffu.no",
+    invertColors: true,
+    hitWidth: 0,
+    hitPadX: 30,
+  },
+  {
+    name: "Würth Elektronik",
+    logoSrc: "/images/sponsors/wurth-elektronik.png",
+    href: "https://www.we-online.com",
+    scale: 3.5,
+    hitWidth: 0,
+    hitPadX: 90
+  },
+  {
+    name: "Norbit",
+    logoSrc: "/images/sponsors/norbit.svg",
+    href: "https://norbit.com/",
+    scale: 1,
+    hitWidth: 0,
+    hitPadX: 30,
+  },
+  {
+    name: "Nordcad",
+    logoSrc: "/images/sponsors/nordcad.svg",
+    href: "https://www.nordcad.eu/",
+    scale: 0.7,
+    hitWidth: 0,
+    hitPadX: 30,
+  },
+  {
+    name: "Altimo",
+    logoSrc: "/images/sponsors/altimo.png",
+    href: "https://www.altimo.no/",
+    hitWidth: 0,
+    hitPadX: 30,
+  },
+  {
+    name: "Imtas",
+    logoSrc: "/images/sponsors/imtas.png",
+    href: "https://en.imtas.no/",
+    hitWidth: 0,
+    hitPadX: 40,
+    scale:1.2
+  },
 ];
 
 const projects = [
@@ -307,8 +372,8 @@ export default function HomePage() {
       </section>
 
       {/* ── 7. SPONSOR MARQUEE — DEEP OCEAN ── */}
-      <section className="py-10 bg-white">
-        <div className="max-w-7xl mx-auto px-8 mb-8 flex items-center gap-5">
+      <section className="py-8 bg-white">
+        <div className="max-w-7xl mx-auto px-8 mb-4 flex items-center gap-5">
           <div className="flex-1 h-px bg-black/10" />
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 shrink-0">
             Proudly supported by
