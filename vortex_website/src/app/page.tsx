@@ -81,7 +81,8 @@ const sponsors: Sponsor[] = [
     logoSrc: "/images/sponsors/imtas.png",
     href: "https://en.imtas.no/",
     hitWidth: 0,
-    hitPadX: 30,
+    hitPadX: 40,
+    scale:1.2
   },
 ];
 
