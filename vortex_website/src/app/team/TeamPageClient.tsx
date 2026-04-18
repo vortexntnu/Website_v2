@@ -52,7 +52,7 @@ const subTeams: SubTeam[] = [
     photoSrc: "/images/team-photos/Board-team-spring-2026.jpg",
     members: [
       makeMember("Andreas Skagen", "Project Manager / Chairman of the Board", "/images/members/Board Andreas Skagen.jpg"),
-      makeMember("Alvar Guddingsmo", "Chief Technical Officer Hardware / Member of the Board", "/images/jpg/Alvar_edited.jpg"),
+      makeMember("Alvar Guddingsmo", "Chief Technical Officer Hardware / Member of the Board", "/images/members/Alvar_edited.jpg"),
       makeMember("Axel Robert Olivier Jenssen", "Chief Financial Officer / Member of the Board", "/images/members/Board  Axel Robert Olivier Jenssen.jpg"),
       makeMember("Jørgen Fjermedal", "Chief Technical Officer Software / Member of the Board", "/images/members/Board Jørgen Fjermedal.jpg"),
       makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "/images/members/Board Lasse Johansen.jpg"),
@@ -117,7 +117,7 @@ const subTeams: SubTeam[] = [
       makeMember("Anbit Adhikari", "Member of Control", "/images/members/Control Anbit Adhikari.jpg"),
       makeMember("Filip Nilsen", "Member of Control", "/images/members/Control Filip Nilsen.jpg"),
       makeMember("Henrik Mæland Haakenaasen", "Member of Control", "/images/members/Control Henrik Mæland Haakenaasen.jpg"),
-      makeMember("Patrick A. Sheehan", "Member of Control", "/images/jpg/Pat_edited.jpg"),
+      makeMember("Patrick A. Sheehan", "Member of Control", "/images/members/Pat_edited.jpg"),
       makeMember("Thomas Paulsen", "Member of Control", "/images/members/Control THomas Paulsen.jpg"),
     ],
   },
