@@ -66,6 +66,34 @@ export default function HomePage() {
       {/* ── 1. HERO — SURFACE ZONE ── */}
       <section className="relative w-full h-screen overflow-hidden">
 
+        {/* Hero background: depth gradient + sunbeams.
+            Bottom fades fully to transparent so the OceanBackground gradient
+            shows through — no hard cutoff at the section boundary. */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* Depth gradient — opaque at top, fades to transparent at bottom so
+              the OceanBackground's continuous gradient takes over naturally. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(
+                to bottom,
+                #031528 0%,
+                #052944 22%,
+                #073d64 48%,
+                rgba(8, 55, 90, 0.75) 70%,
+                rgba(10, 62, 98, 0.35) 87%,
+                transparent 100%
+              )`,
+            }}
+          />
+
+          {/* Sunbeams — diagonal light shafts from above, defined (not foggy) */}
+          <div
+            className="absolute top-0 left-0 right-0 hero-water-beams pointer-events-none"
+            style={{ height: "60%" }}
+          />
+        </div>
+
         {/* Hero content */}
         <div className="absolute bottom-[28%] inset-x-0 z-10">
         <div className="max-w-7xl mx-auto px-8 w-full">
@@ -96,11 +124,15 @@ export default function HomePage() {
         </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="hidden md:flex absolute bottom-28 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-cyan-200/40 z-10">
+        {/* Scroll indicator — clickable, jumps to the drones section */}
+        <a
+          href="#drones"
+          aria-label="Jump to our drones"
+          className="hidden md:flex absolute bottom-28 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-cyan-200/40 hover:text-cyan-100/80 transition-colors duration-200 z-10"
+        >
           <span className="tracking-widest text-xs uppercase">Dive in</span>
           <span className="animate-bounce text-lg">↓</span>
-        </div>
+        </a>
       </section>
 
       {/* ── 2. MISSION STATEMENT — SHALLOW WATERS ── */}
@@ -119,7 +151,7 @@ export default function HomePage() {
       </section>
 
       {/* ── 3. PROJECTS GRID — OPEN WATER ── */}
-      <section className="py-16 px-8">
+      <section id="drones" className="py-16 px-8 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-baseline justify-between mb-8">
             <div>
