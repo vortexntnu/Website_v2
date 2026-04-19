@@ -78,7 +78,8 @@ const experienceStats = [
   { label: "1st Year", value: 11 },
   { label: "2nd Year", value: 20 },
   { label: "3rd Year", value: 13 },
-  { label: "4th Year +", value: 14 },
+  { label: "4th Year", value: 11 },
+  { label: "5th Year", value: 3 },
 ];
 
 const timelineItems = [
@@ -118,7 +119,7 @@ export default function AboutPage() {
       {/* ── 1. Hero ── */}
       <HeroSection
         imageSrc="/images/competitions/orca-team.jpg"
-        heading="Anchor Into Our Mission"
+        heading="Anchored in Our Mission"
         subheading="Enabling students at NTNU to develop themselves as engineers and team members through autonomous maritime vehicles."
         align="center"
         height="xl"
