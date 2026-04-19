@@ -49,9 +49,9 @@ const sponsors: Sponsor[] = [
     name: "Würth Elektronik",
     logoSrc: "/images/sponsors/wurth-elektronik.png",
     href: "https://www.we-online.com",
-    scale: 3.5,
+    scale: 1.5,
     hitWidth: 0,
-    hitPadX: 90
+    hitPadX: 60
   },
   {
     name: "Norbit",
