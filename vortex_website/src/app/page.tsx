@@ -129,11 +129,54 @@ export default function HomePage() {
     <OceanBackground>
 
       {/* ── 1. HERO — SURFACE ZONE ── */}
-      <section className="relative w-full h-screen overflow-hidden flex items-end">
+      <section className="relative w-full h-screen overflow-hidden">
 
+        {/* Hero background: underwater photo with depth darkening.
+            The photo itself fades to transparent at the bottom (via mask) and
+            a darkening gradient overlay ramps up as you scroll down, so the
+            section blends seamlessly into the OceanBackground below. */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* Photo layer — masked so bottom edge fades out, avoiding a hard cutoff. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, black 0%, black 65%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, black 0%, black 65%, transparent 100%)",
+            }}
+          >
+            <Image
+              src="/images/drones/hero_background.png"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              quality={90}
+              className="object-cover"
+            />
+          </div>
+
+          {/* Depth-darkening overlay — gets progressively darker toward the
+              bottom, then fades out so the OceanBackground gradient takes over. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(
+                to bottom,
+                rgba(3, 21, 40, 0.30) 0%,
+                rgba(3, 21, 40, 0.55) 45%,
+                rgba(3, 21, 40, 0.80) 75%,
+                rgba(5, 41, 68, 0.40) 92%,
+                transparent 100%
+              )`,
+            }}
+          />
+        </div>
 
         {/* Hero content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-8 pb-16 mb-50 w-full">
+        <div className="absolute bottom-[28%] inset-x-0 z-10">
+        <div className="max-w-7xl mx-auto px-8 w-full">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300/40 mb-4">
             Vortex NTNU — Trondheim, Norway
           </p>
@@ -159,12 +202,17 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-18 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-cyan-200/40 z-10">
+        {/* Scroll indicator — clickable, jumps to the drones section */}
+        <a
+          href="#drones"
+          aria-label="Jump to our drones"
+          className="hidden md:flex absolute bottom-28 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-cyan-200/40 hover:text-cyan-100/80 transition-colors duration-200 z-10"
+        >
           <span className="tracking-widest text-xs uppercase">Dive in</span>
           <span className="animate-bounce text-lg">↓</span>
-        </div>
+        </a>
       </section>
 
       {/* ── 2. MISSION STATEMENT — SHALLOW WATERS ── */}
@@ -182,8 +230,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Transition — softens the tonal shift between the mission statement
+          and the darker projects grid below. */}
+      <div
+        aria-hidden
+        className="h-32 md:h-40 w-full pointer-events-none"
+        style={{
+          background: `linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(5, 32, 58, 0.25) 40%,
+            rgba(3, 20, 42, 0.55) 75%,
+            rgba(2, 12, 28, 0.70) 100%
+          )`,
+        }}
+      />
+
       {/* ── 3. PROJECTS GRID — OPEN WATER ── */}
-      <section className="py-16 px-8">
+      <section id="drones" className="py-16 px-8 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-baseline justify-between mb-8">
             <div>
@@ -207,7 +271,7 @@ export default function HomePage() {
               style={{ height: 300 }}
             >
               <Image src={projects[0].imageSrc} alt={projects[0].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 850px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
               <span className="absolute top-4 left-4 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5 tracking-wide">
                 {projects[0].year}
               </span>
@@ -227,7 +291,7 @@ export default function HomePage() {
               style={{ height: 300 }}
             >
               <Image src={projects[1].imageSrc} alt={projects[1].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-transparent" />
               <span className="absolute top-4 left-4 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[1].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <h3 className="text-white font-bold text-xl">{projects[1].name}</h3>
@@ -242,7 +306,7 @@ export default function HomePage() {
               style={{ height: 220 }}
             >
               <Image src={projects[2].imageSrc} alt={projects[2].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
               <span className="absolute top-3 left-3 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[2].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="text-white font-bold text-lg">{projects[2].name}</h3>
@@ -257,7 +321,7 @@ export default function HomePage() {
               style={{ height: 220 }}
             >
               <Image src={projects[3].imageSrc} alt={projects[3].name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px" quality={90} className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
               <span className="absolute top-3 left-3 bg-[#c21c1c] text-white text-xs font-bold px-2 py-0.5">{projects[3].year}</span>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="text-white font-bold text-lg">{projects[3].name}</h3>
@@ -329,7 +393,7 @@ export default function HomePage() {
               quality={90}
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/55 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
               <p className="text-white/40 text-xs uppercase tracking-widest">The Team</p>
               <p className="text-white font-semibold mt-1 text-sm">50+ members across NTNU</p>
@@ -386,7 +450,7 @@ export default function HomePage() {
       {/* ── 8. CTA BANNER — THE ABYSS ── */}
       <section className="py-28 px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="border border-white/5 bg-black/20 px-10 py-16 md:px-16 flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+          <div className="border border-white/5 bg-black/20 px-10 py-16 md:px-16 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-600 mb-4">Join Us</p>
               <h2 className="text-5xl md:text-6xl font-bold text-white leading-[1.05] max-w-xl">
@@ -397,20 +461,12 @@ export default function HomePage() {
                 submarine for you.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
-              <Link
-                href="/join-us"
-                className="bg-[#c21c1c] hover:bg-[#dc2626] text-white font-semibold px-8 py-3 transition-colors duration-200 text-center"
-              >
-                Become a Member
-              </Link>
-              <Link
-                href="/contact"
-                className="border border-white/10 hover:border-white/25 text-gray-400 hover:text-white font-semibold px-8 py-3 transition-colors duration-200 text-center"
-              >
-                Become a Partner
-              </Link>
-            </div>
+            <Link
+              href="/join-us"
+              className="bg-[#c21c1c] hover:bg-[#dc2626] text-white font-semibold px-14 py-5 text-lg transition-colors duration-200 text-center shrink-0"
+            >
+              Become a Member →
+            </Link>
           </div>
         </div>
       </section>
