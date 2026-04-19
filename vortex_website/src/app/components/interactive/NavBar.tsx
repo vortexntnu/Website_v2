@@ -43,12 +43,12 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 w-full bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between">
         {/* Logo / wordmark */}
-        <Link href="/" className="inline-flex items-center -ml-6 md:-ml-10" aria-label="Vortex home">
+        <Link href="/" className="block -ml-6 md:-ml-10" aria-label="Vortex home">
           <Image
             src="/images/logos/LogoTextLight.svg"
             alt="Vortex logo"
-            width={48}
-            height={48}
+            width={100}
+            height={120}
             className="h-30 w-25"
             priority
           />

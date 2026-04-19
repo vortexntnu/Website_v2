@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import HeroSection from "@/app/components/ui/HeroSection";
 import SectionHeading from "@/app/components/ui/SectionHeading";
 import ExpandableTeamSection from "@/app/components/interactive/ExpandableTeamSection";
@@ -110,28 +109,13 @@ export default function JoinUsPage() {
       {/* ── 1. Hero ── */}
       <HeroSection
         imageSrc="/images/teams/mechanical-beluga.png"
-        heading="Join The Team!"
-        subheading="Applications are open for the 2027 generation. All study levels and backgrounds welcome."
+        heading="Join the Team!"
+        subheading="Team Lead applications for 2027 have now closed. New member positions open in August 2027 — all study levels and backgrounds are welcome."
         align="center"
         height="xl"
         overlay={0.65}
-        cta={{ label: "APPLY NOW", href: "/contact" }}
+        cta={{ label: "APPLY NOW", href: "/contact", disabled: true }}
       />
-
-      {/* Team Lead application CTA strip */}
-      <div className="bg-[#1a1a1a] border-b border-[#374151] py-5">
-        <div className="max-w-7xl mx-auto px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-300 text-sm">
-            Interested in leading a team? Team Lead applications for 2027 are now open.
-          </p>
-          <Link
-            href="/contact"
-            className="bg-[#c21c1c] hover:bg-[#dc2626] text-white text-sm font-semibold px-6 py-2 transition-colors duration-200 whitespace-nowrap"
-          >
-            Team Lead Application →
-          </Link>
-        </div>
-      </div>
 
       {/* ── 2. Why Vortex ── */}
       <section className="py-16 bg-[#0a0a0a]">
