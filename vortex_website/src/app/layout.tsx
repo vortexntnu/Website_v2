@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     { name: "Nortek", href: "https://www.nortekgroup.com" },
     { name: "NTNU", href: "https://www.ntnu.edu/itk" },
     { name: "FFU", href: "https://www.ffu.no" },
-    { name: "Würth Elektronik", href: "https://www.we-online.com", wide: true },
+    { name: "Würth Elektronik", href: "https://www.we-online.com"},
     { name: "Norbit", href: "https://www.we-online.com" },
     { name: "Nordcad", href: "https://www.nordcad.eu/" },
     { name: "Altimo", href: "https://www.altimo.no/" },
@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </h4>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
                   {sponsors.map((s) => (
-                    <li key={s.name} className={s.wide ? "col-span-2" : ""}>
+                    <li key={s.name}>
                       <a
                         href={s.href}
                         target="_blank"
