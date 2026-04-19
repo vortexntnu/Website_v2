@@ -119,7 +119,7 @@ export default function AboutPage() {
       {/* ── 1. Hero ── */}
       <HeroSection
         imageSrc="/images/competitions/orca-team.jpg"
-        heading="Anchored In Our Mission"
+        heading="Anchored in Our Mission"
         subheading="Enabling students at NTNU to develop themselves as engineers and team members through autonomous maritime vehicles."
         align="center"
         height="xl"
