@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Slice = { label: string; value: number };
 
@@ -35,6 +35,8 @@ export default function PieChart({
 }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const [legendOpen, setLegendOpen] = useState(false);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const total = data.reduce((s, d) => s + d.value, 0);
   const colors = generateColors(data.length);
@@ -52,6 +54,33 @@ export default function PieChart({
 
   const active = hovered !== null ? slices[hovered] : null;
 
+  // When a segment in the collapsible portion (index >= 4) is hovered/tapped,
+  // open the list if closed and scroll the corresponding row into view.
+  useEffect(() => {
+    if (hovered === null || hovered < 4) return;
+    if (!legendOpen) {
+      setLegendOpen(true);
+      return;
+    }
+    const row = rowRefs.current[hovered - 4];
+    const container = scrollRef.current;
+    if (!row || !container) return;
+
+    const rowRect = row.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    if (rowRect.top < containerRect.top) {
+      container.scrollTo({
+        top: container.scrollTop + (rowRect.top - containerRect.top),
+        behavior: "smooth",
+      });
+    } else if (rowRect.bottom > containerRect.bottom) {
+      container.scrollTo({
+        top: container.scrollTop + (rowRect.bottom - containerRect.bottom),
+        behavior: "smooth",
+      });
+    }
+  }, [hovered, legendOpen]);
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -90,7 +119,10 @@ export default function PieChart({
             <span className="font-bold">{active.value}</span> members
           </p>
         ) : (
-          <p className="text-sm text-gray-600">Hover a segment for details</p>
+          <p className="text-sm text-gray-600">
+            <span className="md:hidden">Tap on a segment for details</span>
+            <span className="hidden md:inline">Hover over a segment for details</span>
+          </p>
         )}
       </div>
 
@@ -114,9 +146,13 @@ export default function PieChart({
         {collapsibleLegend && slices.length > 4 && (
           <>
             {legendOpen && (
-              <div className="max-h-56 overflow-y-auto pr-1 border-t border-[#374151] pt-1.5 flex flex-col gap-1.5">
+              <div
+                ref={scrollRef}
+                className="max-h-56 overflow-y-auto pr-1 border-t border-[#374151] pt-1.5 flex flex-col gap-1.5"
+              >
                 {slices.slice(4).map((s, i) => (
                   <div
+                    ref={(el) => { rowRefs.current[i] = el; }}
                     key={s.label}
                     className={`flex items-center justify-between gap-3 cursor-pointer px-2 py-1 rounded transition-colors duration-150 ${hovered === i + 4 ? "bg-[#262626]" : ""}`}
                     onMouseEnter={() => setHovered(i + 4)}

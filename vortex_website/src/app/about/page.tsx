@@ -187,8 +187,8 @@ export default function AboutPage() {
             align="center"
           />
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
-            <PieChart title="Study Program Distribution" data={technicalStats} collapsibleLegend />
-            <PieChart title="Year of Study Distribution" data={experienceStats} />
+            <PieChart title="Study Programs" data={technicalStats} collapsibleLegend />
+            <PieChart title="Years of Study" data={experienceStats} />
           </div>
         </div>
       </section>

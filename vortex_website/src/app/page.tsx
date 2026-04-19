@@ -66,31 +66,46 @@ export default function HomePage() {
       {/* ── 1. HERO — SURFACE ZONE ── */}
       <section className="relative w-full h-screen overflow-hidden">
 
-        {/* Hero background: depth gradient + sunbeams.
-            Bottom fades fully to transparent so the OceanBackground gradient
-            shows through — no hard cutoff at the section boundary. */}
+        {/* Hero background: underwater photo with depth darkening.
+            The photo itself fades to transparent at the bottom (via mask) and
+            a darkening gradient overlay ramps up as you scroll down, so the
+            section blends seamlessly into the OceanBackground below. */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* Depth gradient — opaque at top, fades to transparent at bottom so
-              the OceanBackground's continuous gradient takes over naturally. */}
+          {/* Photo layer — masked so bottom edge fades out, avoiding a hard cutoff. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, black 0%, black 65%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, black 0%, black 65%, transparent 100%)",
+            }}
+          >
+            <Image
+              src="/images/drones/hero_background.png"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              quality={90}
+              className="object-cover"
+            />
+          </div>
+
+          {/* Depth-darkening overlay — gets progressively darker toward the
+              bottom, then fades out so the OceanBackground gradient takes over. */}
           <div
             className="absolute inset-0"
             style={{
               background: `linear-gradient(
                 to bottom,
-                #031528 0%,
-                #052944 22%,
-                #073d64 48%,
-                rgba(8, 55, 90, 0.75) 70%,
-                rgba(10, 62, 98, 0.35) 87%,
+                rgba(3, 21, 40, 0.30) 0%,
+                rgba(3, 21, 40, 0.55) 45%,
+                rgba(3, 21, 40, 0.80) 75%,
+                rgba(5, 41, 68, 0.40) 92%,
                 transparent 100%
               )`,
             }}
-          />
-
-          {/* Sunbeams — diagonal light shafts from above, defined (not foggy) */}
-          <div
-            className="absolute top-0 left-0 right-0 hero-water-beams pointer-events-none"
-            style={{ height: "60%" }}
           />
         </div>
 
@@ -149,6 +164,22 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Transition — softens the tonal shift between the mission statement
+          and the darker projects grid below. */}
+      <div
+        aria-hidden
+        className="h-32 md:h-40 w-full pointer-events-none"
+        style={{
+          background: `linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(5, 32, 58, 0.25) 40%,
+            rgba(3, 20, 42, 0.55) 75%,
+            rgba(2, 12, 28, 0.70) 100%
+          )`,
+        }}
+      />
 
       {/* ── 3. PROJECTS GRID — OPEN WATER ── */}
       <section id="drones" className="py-16 px-8 scroll-mt-20">
