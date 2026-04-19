@@ -48,14 +48,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ];
 
   const sponsors = [
-    { name: "KONGSBERG", href: "https://www.kongsberg.com", wide: false },
-    { name: "Nortek", href: "https://www.nortekgroup.com", wide: false },
-    { name: "Water Linked", href: "https://www.waterlinked.com", wide: false },
-    { name: "FFU", href: "https://www.ffu.no", wide: false },
-    { name: "Stratum 3D", href: "https://stratum3d.no", wide: false },
-    { name: "Diab", href: "https://www.diabgroup.com", wide: false },
-    { name: "Würth Elektronik", href: "https://www.we-online.com", wide: true },
-    { name: "NTNU Department of Engineering Cybernetics", href: "https://www.ntnu.edu/itk", wide: true },
+    { name: "KONGSBERG", href: "https://www.kongsberg.com" },
+    { name: "Water Linked", href: "https://www.waterlinked.com" },
+    { name: "Nortek", href: "https://www.nortekgroup.com" },
+    { name: "NTNU", href: "https://www.ntnu.edu/itk" },
+    { name: "FFU", href: "https://www.ffu.no" },
+    { name: "Würth Elektronik", href: "https://www.we-online.com" },
+    { name: "Norbit", href: "https://www.we-online.com" },
+    { name: "Nordcad", href: "https://www.nordcad.eu/" },
+    { name: "Altimo", href: "https://www.altimo.no/" },
+    { name: "Imtas", href: "https://en.imtas.no/" },
   ];
 
   return (
