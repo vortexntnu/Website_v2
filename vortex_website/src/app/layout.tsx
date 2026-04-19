@@ -53,9 +53,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     { name: "Nortek", href: "https://www.nortekgroup.com" },
     { name: "NTNU", href: "https://www.ntnu.edu/itk" },
     { name: "FFU", href: "https://www.ffu.no" },
-    { name: "Diab", href: "https://www.diabgroup.com" },
     { name: "Würth Elektronik", href: "https://www.we-online.com" },
-    { name: "Stratum 3D", href: "https://stratum3d.no" },
+    { name: "Norbit", href: "https://www.we-online.com" },
+    { name: "Nordcad", href: "https://www.nordcad.eu/" },
+    { name: "Altimo", href: "https://www.altimo.no/" },
+    { name: "Imtas", href: "https://en.imtas.no/" },
   ];
 
   return (
