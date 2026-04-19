@@ -206,6 +206,35 @@ body {
   }
 }
 
+/* ─────────────────────────────────────────────
+   Hero sunbeams + smooth in-page scroll
+   ───────────────────────────────────────────── */
+
+/* Smooth in-page jumps (used by the "Dive in" anchor). */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sunbeams — narrow diagonal light shafts streaming down from above.
+   Conic gradients anchored above the viewport fan outward and fade
+   before reaching halfway down. */
+.hero-water-beams {
+  background:
+    conic-gradient(from 190deg at 25% -15%, rgba(170, 220, 255, 0.11) 0deg, transparent 14deg),
+    conic-gradient(from 205deg at 55% -10%, rgba(150, 210, 245, 0.09) 0deg, transparent 10deg),
+    conic-gradient(from 195deg at 80% -15%, rgba(170, 220, 255, 0.10) 0deg, transparent 12deg),
+    conic-gradient(from 215deg at 10% -10%, rgba(140, 200, 240, 0.07) 0deg, transparent 8deg);
+  mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+  animation: hero-beams-sway 10s ease-in-out infinite alternate;
+  transform-origin: 50% 0%;
+}
+
+@keyframes hero-beams-sway {
+  0%   { transform: rotate(-0.6deg) translateX(-6px); opacity: 0.85; }
+  100% { transform: rotate(0.6deg)  translateX(6px);  opacity: 1; }
+}
+
 /* Depth indicator label */
 .ocean-depth-label {
   writing-mode: vertical-rl;

@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </h4>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
                   {sponsors.map((s) => (
-                    <li key={s.name}>
+                    <li key={s.name} className={s.wide ? "col-span-2" : ""}>
                       <a
                         href={s.href}
                         target="_blank"

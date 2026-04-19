@@ -6,6 +6,7 @@ type HeroHeight = "sm" | "md" | "lg" | "xl" | "screen";
 type HeroCta = {
   label: string;
   href: string;
+  disabled?: boolean;
 };
 
 type HeroSectionProps = {
@@ -85,12 +86,18 @@ export default function HeroSection({
           </p>
         )}
         {cta && (
-          <Link
-            href={cta.href}
-            className="mt-8 inline-block bg-[#c21c1c] hover:bg-[#dc2626] text-white font-semibold px-8 py-3 transition-colors duration-200 animate-fade-in-up"
-          >
-            {cta.label}
-          </Link>
+          cta.disabled ? (
+            <span className="mt-8 inline-block bg-[#4b5563] text-gray-400 font-semibold px-8 py-3 cursor-not-allowed animate-fade-in-up">
+              {cta.label}
+            </span>
+          ) : (
+            <Link
+              href={cta.href}
+              className="mt-8 inline-block bg-[#c21c1c] hover:bg-[#dc2626] text-white font-semibold px-8 py-3 transition-colors duration-200 animate-fade-in-up"
+            >
+              {cta.label}
+            </Link>
+          )
         )}
 
         {/* Subtle scroll indicator on screen-height heroes */}
