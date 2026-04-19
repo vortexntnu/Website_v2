@@ -54,15 +54,15 @@ export default function PieChart({
 
   const active = hovered !== null ? slices[hovered] : null;
 
-  // When a segment in the collapsible portion (index >= 4) is hovered/tapped,
+  // When a segment in the collapsible portion (index >= 5) is hovered/tapped,
   // open the list if closed and scroll the corresponding row into view.
   useEffect(() => {
-    if (hovered === null || hovered < 4) return;
+    if (hovered === null || hovered < 5) return;
     if (!legendOpen) {
       setLegendOpen(true);
       return;
     }
-    const row = rowRefs.current[hovered - 4];
+    const row = rowRefs.current[hovered - 5];
     const container = scrollRef.current;
     if (!row || !container) return;
 
@@ -83,7 +83,7 @@ export default function PieChart({
   }, [hovered, legendOpen]);
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-5">
       <h3 className="text-lg font-semibold text-white self-start">{title}</h3>
 
       {/* Chart */}
@@ -100,7 +100,7 @@ export default function PieChart({
               className="cursor-pointer transition-all duration-150"
             />
           ))}
-          <circle cx={cx} cy={cy} r={46} fill="#0a0a0a" />
+          <circle cx={cx} cy={cy} r={56} fill="#0a0a0a" />
           <text x={cx} y={cy + 6} textAnchor="middle" fill="#ffffff" fontSize={22} fontWeight="bold" fontFamily="sans-serif">
             {total}
           </text>
@@ -126,9 +126,9 @@ export default function PieChart({
         )}
       </div>
 
-      {/* Legend — first 4 always visible, rest collapsible */}
+      {/* Legend — first 5 always visible, rest collapsible */}
       <div className="w-full flex flex-col gap-1.5">
-        {slices.slice(0, 4).map((s, i) => (
+        {slices.slice(0, 5).map((s, i) => (
           <div
             key={s.label}
             className={`flex items-center justify-between gap-3 cursor-pointer px-2 py-1 rounded transition-colors duration-150 ${hovered === i ? "bg-[#262626]" : ""}`}
@@ -137,30 +137,30 @@ export default function PieChart({
           >
             <div className="flex items-center gap-2 min-w-0">
               <div className="w-3 h-3 shrink-0 rounded-sm" style={{ backgroundColor: s.color }} />
-              <span className={`text-sm transition-colors duration-150 truncate ${hovered === i ? "text-white" : "text-gray-400"}`}>{s.label}</span>
+              <span className={`text-sm transition-colors duration-150 truncate ${hovered === i ? "text-white" : "text-gray-500"}`}>{s.label}</span>
             </div>
             <span className="text-white font-semibold text-sm tabular-nums shrink-0">{s.value}</span>
           </div>
         ))}
 
-        {collapsibleLegend && slices.length > 4 && (
+        {collapsibleLegend && slices.length > 5 && (
           <>
             {legendOpen && (
               <div
                 ref={scrollRef}
-                className="max-h-56 overflow-y-auto pr-1 border-t border-[#374151] pt-1.5 flex flex-col gap-1.5"
+                className="max-h-56 overflow-y-auto pr-1 border-t border-[#375151] pt-1.5 flex flex-col gap-1.5"
               >
-                {slices.slice(4).map((s, i) => (
+                {slices.slice(5).map((s, i) => (
                   <div
                     ref={(el) => { rowRefs.current[i] = el; }}
                     key={s.label}
-                    className={`flex items-center justify-between gap-3 cursor-pointer px-2 py-1 rounded transition-colors duration-150 ${hovered === i + 4 ? "bg-[#262626]" : ""}`}
-                    onMouseEnter={() => setHovered(i + 4)}
+                    className={`flex items-center justify-between gap-3 cursor-pointer px-2 py-1 rounded transition-colors duration-150 ${hovered === i + 5 ? "bg-[#262626]" : ""}`}
+                    onMouseEnter={() => setHovered(i + 5)}
                     onMouseLeave={() => setHovered(null)}
                   >
                     <div className="flex items-center gap-2 min-w-0">
                       <div className="w-3 h-3 shrink-0 rounded-sm" style={{ backgroundColor: s.color }} />
-                      <span className={`text-sm transition-colors duration-150 truncate ${hovered === i + 4 ? "text-white" : "text-gray-400"}`}>{s.label}</span>
+                      <span className={`text-sm transition-colors duration-150 truncate ${hovered === i + 5 ? "text-white" : "text-gray-500"}`}>{s.label}</span>
                     </div>
                     <span className="text-white font-semibold text-sm tabular-nums shrink-0">{s.value}</span>
                   </div>
@@ -169,9 +169,9 @@ export default function PieChart({
             )}
             <button
               onClick={() => setLegendOpen((v) => !v)}
-              className="mt-1 w-full flex items-center justify-between px-3 py-2 text-sm text-gray-400 hover:text-white border border-[#374151] hover:border-[#c21c1c] rounded transition-colors duration-150"
+              className="mt-1 w-full flex items-center justify-between px-3 py-2 text-sm text-gray-500 hover:text-white border border-[#375151] hover:border-[#c21c1c] rounded transition-colors duration-150"
             >
-              <span>{legendOpen ? "Show less" : `Show ${slices.length - 4} more programs`}</span>
+              <span>{legendOpen ? "Show less" : `Show ${slices.length - 5} more programs`}</span>
               <span style={{ display: "inline-block", transform: legendOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>↓</span>
             </button>
           </>
