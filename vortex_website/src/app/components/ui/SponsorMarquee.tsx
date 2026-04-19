@@ -8,35 +8,52 @@ type SponsorMarqueeProps = {
 /**
  * SponsorMarquee — infinite-scrolling sponsor banner.
  *
- * Uses margin-right (not gap) on every item so that each item carries its own
- * trailing space. This makes the doubled list exactly 2× a single copy's width,
- * so translateX(-50%) lands precisely at the seam — giving a seamless loop.
+ * Every sponsor is rendered into an identical fixed slot with `object-contain`,
+ * so differing source aspect ratios don't translate into differing visual sizes.
+ * For logos whose source file has baked-in transparent padding, use the optional
+ * `scale` field on the sponsor to nudge them up without editing the image.
+ * Use `logoHeight` (in px) when a specific logo should render taller or shorter.
  */
 export default function SponsorMarquee({ sponsors }: SponsorMarqueeProps) {
-  // Duplicate for seamless looping
   const doubled = [...sponsors, ...sponsors];
 
   return (
     <div className="marquee-wrapper overflow-hidden w-full">
       <div className="animate-marquee flex items-center whitespace-nowrap w-max">
         {doubled.map((s, i) => {
+          const logoHeight = s.logoHeight ?? 48;
+          // For shrinking (scale < 1), apply via height so the layout box matches
+          // the visual (hitbox hugs the logo). For scale >= 1, keep CSS transform
+          // so oversized logos don't push the marquee row height.
+          const shrinkViaLayout = s.scale !== undefined && s.scale < 1;
+          const renderedHeight = shrinkViaLayout ? logoHeight * (s.scale as number) : logoHeight;
+          const useTransform = s.scale !== undefined && s.scale >= 1;
+
           const inner = s.logoSrc ? (
             <Image
               src={s.logoSrc}
               alt={s.name}
-              width={s.logoWidth ?? 180}
-              height={s.logoHeight ?? 40}
-              className="object-contain opacity-100 hover:opacity-100 transition-opacity duration-150 w-auto"
+              width={320}
+              height={96}
+              className="w-auto max-w-none"
               style={{
-                height: s.logoHeight ?? 40,
+                height: renderedHeight,
+                transform: useTransform ? `scale(${s.scale})` : undefined,
                 ...(s.invertColors ? { filter: "invert(1)" } : {}),
               }}
             />
           ) : (
-            <span className="text-gray-500 text-lg font-semibold tracking-wide hover:text-gray-900 transition-colors duration-150">
+            <span className="text-gray-500 text-lg font-semibold tracking-wide">
               {s.name}
             </span>
           );
+
+          const slotClasses = "flex items-center justify-center shrink-0";
+          const slotStyle = {
+            minWidth: s.hitWidth ?? 180,
+            paddingLeft: s.hitPadLeft ?? s.hitPadX ?? 0,
+            paddingRight: s.hitPadRight ?? s.hitPadX ?? 0,
+          };
 
           return s.href ? (
             <a
@@ -44,13 +61,14 @@ export default function SponsorMarquee({ sponsors }: SponsorMarqueeProps) {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="mr-16 flex items-center justify-center"
+              className={slotClasses}
+              style={slotStyle}
               aria-label={s.name}
             >
               {inner}
             </a>
           ) : (
-            <span key={i} className="mr-16 flex items-center justify-center cursor-default">
+            <span key={i} className={`${slotClasses} cursor-default`} style={slotStyle}>
               {inner}
             </span>
           );

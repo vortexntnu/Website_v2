@@ -14,6 +14,7 @@ export type SubTeam = {
   name: string;
   description: string;
   members: TeamMember[];
+  photoSrc?: string;
 };
 
 export type YearTeam = {
@@ -36,8 +37,12 @@ export type Sponsor = {
   logoSrc?: string;
   href?: string;
   invertColors?: boolean; // invert logo colors (e.g. white logos on white background)
-  logoHeight?: number;   // override default logo height in px
-  logoWidth?: number;    // override requested image width in px for wide logos
+  scale?: number; // per-logo visual nudge when the source has extra padding (e.g. 1.2)
+  logoHeight?: number; // rendered logo height in px (defaults to 48)
+  hitWidth?: number; // clickable-area width in px (defaults to 180)
+  hitPadX?: number; // extra horizontal padding inside the link in px (defaults to 0); used for both sides unless hitPadLeft/hitPadRight override
+  hitPadLeft?: number; // overrides left-side padding (px)
+  hitPadRight?: number; // overrides right-side padding (px)
 };
 
 export type ContactPerson = {

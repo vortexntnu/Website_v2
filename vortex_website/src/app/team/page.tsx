@@ -23,7 +23,7 @@ export default function TeamPage() {
   return (
     <>
       <HeroSection
-        imageSrc="/images/team/happy-member.jpg"
+        imageSrc="/images/team/Gruppebilder_hele_vortex.jpg"
         heading="Our Team"
         subheading="50+ students from 20+ study programs building autonomous maritime vehicles."
         align="center"

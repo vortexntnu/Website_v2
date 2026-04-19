@@ -152,12 +152,12 @@ export default function JoinUsPage() {
       {/* ── 1. Hero ── */}
       <HeroSection
         imageSrc="/images/teams/mechanical-beluga.png"
-        heading="Join The Team!"
-        subheading="Applications are open for the 2027 generation. All study levels and backgrounds welcome."
+        heading="Join the Team!"
+        subheading="Team Lead applications for 2027 have now closed. New member positions open in August 2027 — all study levels and backgrounds are welcome."
         align="center"
         height="xl"
         overlay={0.65}
-        cta={{ label: "APPLY NOW", href: "/contact" }}
+        cta={{ label: "APPLY NOW", href: "/contact", disabled: true }}
       />
 
       {/* ── 2. Why Vortex ── */}

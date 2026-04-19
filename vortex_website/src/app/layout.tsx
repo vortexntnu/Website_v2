@@ -48,14 +48,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ];
 
   const sponsors = [
-    { name: "KONGSBERG", href: "https://www.kongsberg.com" },
-    { name: "Water Linked", href: "https://www.waterlinked.com" },
-    { name: "Nortek", href: "https://www.nortekgroup.com" },
-    { name: "NTNU", href: "https://www.ntnu.edu/itk" },
-    { name: "FFU", href: "https://www.ffu.no" },
-    { name: "Diab", href: "https://www.diabgroup.com" },
-    { name: "Würth Elektronik", href: "https://www.we-online.com" },
-    { name: "Stratum 3D", href: "https://stratum3d.no" },
+    { name: "KONGSBERG", href: "https://www.kongsberg.com", wide: false },
+    { name: "Nortek", href: "https://www.nortekgroup.com", wide: false },
+    { name: "Water Linked", href: "https://www.waterlinked.com", wide: false },
+    { name: "FFU", href: "https://www.ffu.no", wide: false },
+    { name: "Stratum 3D", href: "https://stratum3d.no", wide: false },
+    { name: "Diab", href: "https://www.diabgroup.com", wide: false },
+    { name: "Würth Elektronik", href: "https://www.we-online.com", wide: true },
+    { name: "NTNU Department of Engineering Cybernetics", href: "https://www.ntnu.edu/itk", wide: true },
   ];
 
   return (
@@ -98,7 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </h4>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
                   {sponsors.map((s) => (
-                    <li key={s.name}>
+                    <li key={s.name} className={s.wide ? "col-span-2" : ""}>
                       <a
                         href={s.href}
                         target="_blank"
