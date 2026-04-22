@@ -66,8 +66,8 @@ const past = [
       "Vortex NTNU placed 5th at RoboSub 2022 held at the University of Maryland. The team prequalified to the semifinals with two runs. Vortex also earned 5th place in the Design Documentation category.",
     detail:
       "Two years of work and 30,000–40,000 work hours resulted in the Beluga AUV used for this competition. The team scored enough in the semifinals for a third run, though fell short of the finals.",
-    image1: "/images/competitions/deploying-drone.jpg",
-    image2: "/images/competitions/orca-pool-testing.jpg",
+    image1: "/images/competitions/robosub2022-1.jpg",
+    image2: "/images/competitions/robosub2022-2.jpg",
   },
   {
     year: "2019",
@@ -77,8 +77,8 @@ const past = [
       "In summer 2019, 11 students from Vortex NTNU traveled to San Diego to participate in RoboSub for the very first time. They competed with Manta, which had been converted from an ROV to an AUV in less than a year.",
     detail:
       "The development required rebuilding the existing ROV with new sensors and navigation equipment, improving existing software, and developing a simulation for testing — all within less than a year. This marked Vortex's shift from ROV to AUV development.",
-    image1: "/images/competitions/orca-field.jpg",
-    image2: "/images/competitions/boat-divers.png",
+    image1: "/images/competitions/robosub2019-1.jpg",
+    image2: "/images/competitions/robosub2019-2.jpg",
   },
 ];
 
