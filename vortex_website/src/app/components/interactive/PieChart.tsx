@@ -28,20 +28,39 @@ export default function PieChart({
   data,
   title,
   collapsibleLegend = false,
+  sortMode = "value-desc",
 }: {
   data: Slice[];
   title: string;
   collapsibleLegend?: boolean;
+  sortMode?: "value-desc" | "year-asc";
 }) {
+  const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState<number | null>(null);
   const [legendOpen, setLegendOpen] = useState(false);
+
+  useEffect(() => setMounted(true), []);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const total = data.reduce((s, d) => s + d.value, 0);
   const colors = generateColors(data.length);
 
-  const sorted = [...data].sort((a, b) => b.value - a.value || a.label.localeCompare(b.label));
+  const sorted = [...data].sort((a, b) => {
+    if (sortMode === "year-asc") {
+      const aYear = Number.parseInt(a.label, 10);
+      const bYear = Number.parseInt(b.label, 10);
+      const aHasYear = Number.isFinite(aYear);
+      const bHasYear = Number.isFinite(bYear);
+
+      if (aHasYear && bHasYear) return aYear - bYear;
+      if (aHasYear) return -1;
+      if (bHasYear) return 1;
+      return a.label.localeCompare(b.label);
+    }
+
+    return b.value - a.value || a.label.localeCompare(b.label);
+  });
 
   const cx = 110, cy = 110, r = 95;
   let cum = 0;
@@ -89,7 +108,7 @@ export default function PieChart({
       {/* Chart */}
       <div className="relative w-full max-w-55 md:max-w-70 lg:max-w-85 mx-auto">
         <svg width="100%" height="100%" viewBox="0 0 220 220" style={{ display: "block" }}>
-          {slices.map((s, i) => (
+          {mounted && slices.map((s, i) => (
             <path
               key={s.label}
               d={arc(cx, cy, hovered === i ? r + 7 : r, s.start, s.end)}

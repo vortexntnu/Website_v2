@@ -34,7 +34,7 @@ export default function TimelineItem({
   return (
     <div className="relative flex flex-col md:flex-row items-center gap-8 md:gap-0">
       {/* ── Left half ── */}
-      <div className={`w-full md:w-[calc(50%-2rem)] ${isLeft ? "md:pr-12" : "md:pl-12 md:order-2"}`}>
+      <div className="w-full md:w-1/2 md:pr-12">
         {isLeft ? (
           /* Image on left */
           <div className="relative aspect-video w-full overflow-hidden rounded-lg">
@@ -42,8 +42,8 @@ export default function TimelineItem({
           </div>
         ) : (
           /* Text on left (when image is on right) */
-          <div className="flex flex-col gap-3 md:text-right">
-            <span className="inline-block bg-[#c21c1c] text-white text-sm font-semibold px-4 py-1 w-fit md:ml-auto">
+          <div className="flex flex-col gap-3">
+            <span className="inline-block bg-[#c21c1c] text-white text-sm font-semibold px-4 py-1 w-fit">
               {label}
             </span>
             {year && <p className="text-gray-500 text-sm">{year}</p>}
@@ -56,7 +56,7 @@ export default function TimelineItem({
       <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10 items-center justify-center w-5 h-5 rounded-full bg-[#c21c1c] border-2 border-[#0a0a0a] ring-2 ring-[#c21c1c]" />
 
       {/* ── Right half ── */}
-      <div className={`w-full md:w-[calc(50%-2rem)] ${isLeft ? "md:pl-12" : "md:pr-12 md:order-1"}`}>
+      <div className="w-full md:w-1/2 md:pl-12">
         {isLeft ? (
           /* Text on right (when image is on left) */
           <div className="flex flex-col gap-3">
