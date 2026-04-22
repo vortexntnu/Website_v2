@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cabin } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
 import NavBar from "@/app/components/interactive/NavBar";
 import SocialIcons from "@/app/components/ui/SocialIcons";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cabin = Cabin({
+  variable: "--font-cabin",
   subsets: ["latin"],
 });
 
@@ -58,10 +53,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     { name: "Nordcad", href: "https://www.nordcad.eu/" },
     { name: "Altimo", href: "https://www.altimo.no/" },
     { name: "Imtas", href: "https://en.imtas.no/" },
+    { name: "3Dconnexion", href: "https://3dconnexion.com/" },
   ];
 
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={cabin.variable}>
       <body>
         {/* Sticky navigation */}
         <NavBar />

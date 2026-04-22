@@ -84,6 +84,14 @@ const sponsors: Sponsor[] = [
     hitPadX: 40,
     scale:1.2
   },
+  {
+    name: "3Dconnexion",
+    logoSrc: "/images/sponsors/3Dconnexion.svg",
+    href: "https://3dconnexion.com/",
+    hitWidth: 0,
+    hitPadX: 20,
+    scale:1.2
+  },
 ];
 
 const projects = [
@@ -423,7 +431,7 @@ export default function HomePage() {
           {/* Local promo video */}
           <div className="md:col-span-3 overflow-hidden border border-white/5">
             <video
-              src="/videos/Vortex_promo_one.mp4"
+              src="/videos/promo/Vortex_promo_one.mp4"
               autoPlay
               muted
               loop
