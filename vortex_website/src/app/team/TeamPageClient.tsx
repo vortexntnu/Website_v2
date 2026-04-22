@@ -53,7 +53,7 @@ const subTeams: SubTeam[] = [
     members: [
       makeMember("Andreas Skagen", "Project Manager / Chairman of the Board", "/images/members/Board Andreas Skagen.jpg"),
       makeMember("Alvar Guddingsmo", "Chief Technical Officer Hardware / Member of the Board", "/images/members/Alvar_edited.jpg"),
-      makeMember("Axel Robert Olivier Jenssen", "Chief Financial Officer / Member of the Board", "/images/members/Board  Axel Robert Olivier Jenssen.jpg"),
+      { ...makeMember("Axel Robert Olivier Jenssen", "Chief Financial Officer / Member of the Board", "/images/members/Board  Axel Robert Olivier Jenssen.jpg"), objectPosition: "center 15%", imageScale: 1.1 },
       makeMember("Jørgen Fjermedal", "Chief Technical Officer Software / Member of the Board", "/images/members/Board Jørgen Fjermedal.jpg"),
       makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "/images/members/Board Lasse Johansen.jpg"),
       makeMember("Yatavi Suresh", "Marketing Lead / Member of the Board", "/images/members/Marketing Lead and Board Yatavi Suresh.jpg"),
@@ -73,7 +73,7 @@ const subTeams: SubTeam[] = [
       makeMember("Oliver Bormark Sæther", "Member of Electronics", "/images/members/Electronics Oliver Børmark Sæther.jpg"),
       makeMember("Peder Anton Rustadbakken", "Member of Electronics", "/images/members/Electronics Peder Anton Rustadbakken.jpg"),
       makeMember("Vikingur Sigurdsson", "Member of Electronics / Member of Embedded", "/images/members/Electronics Vikingur Sigurdsson.jpg"),
-      makeMember("Øystein Romundstad Gjessing", "Member of Electronics", "/images/members/Electronics Øystein Romundstad Gjessing.jpg"),
+      { ...makeMember("Øystein Romundstad Gjessing", "Member of Electronics", "/images/members/Electronics Øystein Romundstad Gjessing.jpg"), objectPosition: "center 20%", imageScale: 1.25 },
     ],
   },
   {
@@ -90,7 +90,7 @@ const subTeams: SubTeam[] = [
       makeMember("Martine Solberg", "Member of Mechanical", "/images/members/Mechanical Martine Solberg.jpg"),
       makeMember("Niclas Svardal", "Member of Mechanical", "/images/members/GUI Niclas Svardal.jpg"),
       makeMember("Simen Lund Gronli", "Member of Mechanical", "/images/members/Mechanical Simen Lund Grønli.jpg"),
-      makeMember("Torkil Sand Torvanger", "Member of Mechanical", "/images/members/Mechanical Torkil Sand Torvanger.jpg"),
+      { ...makeMember("Torkil Sand Torvanger", "Member of Mechanical", "/images/members/Mechanical Torkil Sand Torvanger.jpg"), objectPosition: "70% 20%", imageScale: 1.30 },
     ],
   },
   {
@@ -101,7 +101,7 @@ const subTeams: SubTeam[] = [
     members: [
       makeMember("Weixin Lu", "Leader of Web Development Group / Member of Marketing", "/images/members/Marketing Weixin Lu.jpg"),
       makeMember("Ashish Bhardwaj", "Member of Web Development", "/images/members/Web Ashish Bhardwaj.jpg"),
-      makeMember("Biraveen Gnanasampanthan", "Member of Web Development", "/images/members/Web Biraveen Gnanasampanthan.jpg"),
+      {...makeMember("Biraveen Gnanasampanthan", "Member of Web Development", "/images/members/Web Biraveen Gnanasampanthan.jpg"), objectPosition: "60% 20%"},
       makeMember("Ricardo Sonda Guiraudeli", "Member of Web Development", "/images/members/Web Ricardo Sonda Guiraudeli.jpg"),
     ],
   },
@@ -118,7 +118,7 @@ const subTeams: SubTeam[] = [
       makeMember("Filip Nilsen", "Member of Control", "/images/members/Control Filip Nilsen.jpg"),
       makeMember("Henrik Mæland Haakenaasen", "Member of Control", "/images/members/Control Henrik Mæland Haakenaasen.jpg"),
       makeMember("Patrick A. Sheehan", "Member of Control", "/images/members/Pat_edited.jpg"),
-      makeMember("Thomas Paulsen", "Member of Control", "/images/members/Control THomas Paulsen.jpg"),
+      { ...makeMember("Thomas Paulsen", "Member of Control", "/images/members/Control THomas Paulsen.jpg"), objectPosition: "center 20%", imageScale: 1.255 },
     ],
   },
   {
@@ -170,7 +170,7 @@ const subTeams: SubTeam[] = [
     members: [
       makeMember("Lasse Johansen", "Deputy Project Manager / Deputy Chair of the Board", "/images/members/Board Lasse Johansen.jpg"),
       makeMember("Ole Alexander Vimo Herrem", "Member of Admin", "/images/members/Admin Ole Alexander Vimo Herrem.jpg"),
-      makeMember("Ravn Nordling Tonnesen", "Member of Admin", "/images/members/Admin Ravn Nordling Tønnesen.jpg"),
+      { ...makeMember("Ravn Nordling Tonnesen", "Member of Admin", "/images/members/Admin Ravn Nordling Tønnesen.jpg"), objectPosition: "60% 20%", imageScale: 1.34 },
       makeMember("Waldemar Riiser", "Member of Admin", "/images/members/Admin Waldemar Riiser.jpg"),
     ],
   },
@@ -193,7 +193,7 @@ const subTeams: SubTeam[] = [
     members: [
       makeMember("Yatavi Suresh", "Leader of Marketing Group / Member of the Board", "/images/members/Marketing Lead and Board Yatavi Suresh.jpg"),
       makeMember("Iver Haddal", "Member of Marketing", "/images/members/Marketing Iver Haddal.jpg"),
-      makeMember("Julie Qiao Hall", "Member of Marketing", "/images/members/Marketing Julie Hall.jpg"),
+      { ...makeMember("Julie Qiao Hall", "Member of Marketing", "/images/members/Marketing Julie Hall.jpg"), objectPosition: "center 25%", imageScale: 1.18 },
       makeMember("Weixin Lu", "Member of Marketing / Leader of Web Development", "/images/members/Marketing Weixin Lu.jpg"),
     ],
   },
@@ -257,7 +257,7 @@ export default function TeamPageClient() {
           quality={90}
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-6 left-6">
           <span className="bg-[#c21c1c] text-white text-sm font-semibold px-4 py-1.5 uppercase tracking-wide">
             {activeYear} — {activeTeam.name}
@@ -274,6 +274,8 @@ export default function TeamPageClient() {
             role={member.role}
             imageSrc={member.imageSrc}
             linkedinHref={member.linkedinHref}
+            objectPosition={member.objectPosition}
+            imageScale={member.imageScale}
           />
         ))}
       </div>

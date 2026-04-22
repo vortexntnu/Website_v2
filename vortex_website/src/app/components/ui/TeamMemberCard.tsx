@@ -5,6 +5,8 @@ type TeamMemberCardProps = {
   role: string;
   imageSrc?: string;
   linkedinHref?: string;
+  objectPosition?: string;
+  imageScale?: number;
 };
 
 /**
@@ -24,11 +26,13 @@ export default function TeamMemberCard({
   role,
   imageSrc,
   linkedinHref,
+  objectPosition = "center top",
+  imageScale = 1,
 }: TeamMemberCardProps) {
   return (
     <div className="group flex flex-col bg-[#1a1a1a] rounded-lg overflow-hidden hover:bg-[#262626] transition-colors duration-200">
       {/* Photo */}
-      <div className="relative w-full aspect-square bg-[#262626]">
+      <div className="relative w-full aspect-square bg-[#262626] overflow-hidden">
         {imageSrc ? (
           <Image
             src={imageSrc}
@@ -36,7 +40,8 @@ export default function TeamMemberCard({
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
             quality={90}
-            className="object-cover object-top"
+            className="object-cover"
+            style={{ objectPosition, transform: `scale(${imageScale})`, transformOrigin: objectPosition }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-600">
