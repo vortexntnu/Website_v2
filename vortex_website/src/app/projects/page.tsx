@@ -99,7 +99,7 @@ export default function ProjectsPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="/images/competitions/working-on-drone.jpg"
+        imageSrc="/images/competitions/IMG_2482.jpg"
         heading="Our Drones"
         subheading="Six generations of autonomous underwater and surface vehicles — from ROV to AUV to ASV."
         align="center"

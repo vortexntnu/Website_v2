@@ -80,7 +80,7 @@ export default function ContactPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="https://picsum.photos/seed/contacthero/1920/1080"
+        imageSrc="/images/competitions/tac2024-celebration.png"
         heading="Got any questions?"
         subheading="Please do not hesitate to contact us. Our team leads are happy to hear from prospective members, sponsors, and partners."
         align="center"

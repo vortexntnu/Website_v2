@@ -87,7 +87,7 @@ export default function CompetitionsPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="/images/competitions/orca-pool-testing.jpg"
+        imageSrc="/images/competitions/tac2024-celebration.png"
         heading="Competitions"
         subheading="Where years of engineering meet the water."
         align="center"
