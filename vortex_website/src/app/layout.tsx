@@ -53,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     { name: "Nordcad", href: "https://www.nordcad.eu/" },
     { name: "Altimo", href: "https://www.altimo.no/" },
     { name: "Imtas", href: "https://en.imtas.no/" },
+    { name: "3Dconnexion", href: "https://3dconnexion.com/" },
   ];
 
   return (
