@@ -80,7 +80,7 @@ export default function ContactPage() {
     <>
       {/* ── 1. Hero ── */}
       <HeroSection
-        imageSrc="/images/competitions/tac2024-celebration.png"
+        imageSrc="/images/team/concept-review.jpg"
         heading="Got any questions?"
         subheading="Please do not hesitate to contact us. Our team leads are happy to hear from prospective members, sponsors, and partners."
         align="center"
