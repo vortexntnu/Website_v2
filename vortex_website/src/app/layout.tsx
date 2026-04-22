@@ -123,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   facebook="https://facebook.com/vortexntnu"
                   linkedin="https://linkedin.com/company/vortexntnu"
                   instagram="https://instagram.com/vortexntnu"
-                  youtube="https://www.youtube.com/@vortexntnu8472"
+                  youtube="https://www.youtube.com/@vortexntnu8471"
                 />
               </div>
 
