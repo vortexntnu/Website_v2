@@ -431,7 +431,7 @@ export default function HomePage() {
           {/* Local promo video */}
           <div className="md:col-span-3 overflow-hidden border border-white/5">
             <video
-              src="/videos/Vortex_promo_one.mp4"
+              src="/videos/promo/Vortex_promo_one.mp4"
               autoPlay
               muted
               loop
