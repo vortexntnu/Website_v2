@@ -84,6 +84,14 @@ const sponsors: Sponsor[] = [
     hitPadX: 40,
     scale:1.2
   },
+  {
+    name: "3Dconnexion",
+    logoSrc: "/images/sponsors/3Dconnexion.svg",
+    href: "https://3dconnexion.com/",
+    hitWidth: 0,
+    hitPadX: 20,
+    scale:1.2
+  },
 ];
 
 const projects = [
