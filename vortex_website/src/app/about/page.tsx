@@ -189,7 +189,7 @@ export default function AboutPage() {
           />
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
             <PieChart title="Study Programs" data={technicalStats} collapsibleLegend />
-            <PieChart title="Years of Study" data={experienceStats} />
+            <PieChart title="Years of Study" data={experienceStats} sortMode="year-asc" />
           </div>
         </div>
       </section>

@@ -28,10 +28,12 @@ export default function PieChart({
   data,
   title,
   collapsibleLegend = false,
+  sortMode = "value-desc",
 }: {
   data: Slice[];
   title: string;
   collapsibleLegend?: boolean;
+  sortMode?: "value-desc" | "year-asc";
 }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const [legendOpen, setLegendOpen] = useState(false);
@@ -41,7 +43,21 @@ export default function PieChart({
   const total = data.reduce((s, d) => s + d.value, 0);
   const colors = generateColors(data.length);
 
-  const sorted = [...data].sort((a, b) => b.value - a.value || a.label.localeCompare(b.label));
+  const sorted = [...data].sort((a, b) => {
+    if (sortMode === "year-asc") {
+      const aYear = Number.parseInt(a.label, 10);
+      const bYear = Number.parseInt(b.label, 10);
+      const aHasYear = Number.isFinite(aYear);
+      const bHasYear = Number.isFinite(bYear);
+
+      if (aHasYear && bHasYear) return aYear - bYear;
+      if (aHasYear) return -1;
+      if (bHasYear) return 1;
+      return a.label.localeCompare(b.label);
+    }
+
+    return b.value - a.value || a.label.localeCompare(b.label);
+  });
 
   const cx = 110, cy = 110, r = 95;
   let cum = 0;
