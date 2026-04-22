@@ -35,8 +35,11 @@ export default function PieChart({
   collapsibleLegend?: boolean;
   sortMode?: "value-desc" | "year-asc";
 }) {
+  const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState<number | null>(null);
   const [legendOpen, setLegendOpen] = useState(false);
+
+  useEffect(() => setMounted(true), []);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -105,7 +108,7 @@ export default function PieChart({
       {/* Chart */}
       <div className="relative w-full max-w-55 md:max-w-70 lg:max-w-85 mx-auto">
         <svg width="100%" height="100%" viewBox="0 0 220 220" style={{ display: "block" }}>
-          {slices.map((s, i) => (
+          {mounted && slices.map((s, i) => (
             <path
               key={s.label}
               d={arc(cx, cy, hovered === i ? r + 7 : r, s.start, s.end)}
