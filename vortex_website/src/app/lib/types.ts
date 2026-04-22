@@ -7,6 +7,8 @@ export type TeamMember = {
   role: string;
   imageSrc?: string;
   linkedinHref?: string;
+  objectPosition?: string;
+  imageScale?: number;
 };
 
 export type SubTeam = {
