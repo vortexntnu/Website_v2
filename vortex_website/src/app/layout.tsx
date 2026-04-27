@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cabin } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
 import NavBar from "@/app/components/interactive/NavBar";
 import SocialIcons from "@/app/components/ui/SocialIcons";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cabin = Cabin({
+  variable: "--font-cabin",
   subsets: ["latin"],
 });
 
@@ -53,13 +48,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     { name: "Nortek", href: "https://www.nortekgroup.com" },
     { name: "NTNU", href: "https://www.ntnu.edu/itk" },
     { name: "FFU", href: "https://www.ffu.no" },
-    { name: "Diab", href: "https://www.diabgroup.com" },
-    { name: "Würth Elektronik", href: "https://www.we-online.com" },
-    { name: "Stratum 3D", href: "https://stratum3d.no" },
+    { name: "Würth Elektronik", href: "https://www.we-online.com"},
+    { name: "Norbit", href: "https://www.we-online.com" },
+    { name: "Nordcad", href: "https://www.nordcad.eu/" },
+    { name: "Altimo", href: "https://www.altimo.no/" },
+    { name: "Imtas", href: "https://en.imtas.no/" },
+    { name: "3Dconnexion", href: "https://3dconnexion.com/" },
   ];
 
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={cabin.variable}>
       <body>
         {/* Sticky navigation */}
         <NavBar />
@@ -121,7 +119,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   facebook="https://facebook.com/vortexntnu"
                   linkedin="https://linkedin.com/company/vortexntnu"
                   instagram="https://instagram.com/vortexntnu"
-                  youtube="https://www.youtube.com/@vortexntnu8472"
+                  youtube="https://www.youtube.com/@vortexntnu8471"
                 />
               </div>
 

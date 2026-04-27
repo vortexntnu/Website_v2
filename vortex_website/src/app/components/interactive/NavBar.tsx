@@ -43,12 +43,12 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 w-full bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between">
         {/* Logo / wordmark */}
-        <Link href="/" className="inline-flex items-center -ml-6 md:-ml-10" aria-label="Vortex home">
+        <Link href="/" className="block -ml-6 md:-ml-10" aria-label="Vortex home">
           <Image
             src="/images/logos/LogoTextLight.svg"
             alt="Vortex logo"
-            width={48}
-            height={48}
+            width={100}
+            height={120}
             className="h-30 w-25"
             priority
           />
@@ -74,7 +74,7 @@ export default function NavBar() {
         {/* Desktop CTA */}
         <Link
           href="/join-us"
-          className="hidden md:inline-block bg-[#c21c1c] hover:bg-[#dc2626] text-white text-sm font-semibold px-5 py-2 transition-colors duration-200"
+          className="hidden md:inline-flex items-center justify-center bg-[#c21c1c] hover:bg-[#dc2626] text-white text-sm font-semibold px-5 py-2 transition-colors duration-200"
         >
           APPLY
         </Link>
@@ -115,7 +115,7 @@ export default function NavBar() {
           <Link
             href="/join-us"
             onClick={() => setOpen(false)}
-            className="mt-2 inline-block bg-[#c21c1c] text-white text-sm font-semibold px-5 py-2 w-fit"
+            className="mt-2 inline-flex items-center justify-center bg-[#c21c1c] text-white text-sm font-semibold px-5 py-2 w-fit"
           >
             APPLY
           </Link>

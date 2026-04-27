@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import HeroSection from "@/app/components/ui/HeroSection";
 import SectionHeading from "@/app/components/ui/SectionHeading";
 import ExpandableTeamSection from "@/app/components/interactive/ExpandableTeamSection";
@@ -58,49 +57,92 @@ const teams = [
     id: "software",
     name: "Software",
     subtitle: "The Brains of the Operation",
-    cardDescription: "Develops control systems, SLAM, computer vision, and mission planning.",
+    cardDescription: "Building the systems that let our vehicles think, see, navigate, and act autonomously.",
     description1:
-      "You will learn how to use the Robot Operating System (ROS) with Python and C++ to develop code for a highly advanced and robust platform, and how to test, deploy, and verify your code as part of a software team. Work includes control systems design, SLAM, computer vision and object detection, embedded software design, and underwater acoustic communication.",
-    description2:
-      "The Autonomous Systems sub-team designs and implements guidance and navigation stacks, fusing sensors such as GNSS, UGPS, DVL, and IMU, and develops mission planning schemes for competitions. Experience with Linux and robotics is helpful but not required — we teach from scratch.",
+      "The software team builds the code that makes our drones think, perceive, and act. Working with ROS, Python, and C++, the team spans five specializations — from low-level embedded systems to high-level autonomy stacks and operator interfaces.",
     cardImageSrc: "/images/teams/software-coding.png",
     imageSrc: "/images/teams/simulation.png",
+    subTeams: [
+      {
+        name: "Control",
+        description:
+          "The control group develops the algorithms that govern the vehicle's physical behavior. They create custom controllers that translate autonomous commands and sensor data into precise thrust allocation and steering, ensuring safe and reliable maneuvering in all six degrees of freedom.",
+      },
+      {
+        name: "Autonomy",
+        description:
+          "We design, implement, test, and tune controllers and path-following algorithms for the drones, with the aim of making our AUV fully autonomous.",
+      },
+      {
+        name: "Perception",
+        description:
+          "The perception team ensures our drones perceive their surroundings. They work with sonar, lidar, and cameras with the goal of performing object detection, target tracking, and environment mapping.",
+      },
+      {
+        name: "Embedded",
+        description:
+          "We are the architects of the drones' intelligence, developing the core systems that enable communication between all onboard components. Our team implements the low-level software that powers the sensors, controls, and decision-making processes.",
+      },
+      {
+        name: "GUI",
+        description:
+          "The GUI group designs and develops the interfaces that allow operators to interact seamlessly with our vehicle's systems. They transform complex data streams into intuitive visual displays, enabling real-time monitoring, control, and diagnostics.",
+      },
+    ],
   },
   {
-    id: "mechanical",
-    name: "Mechanical",
-    subtitle: "The Backbone of the Drones",
-    cardDescription: "Responsible for all physical structures — from concept design to assembly.",
+    id: "hardware",
+    name: "Hardware",
+    subtitle: "The Body and Nervous System",
+    cardDescription: "Builds the physical structure and electronics of our vehicles. Everything from hull design to PCB layout.",
     description1:
-      "As a member of the mechanical team you will be responsible for all physical structures in our drones, including the entire process from concept design to prototyping and assembly of the final product.",
-    description2:
-      "We use materials ranging from aluminium and acrylic to 3D-printed PLA and carbon fibre. If you enjoy making things with your hands as much as designing them on a screen, this is your team.",
+      "The hardware team is responsible for the physical form and electronic soul of our vehicles. From CAD models and composite structures to PCB design and power systems, they turn engineering concepts into water-ready machines.",
     cardImageSrc: "/images/teams/mechanical-working.png",
     imageSrc: "/images/teams/mechanical-beluga.png",
+    subTeams: [
+      {
+        name: "Mechanical",
+        description:
+          "We work with 3D modelling in CAD and SolidWorks, developing the physical parts of the vessels. We combine fluid statics with practical engineering to develop a stable and safe vehicle that performs to the best of its abilities.",
+      },
+      {
+        name: "Electronics",
+        description:
+          "We are responsible for all the electronics onboard, working with PCB and circuit design that the vessel's functionality depends greatly on. Power supply solutions, signal processing, and acoustics are key areas we focus on.",
+      },
+    ],
   },
   {
-    id: "electronics",
-    name: "Electronics",
-    subtitle: "The Nervous System",
-    cardDescription: "Designs PCBs, power distribution, wiring, and embedded systems.",
+    id: "admin",
+    name: "Admin",
+    subtitle: "Keeping the Organisation Running",
+    cardDescription: "Handles organisation-wide coordination, internal communication, and logistics to support all teams.",
     description1:
-      "The electronics group is responsible for the power distribution, wiring, and communication buses in our drones. As part of the electronics team you will either design PCBs, utilise waterproof connections to enable power distribution and communication across different modules, or be responsible for embedded systems design.",
-    description2:
-      "You will use KiCad for PCB design, STM32 microcontrollers for embedded firmware, and a variety of test equipment (oscilloscopes, multimeters, logic analysers). Experience in PCB design or embedded C is a plus.",
-    cardImageSrc: "/images/teams/electronics-pcb.png",
-    imageSrc: "/images/team/vortex-monitoring.png",
+      "The Admin & Logistics team ensures that Vortex NTNU runs smoothly behind the scenes. We handle organisation-wide coordination, internal communication, and practical logistics to support all technical and operational teams. Our goal is to reduce the administrative load on team leads, maintain efficient workflows, and secure continuity between project years.",
+    cardImageSrc: "/images/competitions/tac2024-team.png",
+    imageSrc: "/images/team/walking.png",
   },
   {
     id: "marketing",
-    name: "Marketing",
+    name: "Marketing & Web",
     subtitle: "Our Voice to the World",
-    cardDescription: "Markets the organisation with creative freedom — bold and creative individuals welcome.",
+    cardDescription: "Shapes Vortex's public identity through brand, content, social media, and the website.",
     description1:
-      "The marketing group has a lot of freedom to market how they want, and we are excited to invite bold and creative individuals to apply, so that we can take our profile to new levels.",
-    description2:
-      "You do not need to be an engineer to join Vortex. Marketing students, communication students, and anyone with a passion for storytelling and design are just as welcome as coders and welders.",
+      "The Marketing & Web team shapes Vortex's public identity. They manage our brand, create content, and build the digital platforms that connect the organisation with students, sponsors, and the wider world.",
     cardImageSrc: "/images/team/presentation.jpg",
-    imageSrc: "/images/team/walking.png",
+    imageSrc: "/images/team/CR_Marketing0.jpg",
+    subTeams: [
+      {
+        name: "Marketing",
+        description:
+          "Vortex's marketing team promotes the organisation's brand, projects, and members. They manage brand identity, create content, handle social media and public relations, and drive engagement and organisational awareness.",
+      },
+      {
+        name: "Web",
+        description:
+          "The web development team maintains and develops Vortex's website, ensuring it functions smoothly and reflects Vortex's activities and identity. The team is currently transitioning from Wix to a fully self-developed solution using React and TypeScript.",
+      },
+    ],
   },
 ];
 
@@ -110,28 +152,13 @@ export default function JoinUsPage() {
       {/* ── 1. Hero ── */}
       <HeroSection
         imageSrc="/images/teams/mechanical-beluga.png"
-        heading="Join The Team!"
-        subheading="Applications are open for the 2027 generation. All study levels and backgrounds welcome."
+        heading="Join the Team!"
+        subheading="Team Lead applications for 2027 have now closed. New member positions open in August 2027 — all study levels and backgrounds are welcome."
         align="center"
         height="xl"
         overlay={0.65}
-        cta={{ label: "APPLY NOW", href: "/contact" }}
+        cta={{ label: "APPLY NOW", href: "/contact", disabled: true }}
       />
-
-      {/* Team Lead application CTA strip */}
-      <div className="bg-[#1a1a1a] border-b border-[#374151] py-5">
-        <div className="max-w-7xl mx-auto px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-300 text-sm">
-            Interested in leading a team? Team Lead applications for 2027 are now open.
-          </p>
-          <Link
-            href="/contact"
-            className="bg-[#c21c1c] hover:bg-[#dc2626] text-white text-sm font-semibold px-6 py-2 transition-colors duration-200 whitespace-nowrap"
-          >
-            Team Lead Application →
-          </Link>
-        </div>
-      </div>
 
       {/* ── 2. Why Vortex ── */}
       <section className="py-16 bg-[#0a0a0a]">

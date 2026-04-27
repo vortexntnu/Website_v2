@@ -26,7 +26,7 @@ export default function SectionHeading({
   return (
     <div className={`flex flex-col gap-3 ${alignClass}`}>
       {label && (
-        <span className="text-xs font-semibold uppercase tracking-widest text-[#c21c1c]">
+        <span className="text-sm font-semibold uppercase tracking-widest text-[#c21c1c]">
           {label}
         </span>
       )}
