@@ -133,7 +133,7 @@ const subTeams: SubTeam[] = [
     description: "We design, implement, test and tune controllers and path following algorithms for the drones, with the aim of making our AUV and ASV autonomous.",
     members: [
       makeMember("Jorgen Fjermedal", "CTO Software / Member of the Board", "/images/jpg/Jørgen Fjermedal_edited.jpg"),
-      makeMember("Hinthujan Thigarajah", "Member of Autonomy", "/images/jpg/Autonomy Hinthujan Thigarajah.jpg"),
+      makeMember("Hinthujan Thiagarajah", "Member of Autonomy", "/images/jpg/Autonomy Hinthujan Thigarajah.jpg"),
       makeMember("Sina Aanstad", "Member of Autonomy", "/images/jpg/Autonomy Sina Aanstad.jpg"),
     ],
   },
